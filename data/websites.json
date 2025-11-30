@@ -1,0 +1,76 @@
+{
+  "websites": [
+    {
+      "id": "google",
+      "name": "Google",
+      "url": "https://www.google.com",
+      "category": "Search Engine",
+      "description": "Google is the world's leading search engine and technology company, providing search, advertising, cloud computing, and various online services to billions of users worldwide.",
+      "founded": "1998",
+      "headquarters": "Mountain View, California"
+    },
+    {
+      "id": "facebook",
+      "name": "Facebook",
+      "url": "https://www.facebook.com",
+      "category": "Social Media",
+      "description": "Facebook (Meta) is a leading social media platform connecting billions of people worldwide, enabling them to share content, communicate, and build communities.",
+      "founded": "2004",
+      "headquarters": "Menlo Park, California"
+    },
+    {
+      "id": "instagram",
+      "name": "Instagram",
+      "url": "https://www.instagram.com",
+      "category": "Social Media",
+      "description": "Instagram is a popular photo and video sharing social media platform owned by Meta, allowing users to share visual content and connect with others.",
+      "founded": "2010",
+      "headquarters": "Menlo Park, California"
+    },
+    {
+      "id": "twitter",
+      "name": "Twitter/X",
+      "url": "https://www.x.com",
+      "category": "Social Media",
+      "description": "X (formerly Twitter) is a microblogging and social networking platform where users share short messages, news, and engage in real-time conversations.",
+      "founded": "2006",
+      "headquarters": "San Francisco, California"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "url": "https://www.github.com",
+      "category": "Development",
+      "description": "GitHub is the world's largest code hosting platform for version control and collaboration, used by millions of developers to build and share software projects.",
+      "founded": "2008",
+      "headquarters": "San Francisco, California"
+    },
+    {
+      "id": "stackoverflow",
+      "name": "Stack Overflow",
+      "url": "https://stackoverflow.com",
+      "category": "Development",
+      "description": "Stack Overflow is the largest online community for programmers to learn, share knowledge, and build their careers through Q&A discussions.",
+      "founded": "2008",
+      "headquarters": "New York City, New York"
+    },
+    {
+      "id": "youtube",
+      "name": "YouTube",
+      "url": "https://www.youtube.com",
+      "category": "Video",
+      "description": "YouTube is the world's largest video sharing platform owned by Google, where users can upload, watch, and share video content on virtually any topic.",
+      "founded": "2005",
+      "headquarters": "San Bruno, California"
+    },
+    {
+      "id": "netflix",
+      "name": "Netflix",
+      "url": "https://www.netflix.com",
+      "category": "Streaming",
+      "description": "Netflix is a leading streaming entertainment service offering TV series, documentaries, and feature films across a wide variety of genres and languages.",
+      "founded": "1997",
+      "headquarters": "Los Gatos, California"
+    }
+  ]
+}
