@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dashboard — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-app-top></div>
+
+<div class="app-shell">
+  <aside data-app-sidebar data-active="dashboard"></aside>
+
+  <main class="app-main">
+    <div class="page-head">
+      <div>
+        <h1>Dashboard</h1>
+        <p class="tiny muted" style="margin:2px 0 0">All monitors across your workspace · updated 3s ago</p>
+      </div>
+      <div class="spacer"></div>
+      <a class="btn btn-ghost" href="incidents.html">View incidents</a>
+      <a class="btn btn-accent" href="monitor-new.html">+ New monitor</a>
+    </div>
+
+    <!-- KPIs -->
+    <div class="grid grid-4" style="margin-bottom:20px">
+      <div class="stat"><div class="k">Total monitors</div><div class="v">14</div><div class="d">2 over free tier</div></div>
+      <div class="stat"><div class="k">Uptime · 30d</div><div class="v">99.87 %</div><div class="d">▲ 0.04% vs. prev.</div></div>
+      <div class="stat"><div class="k">Active incidents</div><div class="v" style="color:var(--down)">2</div><div class="d">1 major, 1 minor</div></div>
+      <div class="stat"><div class="k">Avg response</div><div class="v">312 ms</div><div class="d">▼ 18 ms this week</div></div>
+    </div>
+
+    <!-- Filter row -->
+    <div class="row" style="margin-bottom:12px">
+      <input class="btn" style="flex:1" placeholder="Search monitors…" />
+      <select class="btn"><option>All types</option><option>URL</option><option>Form</option><option>API</option><option>Heartbeat</option><option>Port</option></select>
+      <select class="btn"><option>All statuses</option><option>Up</option><option>Degraded</option><option>Down</option><option>Paused</option></select>
+      <select class="btn"><option>Sort: Recently updated</option><option>Name A→Z</option><option>Uptime %</option></select>
+    </div>
+
+    <!-- Monitor list -->
+    <div class="card" style="padding:0">
+      <div class="mon-row" style="background:var(--muted-2);background:color-mix(in oklab,var(--muted) 10%,var(--surface));font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">
+        <span></span><span>Monitor</span><span>Uptime · 24h</span><span>Response</span><span>Status</span><span></span>
+      </div>
+
+      <a class="mon-row" href="monitor-detail.html" style="text-decoration:none;color:inherit">
+        <span class="dot-sm dot-up"></span>
+        <div><div class="mon-name">api.acme.io</div><div class="mon-url">HTTP · https://api.acme.io/health · 30s</div></div>
+        <div class="uptime-bar" aria-label="uptime 24h">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="tiny">142 ms</div>
+        <span class="pill pill-up"><span class="dot-sm dot-up"></span> Up</span>
+        <div class="tiny muted">→</div>
+      </a>
+
+      <a class="mon-row" href="monitor-detail.html" style="text-decoration:none;color:inherit">
+        <span class="dot-sm dot-down"></span>
+        <div><div class="mon-name">Checkout form loads</div><div class="mon-url">Form · shop.acme.io/checkout · selector #btn-pay · 60s</div></div>
+        <div class="uptime-bar">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="warn"></span><span class="warn"></span><span class="down"></span><span class="down"></span><span class="down"></span><span class="down"></span><span class="down"></span><span class="down"></span><span class="down"></span><span class="down"></span><span class="down"></span><span class="down"></span><span class="down"></span><span class="down"></span><span class="down"></span><span class="down"></span>
+        </div>
+        <div class="tiny">— ms</div>
+        <span class="pill pill-down"><span class="dot-sm dot-down"></span> Down</span>
+        <div class="tiny muted">→</div>
+      </a>
+
+      <a class="mon-row" href="monitor-detail.html" style="text-decoration:none;color:inherit">
+        <span class="dot-sm dot-degraded"></span>
+        <div><div class="mon-name">Nightly backup cron</div><div class="mon-url">Heartbeat · expected every 24h · last checked-in 26h ago</div></div>
+        <div class="uptime-bar">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="warn"></span><span class="warn"></span>
+        </div>
+        <div class="tiny">—</div>
+        <span class="pill pill-degraded"><span class="dot-sm dot-degraded"></span> Late</span>
+        <div class="tiny muted">→</div>
+      </a>
+
+      <a class="mon-row" href="monitor-detail.html" style="text-decoration:none;color:inherit">
+        <span class="dot-sm dot-up"></span>
+        <div><div class="mon-name">acme.io landing</div><div class="mon-url">URL · https://acme.io · keyword "Get started" · 30s</div></div>
+        <div class="uptime-bar">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="tiny">78 ms</div>
+        <span class="pill pill-up"><span class="dot-sm dot-up"></span> Up</span>
+        <div class="tiny muted">→</div>
+      </a>
+
+      <a class="mon-row" href="monitor-detail.html" style="text-decoration:none;color:inherit">
+        <span class="dot-sm dot-up"></span>
+        <div><div class="mon-name">Postgres · db.acme.io:5432</div><div class="mon-url">Port · TCP · every 60s</div></div>
+        <div class="uptime-bar">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="tiny">21 ms</div>
+        <span class="pill pill-up"><span class="dot-sm dot-up"></span> Up</span>
+        <div class="tiny muted">→</div>
+      </a>
+
+      <a class="mon-row" href="monitor-detail.html" style="text-decoration:none;color:inherit">
+        <span class="dot-sm dot-up"></span>
+        <div><div class="mon-name">SSL · api.acme.io</div><div class="mon-url">Cert · valid until Aug 2027 · check daily</div></div>
+        <div class="uptime-bar">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="tiny">—</div>
+        <span class="pill pill-up"><span class="dot-sm dot-up"></span> Valid</span>
+        <div class="tiny muted">→</div>
+      </a>
+    </div>
+
+    <!-- Bottom row: activity + quick add -->
+    <div class="grid" style="grid-template-columns:1fr 320px;gap:20px;margin-top:24px">
+      <div class="card">
+        <div class="row">
+          <h3 style="margin:0;font-size:16px">Recent activity</h3>
+          <div class="spacer"></div>
+          <a class="tiny" href="incidents.html">View all →</a>
+        </div>
+        <div style="margin-top:12px;display:grid;gap:10px">
+          <div class="row"><span class="dot-sm dot-down"></span><span class="small">Checkout form · Down — selector #btn-pay missing</span><div class="spacer"></div><span class="tiny muted">3 min ago</span></div>
+          <div class="row"><span class="dot-sm dot-degraded"></span><span class="small">Nightly backup cron · Missed heartbeat window</span><div class="spacer"></div><span class="tiny muted">2h ago</span></div>
+          <div class="row"><span class="dot-sm dot-up"></span><span class="small">api.acme.io · Recovered after 4m 12s outage</span><div class="spacer"></div><span class="tiny muted">yesterday</span></div>
+          <div class="row"><span class="dot-sm dot-up"></span><span class="small">acme.io landing · New monitor created</span><div class="spacer"></div><span class="tiny muted">2 days ago</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 8px;font-size:15px">Quick add</h3>
+        <div class="stack" style="gap:6px">
+          <a class="side-link" href="monitor-new.html">◉ URL / website</a>
+          <a class="side-link" href="monitor-new.html">📄 Form loads correctly</a>
+          <a class="side-link" href="monitor-new.html">🔌 API endpoint</a>
+          <a class="side-link" href="monitor-new.html">💓 Cron heartbeat</a>
+          <a class="side-link" href="monitor-new.html">🛰️ TCP port</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="app-partials.js"></script>
+</body>
+</html>

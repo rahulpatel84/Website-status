@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Blog — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-nav></div>
+
+<main class="container">
+  <section class="section" style="max-width:820px;margin:0 auto">
+    <h1 style="font-size:36px;margin:0 0 12px;letter-spacing:-.02em">Blog</h1>
+    <p class="muted" style="font-size:17px;margin:0 0 24px">Post-mortems, monitoring deep-dives, and updates from the team.</p>
+
+    <div class="stack" style="gap:14px">
+      <a class="card" href="#" style="display:block">
+        <span class="pill" style="margin-bottom:8px">Post-mortem</span>
+        <h2 style="margin:8px 0 4px;font-size:20px">The Instagram login outage of Sept 5 — what our data showed</h2>
+        <p class="muted small" style="margin:0 0 8px">A 72-minute outage across NA and EU driven by a bad config push. What our heatmap saw 8 minutes before Meta's status page updated.</p>
+        <span class="tiny muted">2026-09-05 · 6 min read</span>
+      </a>
+      <a class="card" href="#" style="display:block">
+        <span class="pill" style="margin-bottom:8px">Engineering</span>
+        <h2 style="margin:8px 0 4px;font-size:20px">Why we picked SQLite (and better-sqlite3) for a real-time dashboard</h2>
+        <p class="muted small" style="margin:0 0 8px">Postgres is overkill for our workload. Here's why WAL-mode SQLite handles our load fine and what we monitor.</p>
+        <span class="tiny muted">2026-08-28 · 8 min read</span>
+      </a>
+      <a class="card" href="#" style="display:block">
+        <span class="pill" style="margin-bottom:8px">Data</span>
+        <h2 style="margin:8px 0 4px;font-size:20px">Monthly report — top 10 services with the most outages, August 2026</h2>
+        <p class="muted small" style="margin:0 0 8px">Which services logged the most user reports last month and where the incidents concentrated geographically.</p>
+        <span class="tiny muted">2026-09-01 · 4 min read</span>
+      </a>
+      <a class="card" href="#" style="display:block">
+        <span class="pill" style="margin-bottom:8px">Product</span>
+        <h2 style="margin:8px 0 4px;font-size:20px">Shipping the comments system — anonymous, real-time, no Disqus</h2>
+        <p class="muted small" style="margin:0 0 8px">How we built comments on top of the existing SSE stream and why we skipped every third-party widget.</p>
+        <span class="tiny muted">2026-08-20 · 5 min read</span>
+      </a>
+    </div>
+
+    <div class="row" style="justify-content:center;margin-top:24px">
+      <button class="btn">Load more</button>
+    </div>
+  </section>
+</main>
+
+<div data-footer></div>
+<script src="partials.js"></script>
+</body>
+</html>

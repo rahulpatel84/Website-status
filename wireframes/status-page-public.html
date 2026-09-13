@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Acme system status</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<!-- CUSTOM-BRANDED public status page. No admin nav; user's own logo + brand color. -->
+<header class="nav">
+  <div class="container nav-inner">
+    <div class="row">
+      <div class="svc-logo" style="background:var(--accent-50);color:var(--accent-700)">A</div>
+      <div class="nav-brand">Acme <span style="color:var(--muted);font-weight:500">status</span></div>
+    </div>
+    <div class="nav-icons">
+      <a href="#" class="tiny">Subscribe</a>
+      <a href="#" class="tiny">History</a>
+      <a href="#" class="tiny">RSS</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section" style="padding:32px 0 12px">
+    <div class="card" style="display:flex;align-items:center;gap:16px;background:color-mix(in oklab,var(--down) 12%,var(--surface));border-color:color-mix(in oklab,var(--down) 30%,var(--border))">
+      <div style="width:44px;height:44px;border-radius:50%;background:var(--down);display:grid;place-items:center;color:white;font-weight:800">!</div>
+      <div>
+        <h1 style="margin:0;font-size:20px">Some services are experiencing issues</h1>
+        <p class="muted" style="margin:2px 0 0">Investigating a checkout form regression. Started 12 minutes ago.</p>
+      </div>
+      <div class="spacer"></div>
+      <span class="pill pill-down"><span class="dot-sm dot-down"></span> Major</span>
+    </div>
+  </section>
+
+  <section class="section" style="padding:12px 0">
+    <div class="stack" style="gap:16px">
+      <div class="card">
+        <h3 style="margin:0 0 12px;font-size:15px">Public API</h3>
+        <div class="stack" style="gap:8px">
+          <div class="row">
+            <span class="dot-sm dot-up"></span>
+            <span class="small" style="flex:1">api.acme.io</span>
+            <span class="pill pill-up">Operational</span>
+          </div>
+          <div class="row">
+            <span class="dot-sm dot-up"></span>
+            <span class="small" style="flex:1">SSL certificate</span>
+            <span class="pill pill-up">Valid</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 12px;font-size:15px">Storefront</h3>
+        <div class="stack" style="gap:8px">
+          <div class="row">
+            <span class="dot-sm dot-down"></span>
+            <span class="small" style="flex:1">Checkout form</span>
+            <span class="pill pill-down">Major outage</span>
+          </div>
+          <div class="row">
+            <span class="dot-sm dot-up"></span>
+            <span class="small" style="flex:1">acme.io landing</span>
+            <span class="pill pill-up">Operational</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 style="margin:0 0 6px">Uptime · past 90 days</h2>
+    <p class="sub small">Green = up, yellow = degraded, red = down.</p>
+    <div class="card" style="padding:14px">
+      <div class="tiny muted" style="margin-bottom:6px">api.acme.io — 99.93%</div>
+      <div class="uptime-bar" style="gap:1px;height:22px">
+        <script>document.write(Array.from({length:90}).map(()=>{const r=Math.random();return `<span class="${r<0.02?"down":(r<0.05?"warn":"")}"></span>`}).join(""))</script>
+      </div>
+      <div style="height:14px"></div>
+      <div class="tiny muted" style="margin-bottom:6px">Checkout form — 97.8%</div>
+      <div class="uptime-bar" style="gap:1px;height:22px">
+        <script>document.write(Array.from({length:90}).map((_,i)=>{const r=Math.random();return `<span class="${i>=85?"down":(r<0.1?"warn":"")}"></span>`}).join(""))</script>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 style="margin:0 0 6px">Incident history</h2>
+    <p class="sub small">Last 30 days</p>
+    <div class="stack" style="gap:10px">
+      <div class="card">
+        <div class="row"><span class="pill pill-down">Investigating</span><h3 style="margin:0;font-size:15px">Checkout form regression</h3><div class="spacer"></div><span class="tiny muted">12 min ago</span></div>
+        <p class="small muted" style="margin:8px 0 0">Our monitors detected the "Complete purchase" button failing to render on shop.acme.io/checkout. Engineering is investigating.</p>
+      </div>
+      <div class="card">
+        <div class="row"><span class="pill pill-up">Resolved</span><h3 style="margin:0;font-size:15px">API 503 spike</h3><div class="spacer"></div><span class="tiny muted">Yesterday · 4m 12s</span></div>
+      </div>
+      <div class="card">
+        <div class="row"><span class="pill pill-up">Resolved</span><h3 style="margin:0;font-size:15px">DNS provider degraded</h3><div class="spacer"></div><span class="tiny muted">3 days ago · 8m</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" style="margin-top:32px">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:0;padding:0">
+        <div>© Acme, Inc. · Powered by <a href="landing.html">status.watch</a></div>
+        <div>All times UTC · Updated every 30s</div>
+      </div>
+    </div>
+  </footer>
+</main>
+</body>
+</html>

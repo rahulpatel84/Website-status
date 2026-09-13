@@ -1,0 +1,22 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "//": "Sub-minute cadence is delegated to the Fly.io worker (worker/fly.toml). Vercel Cron keeps the daily cleanup and 1-min safety-net probes for when the worker is down.",
+  "crons": [
+    {
+      "path": "/api/cron/probe",
+      "schedule": "* * * * *"
+    },
+    {
+      "path": "/api/cron/public-services",
+      "schedule": "* * * * *"
+    },
+    {
+      "path": "/api/cron/screenshot-cleanup",
+      "schedule": "17 3 * * *"
+    }
+  ],
+  "functions": {
+    "app/api/cron/probe/route.ts": { "maxDuration": 60 },
+    "app/api/cron/public-services/route.ts": { "maxDuration": 60 }
+  }
+}

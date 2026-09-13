@@ -86,7 +86,13 @@ export function StaticMonitor({ filterIds }: { filterIds?: Set<string> }) {
 
       {/* Real-time Chart for Selected Website */}
       {selectedWebsite && (
-        <RealTimeChart url={selectedWebsite.url} name={selectedWebsite.name} isActive={true} onToggle={() => {}} />
+        <RealTimeChart
+          url={selectedWebsite.url}
+          name={selectedWebsite.name}
+          serviceSlug={selectedWebsite.id}
+          isActive={true}
+          onToggle={() => {}}
+        />
       )}
 
       {/* Website Selection Grid */}

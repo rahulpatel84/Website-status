@@ -1,0 +1,150 @@
+{
+  "categories": [
+    {
+      "slug": "post-mortems",
+      "name": "Post-mortems",
+      "description": "Clear, blameless accounts of real incidents and what teams can learn from them."
+    },
+    {
+      "slug": "engineering",
+      "name": "Engineering",
+      "description": "The systems, trade-offs, and practical decisions behind reliable monitoring."
+    },
+    {
+      "slug": "data",
+      "name": "Data",
+      "description": "Patterns and benchmarks drawn from public outage signals."
+    },
+    {
+      "slug": "guides",
+      "name": "Guides",
+      "description": "Useful playbooks for operating dependable internet services."
+    },
+    {
+      "slug": "product",
+      "name": "Product",
+      "description": "Notes on what we are building and why it matters."
+    }
+  ],
+  "posts": [
+    {
+      "slug": "instagram-login-outage-september-5",
+      "title": "The Instagram login outage of Sept 5 — what our data showed",
+      "excerpt": "A 72-minute outage across North America and Europe driven by a bad configuration push, detected before the official status update.",
+      "category": "post-mortems",
+      "author": "Maya Chen",
+      "authorRole": "Reliability research",
+      "publishedAt": "2026-09-05T09:00:00.000Z",
+      "updatedAt": "2026-09-05T14:30:00.000Z",
+      "status": "published",
+      "featured": true,
+      "readTime": 6,
+      "accent": "orange",
+      "seoTitle": "Instagram login outage, Sept 5: what the data showed",
+      "seoDescription": "A data-led timeline of the 72-minute Instagram login outage across North America and Europe.",
+      "body": "Instagram login failures began appearing in our public reporting stream shortly after 09:14 UTC. The first reports were geographically scattered, but within six minutes a clear pattern had formed across the east coast of the United States and western Europe.\n\n## The signal before the status page\n\nUser reports crossed our incident threshold at 09:22 UTC. At that point, failed-login reports were arriving at 4.8 times the normal baseline. Meta's public status page changed eight minutes later.\n\n- 09:14 UTC — first cluster of login reports\n- 09:22 UTC — status.watch incident threshold crossed\n- 09:30 UTC — official status acknowledgement\n- 10:18 UTC — report velocity began returning to baseline\n- 10:26 UTC — incident marked resolved\n\n## What failed\n\nThe strongest signal came from authentication, not the main Instagram feed. People with an existing session could often continue browsing, while new sessions and expired sessions failed during token exchange. That distinction kept the incident from looking like a complete platform outage.\n\n> The useful lesson is not that crowdsourced reports replace synthetic monitoring. It is that the two signals explain different parts of the same event.\n\n## How teams could detect this earlier\n\nA homepage-only monitor would have stayed green. A more useful setup checks the authentication flow independently, tracks regional error ratios, and alerts on a sustained change from the normal baseline rather than a single failed request.\n\nFor customer-facing products, we recommend monitoring one critical path per user journey: sign in, read, create, and pay. That gives responders a much sharper first clue when only one layer is failing.\n\n## The recovery\n\nReports fell quickly after 10:18 UTC and reached their expected background rate eight minutes later. We kept the incident open through that confirmation window to avoid declaring recovery during a temporary dip. No second spike followed."
+    },
+    {
+      "slug": "reliable-monitoring-without-alert-fatigue",
+      "title": "Reliable monitoring without alert fatigue",
+      "excerpt": "A practical framework for choosing checks, thresholds, and escalation rules that people still trust six months later.",
+      "category": "guides",
+      "author": "Alex Morgan",
+      "authorRole": "Developer experience",
+      "publishedAt": "2026-09-03T08:30:00.000Z",
+      "updatedAt": "2026-09-03T08:30:00.000Z",
+      "status": "published",
+      "featured": false,
+      "readTime": 7,
+      "accent": "emerald",
+      "seoTitle": "How to build reliable monitoring without alert fatigue",
+      "seoDescription": "Choose useful checks, thresholds, and escalation rules for a monitoring system your team can trust.",
+      "body": "Alert fatigue is rarely caused by having too much monitoring. It is caused by alerts that ask for attention without asking for a clear action. A useful alert should tell the responder what changed, how confident the system is, and what to do next.\n\n## Start with user journeys\n\nList the handful of actions that must work for customers to receive value. For most products that list is shorter than expected: sign in, load core data, create or update something, and complete payment.\n\nCreate one monitor for each journey before adding low-level infrastructure checks. Infrastructure telemetry is invaluable during diagnosis, but customer-path checks are better at deciding whether someone should be paged.\n\n## Require evidence, not perfection\n\nA single failed request is weak evidence. Networks wobble, deployments rotate instances, and dependencies briefly reset connections. Use confirmation windows and multiple regions to distinguish noise from a real incident.\n\n- Warn after two consecutive failures from one region\n- Page after confirmation from a second region\n- Escalate when the failure affects a critical user journey\n- Resolve only after a stable recovery window\n\n## Make every alert actionable\n\nInclude the failed layer, the latest response, recent deploy markers, and a link to the relevant runbook. If the responder must spend five minutes assembling basic context, the alert is incomplete.\n\nReview alert outcomes monthly. Delete rules that never led to an action, tune rules that fired too early, and turn repeated manual diagnosis into automation. The goal is not silence. The goal is high trust."
+    },
+    {
+      "slug": "august-2026-outage-report",
+      "title": "Monthly report — the 10 services with the most outages in August 2026",
+      "excerpt": "Which services attracted the most user reports last month, when incidents peaked, and where reports concentrated geographically.",
+      "category": "data",
+      "author": "Priya Shah",
+      "authorRole": "Data analysis",
+      "publishedAt": "2026-09-01T10:00:00.000Z",
+      "updatedAt": "2026-09-02T09:15:00.000Z",
+      "status": "published",
+      "featured": false,
+      "readTime": 5,
+      "accent": "blue",
+      "seoTitle": "August 2026 internet outage report",
+      "seoDescription": "The services, regions, and time periods that generated the most outage reports in August 2026.",
+      "body": "August produced fewer large multi-region incidents than July, but several short authentication and payment failures generated concentrated spikes in user reports. Our analysis covers anonymised public submissions and synthetic availability checks.\n\n## What stood out\n\nThe largest report spike belonged to a consumer messaging service, while the longest sustained incident affected a European payment provider. Login failures accounted for more reports than total service unavailability.\n\n1. Authentication remained the most common failing journey\n2. Weekday incidents peaked between 14:00 and 17:00 UTC\n3. Recovery announcements often arrived before report volume returned to normal\n4. Multi-region confirmation reduced false incident declarations\n\n## Reading the rankings\n\nA high report count does not necessarily mean a service had the most downtime. Audience size, regional concentration, and how quickly users retry all affect report volume. Rankings are best treated as a measure of visible customer impact.\n\n## Regional patterns\n\nNorth American reports were the largest absolute group. Northern Europe produced the highest number of reports per active user, driven by two regional infrastructure events late in the month.\n\nWe publish these summaries to help teams compare their own incident patterns with the wider market. The underlying aggregates exclude IP addresses, message contents, and other identifying information."
+    },
+    {
+      "slug": "why-we-picked-sqlite-for-realtime-monitoring",
+      "title": "Why we picked SQLite for a real-time monitoring dashboard",
+      "excerpt": "Postgres was more machinery than this workload needed. Here is why WAL-mode SQLite handles our write pattern and what we watch closely.",
+      "category": "engineering",
+      "author": "Jon Bell",
+      "authorRole": "Platform engineering",
+      "publishedAt": "2026-08-28T11:00:00.000Z",
+      "updatedAt": "2026-08-29T07:45:00.000Z",
+      "status": "published",
+      "featured": false,
+      "readTime": 8,
+      "accent": "slate",
+      "seoTitle": "Why status.watch uses SQLite for real-time monitoring",
+      "seoDescription": "The practical database trade-offs behind a real-time monitoring dashboard built on WAL-mode SQLite.",
+      "body": "Database choices are often discussed as if every application is destined for the same scale and topology. Our early monitoring workload had a different shape: frequent small writes, simple indexed reads, one primary process, and a strong need for operational simplicity.\n\n## The workload\n\nProbe results arrive continuously, but each record is small. Dashboard queries mostly ask for the latest result, a bounded history, or an aggregate over a known monitor. Those access patterns are friendly to a local transactional database.\n\nWAL mode lets readers continue while the writer appends results. Combined with short transactions and appropriate indexes, it gives us predictable latency without introducing a separate database service into local and self-hosted installations.\n\n## What we measure\n\n- Write transaction duration and lock wait time\n- WAL size and checkpoint duration\n- Query latency for recent probe history\n- Database size growth per monitor\n- Backup age and restore verification\n\n## The boundaries\n\nSQLite is not a universal answer. A multi-writer deployment across hosts, very high sustained ingestion, or complex analytical queries would change the decision. We keep the storage layer narrow so that moving those workloads to Postgres remains straightforward.\n\n> Choosing a simpler system is only responsible when you also define the conditions that will make you leave it.\n\nFor the current workload, the result is fewer moving parts, fast local development, and failure modes the team can reproduce. That is a valuable trade while the product and its usage patterns are still evolving."
+    },
+    {
+      "slug": "incident-updates-customers-can-use",
+      "title": "Writing incident updates your customers can actually use",
+      "excerpt": "A concise status-page playbook for communicating impact, progress, and recovery without speculation or empty reassurance.",
+      "category": "guides",
+      "author": "Maya Chen",
+      "authorRole": "Reliability research",
+      "publishedAt": "2026-08-24T09:20:00.000Z",
+      "updatedAt": "2026-08-24T09:20:00.000Z",
+      "status": "published",
+      "featured": false,
+      "readTime": 6,
+      "accent": "violet",
+      "seoTitle": "How to write useful incident status updates",
+      "seoDescription": "A practical status-page communication framework for impact, investigation, mitigation, and recovery.",
+      "body": "During an incident, customers are trying to make a decision: wait, retry, use a workaround, or contact their own users. A good update helps them make that decision without requiring inside knowledge of your systems.\n\n## Lead with impact\n\nStart with what customers may experience and which regions or features are affected. Internal component names can follow, but they should not replace the customer-facing description.\n\n## Separate facts from hypotheses\n\nIt is fine to say that the cause is still under investigation. It is less useful to publish an early theory that may be wrong. Share confirmed facts, actions already taken, and the time of the next update.\n\n- Impact: what is slow, unavailable, or unreliable\n- Scope: affected features, plans, or regions\n- Action: what responders are doing now\n- Workaround: what customers can safely do\n- Next update: a specific time, even if nothing changes\n\n## Confirm recovery\n\nDo not resolve an incident the moment a graph turns green. State that mitigation is in place, watch a meaningful recovery window, and then confirm that delayed jobs or retries have drained.\n\nThe best incident writing is calm and specific. Customers do not need certainty before you have it; they need a reliable account of what you know and when they will hear from you again."
+    },
+    {
+      "slug": "building-comments-without-third-party-widgets",
+      "title": "Shipping comments without a third-party widget",
+      "excerpt": "How we built a lightweight discussion layer on our existing event stream while keeping performance, moderation, and privacy under control.",
+      "category": "product",
+      "author": "Alex Morgan",
+      "authorRole": "Developer experience",
+      "publishedAt": "2026-08-20T13:00:00.000Z",
+      "updatedAt": "2026-08-21T08:00:00.000Z",
+      "status": "published",
+      "featured": false,
+      "readTime": 5,
+      "accent": "amber",
+      "seoTitle": "Building real-time comments without third-party widgets",
+      "seoDescription": "How status.watch built privacy-conscious real-time comments on an existing server-sent event stream.",
+      "body": "Public outage pages are most useful when people can add local context. A report count tells you that something changed; a short comment can reveal that failures are limited to a particular login method, region, or network.\n\n## Why not embed a widget\n\nThird-party discussion tools were quick to add, but they brought extra scripts, separate identity models, and moderation controls that did not match the rest of the product. The page also needed to stay fast during traffic spikes, exactly when a heavy embed is least welcome.\n\n## Reusing the event stream\n\nThe outage tracker already delivered live report totals with server-sent events. Comments could use the same connection and invalidation model, so new messages appear without a polling loop or a second real-time service.\n\n## Guardrails from day one\n\n- Rate limits apply by hashed network identifier\n- Links and repeated messages receive additional checks\n- Users can flag content without creating an account\n- Moderation actions are recorded in the activity log\n- The UI remains useful when live updates disconnect\n\nThis was deliberately a small system. The goal was not to build a social network; it was to add timely, useful context to a fast-moving incident page. Keeping that boundary clear made the product simpler to operate and easier to trust."
+    },
+    {
+      "slug": "draft-probe-regions",
+      "title": "How we choose new probe regions",
+      "excerpt": "The latency, coverage, and operational signals we use before adding another monitoring location.",
+      "category": "engineering",
+      "author": "Jon Bell",
+      "authorRole": "Platform engineering",
+      "publishedAt": "2026-09-12T09:00:00.000Z",
+      "updatedAt": "2026-09-06T16:00:00.000Z",
+      "status": "draft",
+      "featured": false,
+      "readTime": 4,
+      "accent": "emerald",
+      "seoTitle": "How status.watch chooses monitoring probe regions",
+      "seoDescription": "A look at the coverage and reliability criteria behind new status.watch monitoring regions.",
+      "body": "A new probe region should add information, not simply another dot on a map. We compare network paths, provider diversity, customer demand, and the operational cost of keeping the location trustworthy.\n\n## Coverage before count\n\nThe best next region is the one that can distinguish failures our current network cannot. That usually means a different network edge or infrastructure provider, not the closest neighbouring city.\n\nThis article is still being prepared for publication."
+    }
+  ]
+}

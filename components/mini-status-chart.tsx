@@ -128,8 +128,8 @@ export function MiniStatusChart({ companySlug, name }: MiniStatusChartProps) {
             <AreaChart data={data} margin={{ top: 5, right: 5, left: -20, bottom: 5 }}>
               <defs>
                 <linearGradient id={`gradient-${companySlug}`} x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#ef4444" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#ef4444" stopOpacity={0.05} />
+                  <stop offset="5%" stopColor="#F97316" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#F97316" stopOpacity={0.05} />
                 </linearGradient>
               </defs>
               <XAxis 
@@ -150,7 +150,7 @@ export function MiniStatusChart({ companySlug, name }: MiniStatusChartProps) {
               <Area
                 type="monotone"
                 dataKey="reports"
-                stroke="#ef4444"
+                stroke="#F97316"
                 strokeWidth={2}
                 fill={`url(#gradient-${companySlug})`}
                 dot={(props) => {
@@ -161,7 +161,7 @@ export function MiniStatusChart({ companySlug, name }: MiniStatusChartProps) {
                       cx={cx}
                       cy={cy}
                       r={4}
-                      fill="#ef4444"
+                      fill="#F97316"
                       stroke="#fff"
                       strokeWidth={2}
                     />

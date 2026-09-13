@@ -10,14 +10,19 @@ interface OutageReportingProps {
   companySlug: string
 }
 
+const BRAND_TILE =
+  "bg-[color:var(--brand-50)] text-[color:var(--brand-700)] hover:bg-[color:var(--brand-100)] ring-1 ring-[color:var(--brand-200)]"
+const NEUTRAL_TILE =
+  "bg-card text-foreground hover:bg-muted ring-1 ring-border"
+
 const issueTypes = [
-  { id: "website", label: "Website", icon: Globe, color: "bg-red-100 text-red-700 hover:bg-red-200 ring-1 ring-red-200" },
-  { id: "services", label: "Services", icon: AlertTriangle, color: "bg-red-100 text-red-700 hover:bg-red-200 ring-1 ring-red-200" },
-  { id: "api", label: "API", icon: Code, color: "bg-red-100 text-red-700 hover:bg-red-200 ring-1 ring-red-200" },
-  { id: "mobile-app", label: "Mobile App", icon: Smartphone, color: "bg-red-100 text-red-700 hover:bg-red-200 ring-1 ring-red-200" },
-  { id: "payment-system", label: "Payment System", icon: CreditCard, color: "bg-red-100 text-red-700 hover:bg-red-200 ring-1 ring-red-200" },
-  { id: "login", label: "Login", icon: LogIn, color: "bg-red-100 text-red-700 hover:bg-red-200 ring-1 ring-red-200" },
-  { id: "other", label: "Something else...", icon: MoreHorizontal, color: "bg-gray-100 text-gray-700 hover:bg-gray-200 ring-1 ring-gray-200" },
+  { id: "website", label: "Website", icon: Globe, color: BRAND_TILE },
+  { id: "services", label: "Services", icon: AlertTriangle, color: BRAND_TILE },
+  { id: "api", label: "API", icon: Code, color: BRAND_TILE },
+  { id: "mobile-app", label: "Mobile App", icon: Smartphone, color: BRAND_TILE },
+  { id: "payment-system", label: "Payment", icon: CreditCard, color: BRAND_TILE },
+  { id: "login", label: "Login", icon: LogIn, color: BRAND_TILE },
+  { id: "other", label: "Something else…", icon: MoreHorizontal, color: NEUTRAL_TILE },
 ]
 
 export function OutageReporting({ companyName, companySlug }: OutageReportingProps) {
@@ -87,11 +92,11 @@ export function OutageReporting({ companyName, companySlug }: OutageReportingPro
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <AlertTriangle className="w-5 h-5 text-orange-500" />I have a problem with {companyName}
+        <CardTitle className="flex items-center gap-2 text-lg">
+          <AlertTriangle className="w-5 h-5 text-[color:var(--brand-500)]" /> I have a problem with {companyName}
         </CardTitle>
         <p className="text-sm text-muted-foreground">
-          Select the option you are having issues with and help provide feedback to the service.
+          Select the category that best matches — your report is anonymous and helps others confirm the outage.
         </p>
       </CardHeader>
       <CardContent>
@@ -104,9 +109,9 @@ export function OutageReporting({ companyName, companySlug }: OutageReportingPro
               <Button
                 key={issue.id}
                 variant="outline"
-                        className={`min-h-16 px-3 py-3 md:px-4 md:py-4 flex flex-col items-center gap-1 md:gap-2 rounded-lg shadow-sm ${
+                        className={`min-h-16 px-3 py-3 md:px-4 md:py-4 flex flex-col items-center gap-1 md:gap-2 rounded-lg border-0 ${
                           isSubmitted
-                            ? "bg-green-100 text-green-700 hover:bg-green-200 ring-1 ring-green-200"
+                            ? "bg-green-50 text-[color:var(--status-up)] ring-1 ring-green-200"
                             : issue.color
                 } transition-colors`}
                 onClick={() => handleReport(issue.id)}
@@ -122,7 +127,7 @@ export function OutageReporting({ companyName, companySlug }: OutageReportingPro
         {submitted && (
           <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
             <p className="text-sm text-green-800">
-              Thank you for reporting this issue. Your feedback helps us track service problems.
+              Thanks — your report was recorded. It's helping others confirm the outage right now.
             </p>
           </div>
         )}

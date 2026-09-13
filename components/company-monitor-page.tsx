@@ -1,15 +1,22 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft, ExternalLink, Globe, Clock, Activity, Building, Calendar, TrendingUp } from "lucide-react"
-import { RealTimeChart } from "./real-time-chart"
+import { ArrowLeft, ExternalLink, Globe, Calendar, Building, ArrowUpRight, Rss, Mail, Twitter, Linkedin, Github, Facebook, Instagram, Youtube } from "lucide-react"
 import Link from "next/link"
+import { RealTimeChart } from "./real-time-chart"
 import { OutageReporting } from "./outage-reporting"
 import { OutageChart } from "./outage-chart"
 import { OutageHeatMap } from "./outage-heat-map"
+import { CommentsSection } from "./comments-section"
 import websitesData from "@/data/websites.json"
+
+interface WebsiteSocials {
+  twitter?: string
+  linkedin?: string
+  github?: string
+  facebook?: string
+  instagram?: string
+  youtube?: string
+}
 
 interface Website {
   id: string
@@ -17,8 +24,10 @@ interface Website {
   url: string
   category: string
   description?: string
+  about?: string
   founded?: string
   headquarters?: string
+  socials?: WebsiteSocials
 }
 
 interface CompanyMonitorPageProps {
@@ -26,289 +35,251 @@ interface CompanyMonitorPageProps {
 }
 
 export function CompanyMonitorPage({ website }: CompanyMonitorPageProps) {
-  // Get related websites from the same category
-  const relatedWebsites = websitesData.websites
+  const related = websitesData.websites
     .filter((w) => w.category === website.category && w.id !== website.id)
-    .slice(0, 4)
-
-  // Get other popular websites
-  const otherWebsites = websitesData.websites
-    .filter((w) => w.id !== website.id)
     .slice(0, 5)
 
+  const other = websitesData.websites.filter((w) => w.id !== website.id).slice(0, 5)
+
+  const hostname = website.url.replace(/^https?:\/\/(www\.)?/, "")
+  const xSearchUrl = `https://x.com/search?q=${encodeURIComponent(
+    `#${website.name.replace(/\W/g, "")}Down OR "${website.name.toLowerCase()} down"`,
+  )}&f=live`
+
   return (
-    <div className="space-y-8">
-      {/* Back Button */}
-      <div>
-        <Link href="/">
-          <Button variant="outline" size="default" className="flex items-center gap-2 hover:bg-gray-100">
-            <ArrowLeft className="w-4 h-4" />
-            Back to Dashboard
-          </Button>
+    <div className="mx-auto w-full max-w-7xl px-4 md:px-6 py-8">
+      {/* Breadcrumb */}
+      <nav className="text-xs text-muted-foreground mb-4 flex items-center gap-1.5">
+        <Link href="/" className="hover:text-foreground">Home</Link>
+        <span>/</span>
+        <Link href="/services" className="hover:text-foreground">Services</Link>
+        <span>/</span>
+        <span className="text-foreground">{website.name}</span>
+      </nav>
+
+      {/* Header */}
+      <header className="flex flex-col md:flex-row md:items-center gap-4 pb-6 border-b border-border">
+        <div className="flex items-center gap-4 flex-1 min-w-0">
+          <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-[color:var(--brand-50)] text-[color:var(--brand-700)] grid place-items-center font-bold text-lg shrink-0">
+            {website.name.slice(0, 2).toUpperCase()}
+          </div>
+          <div className="min-w-0">
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
+              Is {website.name} down?
+            </h1>
+            <p className="text-sm text-muted-foreground mt-1 truncate">
+              {website.category} · <a href={website.url} target="_blank" rel="noreferrer" className="hover:text-foreground">{hostname}</a> · Reports from real users, updated live.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <a
+            href={xSearchUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-border bg-card text-sm font-medium hover:border-[color:var(--brand-500)]"
+          >
+            See mentions on X <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
+          <Link
+            href="#report"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[color:var(--brand-500)] hover:bg-[color:var(--brand-600)] text-white text-sm font-semibold"
+          >
+            I have a problem
+          </Link>
+        </div>
+      </header>
+
+      {/* Back link */}
+      <div className="mt-6">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" /> Back to all services
         </Link>
       </div>
 
-      {/* Page Title */}
-      <div>
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">{website.name} Website Monitor</h1>
-        <p className="text-base text-muted-foreground">Real-time monitoring and user-reported incidents</p>
-      </div>
+      {/* Layout */}
+      <div className="mt-6 grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
+        {/* MAIN */}
+        <div className="min-w-0 space-y-6">
+          <RealTimeChart
+            url={website.url}
+            name={website.name}
+            serviceSlug={website.id}
+            isActive={true}
+            onToggle={() => {}}
+          />
 
-      {/* Two Column Layout */}
-      <div className="flex flex-col lg:flex-row gap-8">
-        {/* Left Column - Main Content */}
-        <div className="flex-1 min-w-0 space-y-8">
-          {/* Company Info Card with Logo and Details */}
-          <Card className="border-2">
-        <CardContent className="p-6 md:p-8">
-          <div className="flex flex-col md:flex-row gap-6 md:gap-8">
-            {/* Logo Section */}
-            <div className="flex-shrink-0">
-              <div className="flex items-center justify-center w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl shadow-lg">
-                <Globe className="w-12 h-12 md:w-16 md:h-16 text-white" />
-              </div>
-            </div>
-
-            {/* Brand Info Section */}
-            <div className="flex-1 space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-                <div className="space-y-2">
-                  <div className="flex items-center gap-3 flex-wrap">
-                    <h2 className="text-2xl md:text-3xl font-bold">{website.name}</h2>
-                    <Badge variant="secondary" className="text-sm px-3 py-1">
-                      {website.category}
-                    </Badge>
-                  </div>
-                  <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-3xl">
-                    {website.description ||
-                      `${website.name} is a popular online service providing various digital solutions and services to users worldwide.`}
-                  </p>
-                </div>
-                <Button
-                  variant="outline"
-                  size="default"
-                  onClick={() => window.open(website.url, "_blank")}
-                  className="flex items-center gap-2 whitespace-nowrap self-start"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Visit Site
-                </Button>
-              </div>
-
-              {/* Details Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4 border-t">
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100">
-                    <Globe className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">Website</p>
-                    <code className="text-sm font-medium">{website.url.replace("https://", "")}</code>
-                  </div>
-                </div>
-
-                {website.founded && (
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-green-100">
-                      <Calendar className="w-5 h-5 text-green-600" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground">Founded</p>
-                      <p className="text-sm font-medium">{website.founded}</p>
-                    </div>
-                  </div>
-                )}
-
-                {website.headquarters && (
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-100">
-                      <Building className="w-5 h-5 text-purple-600" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground">Headquarters</p>
-                      <p className="text-sm font-medium">{website.headquarters}</p>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
+          <div id="report">
+            <OutageReporting companyName={website.name} companySlug={website.id} />
           </div>
-          </CardContent>
-          </Card>
-
-          {/* Monitoring Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Monitoring Status</p>
-                <p className="text-2xl font-bold text-chart-1">Active</p>
-              </div>
-              <Activity className="w-8 h-8 text-chart-1" />
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Check Interval</p>
-                <p className="text-2xl font-bold">5s</p>
-              </div>
-              <Clock className="w-8 h-8 text-muted-foreground" />
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Category</p>
-                <p className="text-2xl font-bold">{website.category}</p>
-              </div>
-              <Globe className="w-8 h-8 text-muted-foreground" />
-            </div>
-            </CardContent>
-          </Card>
-          </div>
-
-          {/* Real-time Chart */}
-          <RealTimeChart url={website.url} name={website.name} isActive={true} onToggle={() => {}} />
-
-          {/* Outage Reporting */}
-          <OutageReporting companyName={website.name} companySlug={website.id} />
 
           <OutageChart companySlug={website.id} companyName={website.name} />
 
           <OutageHeatMap companySlug={website.id} companyName={website.name} />
+
+          <CommentsSection companySlug={website.id} companyName={website.name} />
         </div>
 
-        {/* Right Sidebar */}
-        <aside className="w-full lg:w-80 xl:w-96 flex-shrink-0 space-y-6">
-          {/* Other Related Websites/Apps */}
-          {otherWebsites.length > 0 && (
-            <Card className="shadow-sm border-2">
-              <CardHeader className="pb-4 border-b">
-                <CardTitle className="text-base font-bold">Other Related Websites/Apps</CardTitle>
-                <p className="text-xs text-muted-foreground mt-1">Popular services you might want to monitor</p>
-              </CardHeader>
-              <CardContent className="p-4 space-y-2">
-                {otherWebsites.map((site) => (
-                  <Link key={site.id} href={`/${site.id}-website-monitor`}>
-                    <div className="flex items-center justify-between p-3 rounded-lg bg-white border-2 border-gray-200 hover:border-gray-400 hover:shadow-sm transition-all cursor-pointer group">
-                      <div className="flex-1 min-w-0">
-                        <p className="font-semibold text-sm truncate group-hover:text-red-600 transition-colors">{site.name}</p>
-                        <Badge variant="secondary" className="text-xs mt-1">
-                          {site.category}
-                        </Badge>
-                      </div>
-                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-red-500 flex-shrink-0 transition-colors ml-2" />
-                    </div>
-                  </Link>
+        {/* SIDEBAR */}
+        <aside className="space-y-4">
+          <SidebarCard title="Subscribe">
+            <p className="text-xs text-muted-foreground">
+              Get notified when reports for {website.name} spike.
+            </p>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault()
+                alert("Subscribed — this is a demo endpoint.")
+              }}
+              className="mt-3 flex flex-col gap-2"
+            >
+              <input
+                type="email"
+                required
+                placeholder="you@example.com"
+                className="h-9 px-3 rounded-md border border-border bg-card text-sm outline-none focus:border-[color:var(--brand-500)] focus:ring-2 focus:ring-[color:var(--brand-100)]"
+              />
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center gap-1.5 h-9 rounded-md bg-[color:var(--brand-500)] hover:bg-[color:var(--brand-600)] text-white text-sm font-semibold"
+              >
+                <Mail className="w-3.5 h-3.5" /> Subscribe by email
+              </button>
+              <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
+                <a className="inline-flex items-center gap-1 hover:text-foreground" href="#">
+                  <Rss className="w-3 h-3" /> RSS
+                </a>
+                <a className="hover:text-foreground" href="/api-docs">Webhook</a>
+              </div>
+            </form>
+          </SidebarCard>
+
+          <SidebarCard title={`About ${website.name}`}>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              {website.about ||
+                website.description ||
+                `${website.name} is a popular online service. This page tracks user-reported outages in real time.`}
+            </p>
+            <dl className="mt-3 space-y-2 text-xs">
+              <dt className="text-muted-foreground flex items-center gap-1.5">
+                <Globe className="w-3 h-3" /> Website
+              </dt>
+              <dd>
+                <a href={website.url} target="_blank" rel="noreferrer" className="font-mono text-[color:var(--brand-700)] hover:underline break-all">
+                  {hostname}
+                </a>
+              </dd>
+              {website.founded && (
+                <>
+                  <dt className="text-muted-foreground flex items-center gap-1.5">
+                    <Calendar className="w-3 h-3" /> Founded
+                  </dt>
+                  <dd className="text-foreground">{website.founded}</dd>
+                </>
+              )}
+              {website.headquarters && (
+                <>
+                  <dt className="text-muted-foreground flex items-center gap-1.5">
+                    <Building className="w-3 h-3" /> Headquarters
+                  </dt>
+                  <dd className="text-foreground">{website.headquarters}</dd>
+                </>
+              )}
+            </dl>
+            <SocialsStrip socials={website.socials} />
+          </SidebarCard>
+
+          {related.length > 0 && (
+            <SidebarCard title={`More in ${website.category}`}>
+              <ul className="space-y-2">
+                {related.map((s) => (
+                  <li key={s.id}>
+                    <Link
+                      href={`/${s.id}-website-monitor`}
+                      className="group flex items-center gap-2 text-sm hover:text-[color:var(--brand-700)]"
+                    >
+                      <span className="w-6 h-6 rounded bg-[color:var(--brand-50)] text-[color:var(--brand-700)] text-[10px] font-bold grid place-items-center shrink-0">
+                        {s.name.slice(0, 2).toUpperCase()}
+                      </span>
+                      <span className="truncate">{s.name}</span>
+                      <ExternalLink className="w-3 h-3 ml-auto opacity-0 group-hover:opacity-100" />
+                    </Link>
+                  </li>
                 ))}
-                <div className="pt-2">
-                  <Link href="/">
-                    <Button variant="outline" className="w-full border-2 hover:bg-gray-50 font-medium" size="default">
-                      View All Services →
-                    </Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
+              </ul>
+            </SidebarCard>
           )}
 
-          {/* More in Same Category */}
-          {relatedWebsites.length > 0 && (
-            <Card className="shadow-sm border-2">
-              <CardHeader className="pb-4 border-b">
-                <CardTitle className="text-base font-bold">More in {website.category}</CardTitle>
-                <p className="text-xs text-muted-foreground mt-1">Other {website.category.toLowerCase()} services</p>
-              </CardHeader>
-              <CardContent className="p-4 space-y-2">
-                {relatedWebsites.map((site) => (
-                  <Link key={site.id} href={`/${site.id}-website-monitor`}>
-                    <div className="flex items-center justify-between p-3 rounded-lg bg-white border-2 border-gray-200 hover:border-gray-400 hover:shadow-sm transition-all cursor-pointer group">
-                      <div className="flex-1 min-w-0">
-                        <p className="font-semibold text-sm truncate group-hover:text-red-600 transition-colors">{site.name}</p>
-                        <p className="text-xs text-muted-foreground truncate mt-0.5">{site.url.replace("https://www.", "").replace("https://", "")}</p>
-                      </div>
-                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-red-500 flex-shrink-0 transition-colors ml-2" />
-                    </div>
+          <SidebarCard title="Other services">
+            <ul className="space-y-2">
+              {other.map((s) => (
+                <li key={s.id}>
+                  <Link
+                    href={`/${s.id}-website-monitor`}
+                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+                  >
+                    <span className="w-1 h-1 rounded-full bg-muted-foreground" />
+                    <span className="truncate">{s.name}</span>
                   </Link>
-                ))}
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Quick Stats Card */}
-          <Card className="shadow-sm border-2 bg-gradient-to-br from-gray-50 to-white">
-            <CardHeader className="pb-3 border-b">
-              <CardTitle className="text-base font-bold">Quick Stats</CardTitle>
-            </CardHeader>
-            <CardContent className="p-4 space-y-3">
-              <div className="flex items-center justify-between p-3 rounded-lg bg-green-50 border border-green-200">
-                <div className="flex items-center gap-2">
-                  <Activity className="w-4 h-4 text-green-600" />
-                  <span className="text-sm font-medium">Status</span>
-                </div>
-                <Badge className="bg-green-600 hover:bg-green-600">Active</Badge>
-              </div>
-              <div className="flex items-center justify-between p-3 rounded-lg bg-blue-50 border border-blue-200">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-blue-600" />
-                  <span className="text-sm font-medium">Check Interval</span>
-                </div>
-                <span className="text-sm font-bold">5s</span>
-              </div>
-              <div className="flex items-center justify-between p-3 rounded-lg bg-purple-50 border border-purple-200">
-                <div className="flex items-center gap-2">
-                  <Globe className="w-4 h-4 text-purple-600" />
-                  <span className="text-sm font-medium">Category</span>
-                </div>
-                <Badge variant="secondary">{website.category}</Badge>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Website Info Card */}
-          <Card className="shadow-sm border-2">
-            <CardHeader className="pb-3 border-b">
-              <CardTitle className="text-base font-bold">Website Information</CardTitle>
-            </CardHeader>
-            <CardContent className="p-4 space-y-3">
-              <div className="space-y-2">
-                <div className="flex items-start gap-2">
-                  <Globe className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs text-muted-foreground">URL</p>
-                    <code className="text-xs font-medium break-all">{website.url}</code>
-                  </div>
-                </div>
-                {website.founded && (
-                  <div className="flex items-start gap-2 pt-2 border-t">
-                    <Calendar className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="text-xs text-muted-foreground">Founded</p>
-                      <p className="text-sm font-medium">{website.founded}</p>
-                    </div>
-                  </div>
-                )}
-                {website.headquarters && (
-                  <div className="flex items-start gap-2 pt-2 border-t">
-                    <Building className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="text-xs text-muted-foreground">Headquarters</p>
-                      <p className="text-sm font-medium">{website.headquarters}</p>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </CardContent>
-          </Card>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/services"
+              className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-[color:var(--brand-600)] hover:text-[color:var(--brand-700)]"
+            >
+              View all services <ArrowUpRight className="w-3 h-3" />
+            </Link>
+          </SidebarCard>
         </aside>
+      </div>
+    </div>
+  )
+}
+
+function SidebarCard({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="rounded-xl border border-border bg-card p-4">
+      <h3 className="text-sm font-semibold text-foreground mb-3">{title}</h3>
+      {children}
+    </section>
+  )
+}
+
+function SocialsStrip({ socials }: { socials?: WebsiteSocials }) {
+  if (!socials) return null
+  type SocialItem = { key: keyof WebsiteSocials; href: string; Icon: typeof Twitter; label: string }
+  const items: SocialItem[] = ([
+    { key: "twitter", href: socials.twitter, Icon: Twitter, label: "Twitter/X" },
+    { key: "linkedin", href: socials.linkedin, Icon: Linkedin, label: "LinkedIn" },
+    { key: "github", href: socials.github, Icon: Github, label: "GitHub" },
+    { key: "facebook", href: socials.facebook, Icon: Facebook, label: "Facebook" },
+    { key: "instagram", href: socials.instagram, Icon: Instagram, label: "Instagram" },
+    { key: "youtube", href: socials.youtube, Icon: Youtube, label: "YouTube" },
+  ] as Array<{ key: keyof WebsiteSocials; href?: string; Icon: typeof Twitter; label: string }>)
+    .filter((i): i is SocialItem => Boolean(i.href))
+  if (items.length === 0) return null
+  return (
+    <div className="mt-4 pt-3 border-t border-border">
+      <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mb-2">
+        Socials
+      </div>
+      <div className="flex flex-wrap items-center gap-2">
+        {items.map(({ key, href, Icon, label }) => (
+          <a
+            key={key}
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            title={label}
+            className="inline-flex items-center justify-center w-7 h-7 rounded-md border border-border text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
+          >
+            <Icon className="w-3.5 h-3.5" />
+          </a>
+        ))}
       </div>
     </div>
   )

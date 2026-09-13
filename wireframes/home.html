@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Home — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-nav></div>
+
+<main>
+  <!-- Hero -->
+  <section class="hero container">
+    <h1>Is it just you, or is it down?</h1>
+    <p>Real-time outage reports from users across the world. Search any service to see live status, incidents, and community reports.</p>
+    <div class="hero-search">
+      <input placeholder="Search Google, Instagram, GitHub, Netflix…" />
+      <button class="btn btn-primary">Check status</button>
+    </div>
+    <div class="row" style="justify-content:center;gap:14px;margin-top:14px" class="tiny muted">
+      <span class="tiny muted">Popular:</span>
+      <a href="company.html" class="tiny">Instagram</a>
+      <a href="company.html" class="tiny">Twitter/X</a>
+      <a href="company.html" class="tiny">Netflix</a>
+      <a href="company.html" class="tiny">Cloudflare</a>
+    </div>
+  </section>
+
+  <!-- Trending outages -->
+  <section class="section container">
+    <div class="row">
+      <div>
+        <h2>Trending outages</h2>
+        <p class="sub">Services with the most reports in the last 24 hours.</p>
+      </div>
+      <div class="spacer"></div>
+      <span class="pill"><span class="dot-sm dot-up"></span> Live · updates every 30s</span>
+    </div>
+
+    <div class="grid grid-3">
+      <a class="card svc-card" href="company.html" style="align-items:flex-start;flex-direction:column;gap:8px">
+        <div class="row" style="width:100%">
+          <div class="svc-logo">IG</div>
+          <div class="svc-meta">
+            <div class="svc-name">Instagram</div>
+            <div class="svc-sub">Social · reports up 340%</div>
+          </div>
+          <span class="pill pill-down"><span class="dot-sm dot-down"></span> Down</span>
+        </div>
+        <div class="chart-bars" style="width:100%;height:60px">
+          <span style="height:12%"></span><span style="height:18%"></span><span style="height:22%"></span><span style="height:30%"></span><span style="height:38%"></span><span style="height:60%"></span><span style="height:75%"></span><span style="height:88%"></span><span style="height:100%" style="background:var(--down)"></span>
+        </div>
+      </a>
+
+      <a class="card svc-card" href="company.html" style="align-items:flex-start;flex-direction:column;gap:8px">
+        <div class="row" style="width:100%">
+          <div class="svc-logo">X</div>
+          <div class="svc-meta">
+            <div class="svc-name">Twitter / X</div>
+            <div class="svc-sub">Social · reports up 120%</div>
+          </div>
+          <span class="pill pill-degraded"><span class="dot-sm dot-degraded"></span> Degraded</span>
+        </div>
+        <div class="chart-bars" style="width:100%;height:60px">
+          <span style="height:22%"></span><span style="height:24%"></span><span style="height:26%"></span><span style="height:30%"></span><span style="height:35%"></span><span style="height:42%"></span><span style="height:55%"></span><span style="height:60%"></span><span style="height:70%"></span>
+        </div>
+      </a>
+
+      <a class="card svc-card" href="company.html" style="align-items:flex-start;flex-direction:column;gap:8px">
+        <div class="row" style="width:100%">
+          <div class="svc-logo">NF</div>
+          <div class="svc-meta">
+            <div class="svc-name">Netflix</div>
+            <div class="svc-sub">Streaming · reports up 40%</div>
+          </div>
+          <span class="pill pill-up"><span class="dot-sm dot-up"></span> Normal</span>
+        </div>
+        <div class="chart-bars" style="width:100%;height:60px">
+          <span style="height:22%"></span><span style="height:20%"></span><span style="height:24%"></span><span style="height:26%"></span><span style="height:22%"></span><span style="height:28%"></span><span style="height:32%"></span><span style="height:30%"></span><span style="height:28%"></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Services directory -->
+  <section class="section container">
+    <div class="row">
+      <div>
+        <h2>All monitored services</h2>
+        <p class="sub">8 services · <a href="services.html">See full directory →</a></p>
+      </div>
+      <div class="spacer"></div>
+      <input class="btn" style="min-width:220px" placeholder="Filter services…" />
+    </div>
+
+    <div class="grid grid-4">
+      <a class="svc-card" href="company.html">
+        <div class="svc-logo">G</div>
+        <div class="svc-meta"><div class="svc-name">Google</div><div class="svc-sub">Search · 220 reports today</div></div>
+        <span class="dot-sm dot-up"></span>
+      </a>
+      <a class="svc-card" href="company.html">
+        <div class="svc-logo">FB</div>
+        <div class="svc-meta"><div class="svc-name">Facebook</div><div class="svc-sub">Social · 180 reports</div></div>
+        <span class="dot-sm dot-up"></span>
+      </a>
+      <a class="svc-card" href="company.html">
+        <div class="svc-logo">IG</div>
+        <div class="svc-meta"><div class="svc-name">Instagram</div><div class="svc-sub">Social · 4,320 reports</div></div>
+        <span class="dot-sm dot-down"></span>
+      </a>
+      <a class="svc-card" href="company.html">
+        <div class="svc-logo">X</div>
+        <div class="svc-meta"><div class="svc-name">Twitter / X</div><div class="svc-sub">Social · 1,120 reports</div></div>
+        <span class="dot-sm dot-degraded"></span>
+      </a>
+      <a class="svc-card" href="company.html">
+        <div class="svc-logo">GH</div>
+        <div class="svc-meta"><div class="svc-name">GitHub</div><div class="svc-sub">Developer · 60 reports</div></div>
+        <span class="dot-sm dot-up"></span>
+      </a>
+      <a class="svc-card" href="company.html">
+        <div class="svc-logo">SO</div>
+        <div class="svc-meta"><div class="svc-name">Stack Overflow</div><div class="svc-sub">Developer · 22 reports</div></div>
+        <span class="dot-sm dot-up"></span>
+      </a>
+      <a class="svc-card" href="company.html">
+        <div class="svc-logo">YT</div>
+        <div class="svc-meta"><div class="svc-name">YouTube</div><div class="svc-sub">Streaming · 145 reports</div></div>
+        <span class="dot-sm dot-up"></span>
+      </a>
+      <a class="svc-card" href="company.html">
+        <div class="svc-logo">NF</div>
+        <div class="svc-meta"><div class="svc-name">Netflix</div><div class="svc-sub">Streaming · 88 reports</div></div>
+        <span class="dot-sm dot-up"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Value props / product info -->
+  <section class="section container">
+    <h2>What we do</h2>
+    <p class="sub">Three ways status.watch helps you.</p>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="pill pill-up" style="margin-bottom:8px">01 · Detect</div>
+        <h3 style="margin:0 0 6px;font-size:16px">Crowd-sourced outage detection</h3>
+        <p class="small muted" style="margin:0">Reports from real users are aggregated in real time and geo-located to spot spikes before the vendor confirms.</p>
+      </div>
+      <div class="card">
+        <div class="pill pill-degraded" style="margin-bottom:8px">02 · Visualize</div>
+        <h3 style="margin:0 0 6px;font-size:16px">Heatmap & trend charts</h3>
+        <p class="small muted" style="margin:0">Every incident gets a live heatmap, 24-hour report volume chart, and per-issue breakdown.</p>
+      </div>
+      <div class="card">
+        <div class="pill pill-down" style="margin-bottom:8px">03 · Notify</div>
+        <h3 style="margin:0 0 6px;font-size:16px">Subscribe & get alerted</h3>
+        <p class="small muted" style="margin:0">Email, RSS, or webhook alerts the moment your services show elevated reports.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Report CTA -->
+  <section class="section container">
+    <div class="card" style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+      <div style="flex:1;min-width:240px">
+        <h2 style="margin:0 0 4px">Is something down for you?</h2>
+        <p class="muted" style="margin:0">Report it in one click and help others confirm the outage.</p>
+      </div>
+      <a class="btn btn-primary" href="company.html">Report an outage</a>
+    </div>
+  </section>
+</main>
+
+<div data-footer></div>
+<script src="partials.js"></script>
+</body>
+</html>

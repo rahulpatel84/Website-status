@@ -1,0 +1,29 @@
+# Fly.io app config for the status.watch worker.
+#
+# Deploy from repo root:
+#   fly launch --no-deploy --copy-config --dockerfile worker/Dockerfile --name status-watch-worker
+#   fly secrets set APP_URL=https://<your-vercel-domain> CRON_SECRET=<same-as-vercel>
+#   fly deploy --dockerfile worker/Dockerfile
+
+app = "status-watch-worker"
+primary_region = "iad"   # pick a region close to your Vercel deployment
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080"
+  PROBE_INTERVAL_SECONDS = "30"
+  PUBLIC_SERVICE_INTERVAL_SECONDS = "30"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false     # keep it running — this is a ticker
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"

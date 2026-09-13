@@ -1,8 +1,13 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { insertOutageReport } from "@/lib/database"
 import { outageEvents } from "@/lib/events"
+import { ipHash } from "@/lib/ip-hash"
+import { logger, createRequestId } from "@/lib/logger"
+import { recordActivity } from "@/lib/activity-log"
+import { logEvent } from "@/lib/logs"
 
 export async function POST(request: NextRequest) {
+  const requestId = createRequestId()
   try {
     const body = await request.json()
     const { companySlug, issueType, clientTimestamp, clientIP } = body
@@ -145,6 +150,35 @@ export async function POST(request: NextRequest) {
     console.log(`✅ DATABASE INSERT RESULT:`, result)
     console.log(`Report ID: ${result.lastInsertRowid}`)
 
+    // Instrumentation only — after the insert succeeded. The raw IP is never
+    // logged; only its salted hash.
+    const reporterIpHash = ipHash(userIP)
+    logger.info("outage reported", {
+      requestId,
+      companySlug,
+      issueType,
+      reportId: result.lastInsertRowid,
+    })
+    recordActivity({
+      actorType: "anonymous",
+      level: "info",
+      event: "outage.reported",
+      category: "api",
+      targetType: "company",
+      targetId: String(companySlug),
+      message: `Outage reported for ${companySlug} (${issueType})`,
+      metadata: {
+        company_slug: companySlug,
+        issue_type: issueType,
+        city: locationData.city,
+        state: locationData.state,
+        country: locationData.country,
+        report_id: String(result.lastInsertRowid),
+      },
+      requestId,
+      ipHash: reporterIpHash,
+    })
+
     // Emit SSE event for realtime updates
     outageEvents.emit("outage-reported", {
       companySlug,
@@ -157,6 +191,24 @@ export async function POST(request: NextRequest) {
       created_at: new Date().toISOString(),
     })
 
+    // Raw IP is never logged — only the salted hash from lib/ip-hash.
+    logEvent({
+      level: "info",
+      source: "public",
+      event: "public.outage_reported",
+      message: `Outage reported for ${companySlug} (${issueType}) from ${locationPretty}`,
+      targetType: "outage_report",
+      targetId: String(result.lastInsertRowid),
+      ipHash: ipHash(userIP),
+      metadata: {
+        companySlug,
+        issueType,
+        city: locationData.city,
+        state: locationData.state,
+        country: locationData.country,
+      },
+    })
+
     return NextResponse.json({
       success: true,
       reportId: result.lastInsertRowid,
@@ -166,6 +218,10 @@ export async function POST(request: NextRequest) {
       ip: userIP,
     })
   } catch (error) {
+    logger.error("outage report failed", {
+      requestId,
+      error: error instanceof Error ? error.message : "unknown error",
+    })
     console.error("Error reporting outage:", error)
     return NextResponse.json({ error: "Failed to report outage" }, { status: 500 })
   }

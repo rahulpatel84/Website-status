@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Monitor anything — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-nav></div>
+
+<main>
+  <section class="hero container">
+    <span class="pill" style="margin-bottom:14px"><span class="dot-sm dot-up"></span> Free tier · No credit card</span>
+    <h1>Monitor <span style="color:var(--accent)">anything</span> — websites, forms, APIs, cron jobs.</h1>
+    <p>The uptime platform your team actually enjoys. Sub-30-second checks, form-load probes, cron heartbeats, an install-in-your-project SDK, and per-service status pages you can put your own logo on.</p>
+    <div class="row" style="justify-content:center;gap:10px">
+      <a class="btn btn-accent" href="auth.html">Start free →</a>
+      <a class="btn" href="#tour">Watch 60-second tour</a>
+    </div>
+    <div class="tiny muted" style="margin-top:14px">10 monitors, email + Telegram alerts, 1 custom status page — free forever.</div>
+  </section>
+
+  <section class="section container" id="tour">
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="pill pill-up" style="margin-bottom:8px">Uptime</div>
+        <h3 style="margin:0 0 4px;font-size:17px">HTTP, keyword, form &amp; port checks</h3>
+        <p class="small muted" style="margin:0">Watch any URL, verify a keyword renders, submit a form and expect a 200, or ping a TCP port. Every 30 seconds, from 5 regions.</p>
+      </div>
+      <div class="card">
+        <div class="pill pill-degraded" style="margin-bottom:8px">Heartbeats</div>
+        <h3 style="margin:0 0 4px;font-size:17px">Dead-man's switch for cron jobs</h3>
+        <p class="small muted" style="margin:0">Get a URL like <code class="mono tiny">/hb/&lt;token&gt;</code>. Hit it at the end of your cron, backup script, or worker. If it goes silent, we alert.</p>
+      </div>
+      <div class="card">
+        <div class="pill" style="margin-bottom:8px;color:var(--accent-700);border-color:var(--accent-100)">SDK</div>
+        <h3 style="margin:0 0 4px;font-size:17px">Install-in-project agent</h3>
+        <p class="small muted" style="margin:0">One-line <code class="mono tiny">npm i @statuswatch/agent</code>. Auto-diagnoses which layer failed: DNS, TLS, DB, upstream API, or your code.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="row">
+      <div>
+        <h2>What you can monitor</h2>
+        <p class="sub">Every kind of "is it working?" question.</p>
+      </div>
+    </div>
+    <div class="grid grid-4">
+      <div class="card"><div style="font-size:22px">🌐</div><div style="font-weight:600;margin-top:8px">Website / URL</div><div class="tiny muted">HTTP 2xx expected</div></div>
+      <div class="card"><div style="font-size:22px">📄</div><div style="font-weight:600;margin-top:8px">Form loads</div><div class="tiny muted">Selector must render</div></div>
+      <div class="card"><div style="font-size:22px">🔑</div><div style="font-weight:600;margin-top:8px">Keyword present</div><div class="tiny muted">Word must appear</div></div>
+      <div class="card"><div style="font-size:22px">🔌</div><div style="font-weight:600;margin-top:8px">API endpoint</div><div class="tiny muted">JSON schema check</div></div>
+      <div class="card"><div style="font-size:22px">🧪</div><div style="font-weight:600;margin-top:8px">SSL cert</div><div class="tiny muted">Days-until-expiry</div></div>
+      <div class="card"><div style="font-size:22px">🔠</div><div style="font-weight:600;margin-top:8px">Domain / DNS</div><div class="tiny muted">Expiry + record drift</div></div>
+      <div class="card"><div style="font-size:22px">🛰️</div><div style="font-weight:600;margin-top:8px">TCP port</div><div class="tiny muted">DB, SSH, custom</div></div>
+      <div class="card"><div style="font-size:22px">💓</div><div style="font-weight:600;margin-top:8px">Cron heartbeat</div><div class="tiny muted">Dead-man's switch</div></div>
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="row">
+      <div>
+        <h2>Alerts where you already are</h2>
+        <p class="sub">Route incidents to the channel that gets acted on.</p>
+      </div>
+    </div>
+    <div class="grid grid-4">
+      <div class="card"><div style="font-weight:600">Email</div><div class="tiny muted" style="margin-top:4px">Resend-powered, deliverable</div></div>
+      <div class="card"><div style="font-weight:600">Telegram</div><div class="tiny muted" style="margin-top:4px">Personal + group chats</div></div>
+      <div class="card"><div style="font-weight:600">Slack</div><div class="tiny muted" style="margin-top:4px">Per-channel routing</div></div>
+      <div class="card"><div style="font-weight:600">Webhooks</div><div class="tiny muted" style="margin-top:4px">Signed, with retry</div></div>
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="card" style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;background:var(--accent-50);border-color:var(--accent-100)">
+      <div style="flex:1;min-width:240px">
+        <h2 style="margin:0 0 4px">Free while you're small.</h2>
+        <p class="muted" style="margin:0">10 monitors, 1 status page, unlimited alerts. Upgrade only when you outgrow us.</p>
+      </div>
+      <a class="btn btn-accent" href="auth.html">Get started</a>
+      <a class="btn" href="pricing.html">See pricing</a>
+    </div>
+  </section>
+</main>
+
+<div data-footer></div>
+<script src="partials.js"></script>
+</body>
+</html>

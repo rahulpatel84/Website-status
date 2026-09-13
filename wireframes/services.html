@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>All services — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-nav></div>
+
+<main class="container">
+  <section class="section">
+    <h1 style="font-size:32px;margin:0 0 4px;letter-spacing:-.02em">All monitored services</h1>
+    <p class="sub">Search or filter to see live status for any service we monitor.</p>
+
+    <div class="row" style="margin-bottom:20px">
+      <input class="btn" style="flex:1" placeholder="Search services…" />
+      <select class="btn"><option>All categories</option><option>Social</option><option>Streaming</option><option>Developer</option><option>Search</option></select>
+      <select class="btn"><option>All statuses</option><option>Down</option><option>Degraded</option><option>Normal</option></select>
+      <select class="btn"><option>Sort: A → Z</option><option>Most reports</option><option>Recently down</option></select>
+    </div>
+
+    <div class="grid grid-2">
+      <a class="svc-card" href="company.html"><div class="svc-logo">FB</div><div class="svc-meta"><div class="svc-name">Facebook</div><div class="svc-sub">Social · facebook.com</div></div><span class="pill pill-up"><span class="dot-sm dot-up"></span> Normal</span></a>
+      <a class="svc-card" href="company.html"><div class="svc-logo">GH</div><div class="svc-meta"><div class="svc-name">GitHub</div><div class="svc-sub">Developer · github.com</div></div><span class="pill pill-up"><span class="dot-sm dot-up"></span> Normal</span></a>
+      <a class="svc-card" href="company.html"><div class="svc-logo">G</div><div class="svc-meta"><div class="svc-name">Google</div><div class="svc-sub">Search · google.com</div></div><span class="pill pill-up"><span class="dot-sm dot-up"></span> Normal</span></a>
+      <a class="svc-card" href="company.html"><div class="svc-logo">IG</div><div class="svc-meta"><div class="svc-name">Instagram</div><div class="svc-sub">Social · instagram.com</div></div><span class="pill pill-down"><span class="dot-sm dot-down"></span> Down</span></a>
+      <a class="svc-card" href="company.html"><div class="svc-logo">NF</div><div class="svc-meta"><div class="svc-name">Netflix</div><div class="svc-sub">Streaming · netflix.com</div></div><span class="pill pill-up"><span class="dot-sm dot-up"></span> Normal</span></a>
+      <a class="svc-card" href="company.html"><div class="svc-logo">SO</div><div class="svc-meta"><div class="svc-name">Stack Overflow</div><div class="svc-sub">Developer · stackoverflow.com</div></div><span class="pill pill-up"><span class="dot-sm dot-up"></span> Normal</span></a>
+      <a class="svc-card" href="company.html"><div class="svc-logo">X</div><div class="svc-meta"><div class="svc-name">Twitter / X</div><div class="svc-sub">Social · x.com</div></div><span class="pill pill-degraded"><span class="dot-sm dot-degraded"></span> Degraded</span></a>
+      <a class="svc-card" href="company.html"><div class="svc-logo">YT</div><div class="svc-meta"><div class="svc-name">YouTube</div><div class="svc-sub">Streaming · youtube.com</div></div><span class="pill pill-up"><span class="dot-sm dot-up"></span> Normal</span></a>
+    </div>
+
+    <div class="card" style="margin-top:32px">
+      <div class="row">
+        <div>
+          <h3 style="margin:0 0 4px;font-size:16px">Don't see a service you care about?</h3>
+          <p class="small muted" style="margin:0">Request a new service to monitor — we'll add popular ones within a week.</p>
+        </div>
+        <div class="spacer"></div>
+        <a href="contact.html" class="btn btn-primary">Request a service</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div data-footer></div>
+<script src="partials.js"></script>
+</body>
+</html>

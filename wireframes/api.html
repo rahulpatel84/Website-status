@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Public API — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-nav></div>
+
+<main class="container">
+  <section class="section" style="max-width:900px;margin:0 auto">
+    <h1 style="font-size:36px;margin:0 0 12px;letter-spacing:-.02em">Public API</h1>
+    <p class="muted" style="font-size:17px;margin:0 0 24px">Free, no key required for read endpoints. JSON everywhere. CORS-enabled.</p>
+
+    <div class="card">
+      <div class="row">
+        <span class="mono small">Base URL</span>
+        <div class="spacer"></div>
+        <span class="mono small">https://status.watch/api</span>
+      </div>
+    </div>
+
+    <div class="section" style="padding:24px 0 0">
+      <h2 style="font-size:20px;margin:0 0 4px">Endpoints</h2>
+      <p class="sub">Existing routes from the app, documented for public use.</p>
+
+      <div class="stack">
+        <div class="card">
+          <div class="row"><span class="pill" style="color:var(--up);border-color:color-mix(in oklab,var(--up) 30%,var(--border))">GET</span><span class="mono small">/api/check-status?url=</span></div>
+          <p class="small muted" style="margin:8px 0 0">Live HTTP HEAD check against a URL. 10s timeout. Returns <code class="mono">{ up, statusCode, responseTimeMs }</code>.</p>
+        </div>
+        <div class="card">
+          <div class="row"><span class="pill" style="color:var(--up);border-color:color-mix(in oklab,var(--up) 30%,var(--border))">GET</span><span class="mono small">/api/outage-stats?company=&hours=24</span></div>
+          <p class="small muted" style="margin:8px 0 0">Hourly aggregated report counts by issue type for the given service.</p>
+        </div>
+        <div class="card">
+          <div class="row"><span class="pill" style="color:var(--up);border-color:color-mix(in oklab,var(--up) 30%,var(--border))">GET</span><span class="mono small">/api/outage-locations?company=&hours=6</span></div>
+          <p class="small muted" style="margin:8px 0 0">Geo-tagged reports for the heatmap. Returns lat/lng + city.</p>
+        </div>
+        <div class="card">
+          <div class="row"><span class="pill" style="color:var(--up);border-color:color-mix(in oklab,var(--up) 30%,var(--border))">GET</span><span class="mono small">/api/outage-city-reports?company=&city=</span></div>
+          <p class="small muted" style="margin:8px 0 0">City-level breakdown of reports with issue-type tags.</p>
+        </div>
+        <div class="card">
+          <div class="row"><span class="pill" style="color:var(--degraded);border-color:color-mix(in oklab,var(--degraded) 30%,var(--border))">POST</span><span class="mono small">/api/report-outage</span></div>
+          <p class="small muted" style="margin:8px 0 0">Submit an outage report. Rate limited to 3/min per hashed IP. Body: <code class="mono">{ company_slug, issue_type }</code>.</p>
+        </div>
+        <div class="card">
+          <div class="row"><span class="pill" style="color:var(--accent);border-color:color-mix(in oklab,var(--accent) 30%,var(--border))">SSE</span><span class="mono small">/api/events?company=</span></div>
+          <p class="small muted" style="margin:8px 0 0">Server-sent events stream. Emits <code class="mono">report.new</code>, <code class="mono">comment.new</code>, <code class="mono">status.changed</code>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 style="font-size:20px;margin:0 0 4px">Example</h2>
+      <div class="card mono small" style="background:var(--bg);white-space:pre-wrap">
+curl -s https://status.watch/api/outage-stats?company=instagram&hours=24
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 style="font-size:20px;margin:0 0 4px">Rate limits & terms</h2>
+      <ul class="muted small" style="padding-left:20px">
+        <li>60 requests/min per IP for read endpoints.</li>
+        <li>3 POSTs/min per hashed IP for reporting.</li>
+        <li>Attribution appreciated but not required. Please don't scrape aggressively.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<div data-footer></div>
+<script src="partials.js"></script>
+</body>
+</html>

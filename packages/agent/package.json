@@ -1,0 +1,30 @@
+{
+  "name": "@statuswatch/agent",
+  "version": "0.1.0",
+  "description": "Uptime + diagnostic-waterfall agent for status.watch — install once, know exactly which layer failed.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "uptime",
+    "monitoring",
+    "observability",
+    "healthcheck",
+    "heartbeat",
+    "statuswatch"
+  ],
+  "author": "status.watch",
+  "license": "MIT",
+  "repository": "https://github.com/statuswatch/agent",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0"
+  }
+}

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Pricing — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-nav></div>
+
+<main class="container">
+  <section class="hero" style="padding:56px 0 20px">
+    <h1 style="font-size:36px">Simple, honest pricing</h1>
+    <p>Free while you're small. One team plan when you grow. No per-seat surprises.</p>
+  </section>
+
+  <section class="section">
+    <div class="grid grid-3">
+      <div class="tier-card">
+        <div class="pill" style="align-self:flex-start">Hobby</div>
+        <div class="tier-price"><span class="n">$0</span><span class="u">/ month</span></div>
+        <p class="small muted" style="margin:0">For solo projects and side hustles.</p>
+        <ul class="tier-feat">
+          <li>10 monitors, 60-second checks</li>
+          <li>Email + Telegram alerts</li>
+          <li>1 public status page</li>
+          <li>7-day incident history</li>
+          <li>Community support</li>
+        </ul>
+        <a href="auth.html" class="btn">Start free</a>
+      </div>
+
+      <div class="tier-card pop">
+        <div class="pill" style="align-self:flex-start;color:var(--accent-700);border-color:var(--accent-100)">Pro · popular</div>
+        <div class="tier-price"><span class="n">$19</span><span class="u">/ month</span></div>
+        <p class="small muted" style="margin:0">For serious builders and small teams.</p>
+        <ul class="tier-feat">
+          <li>100 monitors, 30-second checks</li>
+          <li>Email · Telegram · Slack · webhooks</li>
+          <li>3 custom-branded status pages</li>
+          <li>SDK access — <code class="mono tiny">@statuswatch/agent</code></li>
+          <li>90-day incident history</li>
+          <li>Priority email support</li>
+        </ul>
+        <a href="auth.html" class="btn btn-accent">Start 14-day trial</a>
+      </div>
+
+      <div class="tier-card">
+        <div class="pill" style="align-self:flex-start">Team</div>
+        <div class="tier-price"><span class="n">$79</span><span class="u">/ month</span></div>
+        <p class="small muted" style="margin:0">For teams shipping to production.</p>
+        <ul class="tier-feat">
+          <li>500 monitors, 15-second checks</li>
+          <li>All Pro features</li>
+          <li>10 status pages with custom domain</li>
+          <li>SSO (Google Workspace, SAML)</li>
+          <li>Audit log &amp; per-user roles</li>
+          <li>SLA &amp; Slack Connect support</li>
+        </ul>
+        <a href="contact.html" class="btn">Talk to us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card">
+      <div class="row">
+        <div>
+          <h3 style="margin:0;font-size:16px">Not sure yet?</h3>
+          <p class="small muted" style="margin:4px 0 0">The Hobby plan is free forever. You can upgrade whenever you're ready.</p>
+        </div>
+        <div class="spacer"></div>
+        <a class="btn btn-accent" href="auth.html">Start free</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 style="margin:0 0 6px">FAQ</h2>
+    <p class="sub">The most common pricing questions.</p>
+    <div class="grid grid-2">
+      <details class="card"><summary style="font-weight:600;cursor:pointer">Do you charge per team member?</summary><p class="muted small" style="margin:10px 0 0">No. All plans include unlimited teammates.</p></details>
+      <details class="card"><summary style="font-weight:600;cursor:pointer">Can I switch or cancel any time?</summary><p class="muted small" style="margin:10px 0 0">Yes, monthly with no penalty.</p></details>
+      <details class="card"><summary style="font-weight:600;cursor:pointer">What counts as a "monitor"?</summary><p class="muted small" style="margin:10px 0 0">Each URL, endpoint, form check, or cron heartbeat = 1 monitor.</p></details>
+      <details class="card"><summary style="font-weight:600;cursor:pointer">Do you offer annual discounts?</summary><p class="muted small" style="margin:10px 0 0">Yes — 2 months free when billed annually.</p></details>
+    </div>
+  </section>
+</main>
+
+<div data-footer></div>
+<script src="partials.js"></script>
+</body>
+</html>

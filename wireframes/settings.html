@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Settings — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-app-top></div>
+<div class="app-shell">
+  <aside data-app-sidebar data-active="settings"></aside>
+
+  <main class="app-main">
+    <div class="page-head">
+      <div>
+        <h1>Settings</h1>
+        <p class="tiny muted" style="margin:2px 0 0">Profile, workspace, API keys, and billing.</p>
+      </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns:220px 1fr;gap:24px">
+      <aside>
+        <div class="stack" style="gap:4px">
+          <a class="side-link active" href="#profile">Profile</a>
+          <a class="side-link" href="#workspace">Workspace</a>
+          <a class="side-link" href="#members">Members &amp; roles</a>
+          <a class="side-link" href="#api">API keys</a>
+          <a class="side-link" href="#billing">Billing</a>
+          <a class="side-link" href="#danger" style="color:var(--down)">Danger zone</a>
+        </div>
+      </aside>
+
+      <div class="stack">
+        <section class="card" id="profile">
+          <h3 style="margin:0 0 12px;font-size:16px">Profile</h3>
+          <div class="grid grid-2">
+            <div><label class="tiny muted">Name</label><input class="btn" style="width:100%" value="Rahul Patel" /></div>
+            <div><label class="tiny muted">Email</label><input class="btn" style="width:100%" value="rahulpatel.e29@gmail.com" /></div>
+            <div><label class="tiny muted">Time zone</label><select class="btn" style="width:100%"><option>Europe/Rome</option><option>Europe/London</option><option>America/New_York</option></select></div>
+            <div><label class="tiny muted">Language</label><select class="btn" style="width:100%"><option>English</option><option>Italiano</option></select></div>
+          </div>
+          <div class="row" style="justify-content:flex-end;margin-top:12px"><button class="btn btn-accent">Save profile</button></div>
+        </section>
+
+        <section class="card" id="workspace">
+          <h3 style="margin:0 0 12px;font-size:16px">Workspace</h3>
+          <div class="grid grid-2">
+            <div><label class="tiny muted">Workspace name</label><input class="btn" style="width:100%" value="Rahul's projects" /></div>
+            <div><label class="tiny muted">Slug</label><input class="btn" style="width:100%" value="rahul-projects" /></div>
+          </div>
+        </section>
+
+        <section class="card" id="members">
+          <h3 style="margin:0 0 12px;font-size:16px">Members &amp; roles</h3>
+          <table style="width:100%;border-collapse:collapse;font-size:14px">
+            <thead style="text-align:left;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">
+              <tr><th style="padding:8px 0">User</th><th>Role</th><th>Last active</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr style="border-top:1px solid var(--border)"><td style="padding:10px 0"><b>Rahul Patel</b><br><span class="tiny muted">rahulpatel.e29@gmail.com</span></td><td><span class="pill" style="color:var(--accent-700);border-color:var(--accent-100)">Owner</span></td><td class="tiny muted">Now</td><td></td></tr>
+              <tr style="border-top:1px solid var(--border)"><td style="padding:10px 0"><b>Jane Doe</b><br><span class="tiny muted">jane@acme.io</span></td><td><select class="btn"><option>Admin</option><option>Member</option><option>Viewer</option></select></td><td class="tiny muted">2h ago</td><td><button class="btn btn-ghost tiny">Remove</button></td></tr>
+            </tbody>
+          </table>
+          <div class="row" style="margin-top:12px"><input class="btn" style="flex:1" placeholder="Invite by email…" /><select class="btn"><option>Member</option><option>Admin</option><option>Viewer</option></select><button class="btn btn-accent">Send invite</button></div>
+        </section>
+
+        <section class="card" id="api">
+          <h3 style="margin:0 0 12px;font-size:16px">API keys</h3>
+          <p class="small muted" style="margin:0 0 12px">Use these to authenticate SDK/agent installs and REST calls. Scoped per project.</p>
+          <div class="stack" style="gap:8px">
+            <div class="row" style="padding:10px;border:1px solid var(--border);border-radius:8px">
+              <div><div style="font-weight:600;font-size:14px">acme-prod</div><div class="tiny muted mono">sw_prj_9e3f4a8b6cd21••••</div></div>
+              <div class="spacer"></div>
+              <span class="tiny muted">Last used 3s ago</span>
+              <button class="btn">Copy</button>
+              <button class="btn btn-danger">Rotate</button>
+            </div>
+            <div class="row" style="padding:10px;border:1px solid var(--border);border-radius:8px">
+              <div><div style="font-weight:600;font-size:14px">acme-staging</div><div class="tiny muted mono">sw_prj_1a2b3c4d5e6f••••</div></div>
+              <div class="spacer"></div>
+              <span class="tiny muted">Never used</span>
+              <button class="btn">Copy</button>
+              <button class="btn btn-danger">Rotate</button>
+            </div>
+          </div>
+          <button class="btn btn-accent" style="margin-top:12px">+ New API key</button>
+        </section>
+
+        <section class="card" id="billing">
+          <h3 style="margin:0 0 12px;font-size:16px">Billing</h3>
+          <div class="row">
+            <div>
+              <span class="pill" style="color:var(--accent-700);border-color:var(--accent-100)">Free plan</span>
+              <div style="margin-top:6px">3 of 5 monitors used · 60s min interval · Email + Telegram</div>
+            </div>
+            <div class="spacer"></div>
+            <a href="pricing.html" class="btn btn-accent">Upgrade to Pro</a>
+          </div>
+          <hr style="border:0;border-top:1px solid var(--border);margin:16px 0" />
+          <div class="tiny muted">Payment method: <b>none</b> · Next invoice: <b>—</b></div>
+        </section>
+
+        <section class="card" id="danger" style="border-color:color-mix(in oklab,var(--down) 40%,var(--border))">
+          <h3 style="margin:0 0 12px;font-size:16px;color:var(--down)">Danger zone</h3>
+          <div class="row"><div><b>Delete workspace</b><div class="tiny muted">Permanently remove all monitors, incidents, and status pages.</div></div><div class="spacer"></div><button class="btn btn-danger">Delete workspace</button></div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="app-partials.js"></script>
+</body>
+</html>
