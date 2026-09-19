@@ -4,73 +4,1652 @@
       "id": "google",
       "name": "Google",
       "url": "https://www.google.com",
-      "category": "Search Engine",
-      "description": "Google is the world's leading search engine and technology company, providing search, advertising, cloud computing, and various online services to billions of users worldwide.",
+      "category": "Search",
+      "description": "The world's most-used web search engine and gateway to Google's suite of online services.",
+      "about": "Google is the dominant global web search engine, handling the vast majority of internet queries and serving billions of users daily. Beyond search, Google.com is the entry point to services including Gmail, Maps, News, Images, and Google Workspace.\n\nFounded in 1998 by Larry Page and Sergey Brin at Stanford University, Google is now a subsidiary of Alphabet Inc. and one of the largest technology companies in the world.",
       "founded": "1998",
-      "headquarters": "Mountain View, California"
+      "headquarters": "Mountain View, California",
+      "socials": {
+        "twitter": "https://twitter.com/google",
+        "linkedin": "https://www.linkedin.com/company/google",
+        "github": "https://github.com/google",
+        "facebook": "https://www.facebook.com/Google",
+        "instagram": "https://www.instagram.com/google",
+        "youtube": "https://www.youtube.com/google"
+      }
+    },
+    {
+      "id": "bing",
+      "name": "Bing",
+      "url": "https://www.bing.com",
+      "category": "Search",
+      "description": "Microsoft's web search engine, integrated with Copilot AI answers and image search.",
+      "about": "Bing is a web search engine owned and operated by Microsoft. It powers search results across Microsoft products including Windows, Edge, and the Copilot assistant, and also provides APIs used by many third-party services.\n\nLaunched in 2009 as the successor to Live Search, Bing has grown into one of the largest general-purpose search engines globally and a key channel for Microsoft's AI-first search strategy.",
+      "founded": "2009",
+      "headquarters": "Redmond, Washington",
+      "socials": {
+        "twitter": "https://twitter.com/bing",
+        "facebook": "https://www.facebook.com/Bing",
+        "instagram": "https://www.instagram.com/bing",
+        "youtube": "https://www.youtube.com/bing"
+      }
+    },
+    {
+      "id": "duckduckgo",
+      "name": "DuckDuckGo",
+      "url": "https://duckduckgo.com",
+      "category": "Search",
+      "description": "Privacy-focused search engine that does not track users or personalize search results.",
+      "about": "DuckDuckGo is an internet search engine that emphasizes protecting searcher privacy by not profiling users and by showing all users the same search results for a given query. It also offers a browser and tracker-blocking extensions.\n\nFounded in 2008 by Gabriel Weinberg, DuckDuckGo has grown into one of the most popular privacy-oriented alternatives to Google Search.",
+      "founded": "2008",
+      "headquarters": "Paoli, Pennsylvania",
+      "socials": {
+        "twitter": "https://twitter.com/duckduckgo",
+        "linkedin": "https://www.linkedin.com/company/duckduckgo",
+        "github": "https://github.com/duckduckgo",
+        "instagram": "https://www.instagram.com/duckduckgo"
+      }
     },
     {
       "id": "facebook",
       "name": "Facebook",
       "url": "https://www.facebook.com",
-      "category": "Social Media",
-      "description": "Facebook (Meta) is a leading social media platform connecting billions of people worldwide, enabling them to share content, communicate, and build communities.",
+      "category": "Social",
+      "description": "The largest social network in the world, connecting users through profiles, groups, and messaging.",
+      "about": "Facebook is a social networking service where users share posts, photos, and videos, connect with friends and family, join interest groups, and follow pages from businesses and public figures. It is the flagship product of parent company Meta Platforms.\n\nLaunched in 2004 by Mark Zuckerberg and college roommates, Facebook has grown to nearly three billion monthly active users, making it one of the most-visited websites globally.",
       "founded": "2004",
-      "headquarters": "Menlo Park, California"
+      "headquarters": "Menlo Park, California",
+      "socials": {
+        "twitter": "https://twitter.com/facebook",
+        "linkedin": "https://www.linkedin.com/company/meta",
+        "github": "https://github.com/facebook",
+        "instagram": "https://www.instagram.com/facebook",
+        "youtube": "https://www.youtube.com/facebook"
+      }
     },
     {
       "id": "instagram",
       "name": "Instagram",
       "url": "https://www.instagram.com",
-      "category": "Social Media",
-      "description": "Instagram is a popular photo and video sharing social media platform owned by Meta, allowing users to share visual content and connect with others.",
+      "category": "Social",
+      "description": "Photo and short-video sharing social network owned by Meta.",
+      "about": "Instagram is a photo and video sharing social platform where users post images, Reels, and Stories, follow other accounts, and communicate via direct messages. It is a key part of Meta's family of apps alongside Facebook and WhatsApp.\n\nFounded in 2010 by Kevin Systrom and Mike Krieger and acquired by Facebook (now Meta) in 2012, Instagram has grown to over two billion monthly active users.",
       "founded": "2010",
-      "headquarters": "Menlo Park, California"
+      "headquarters": "Menlo Park, California",
+      "socials": {
+        "twitter": "https://twitter.com/instagram",
+        "linkedin": "https://www.linkedin.com/company/instagram",
+        "facebook": "https://www.facebook.com/instagram",
+        "youtube": "https://www.youtube.com/instagram"
+      }
     },
     {
-      "id": "twitter",
-      "name": "Twitter/X",
-      "url": "https://www.x.com",
-      "category": "Social Media",
-      "description": "X (formerly Twitter) is a microblogging and social networking platform where users share short messages, news, and engage in real-time conversations.",
+      "id": "x",
+      "name": "X",
+      "url": "https://x.com",
+      "category": "Social",
+      "description": "Real-time public conversation platform formerly known as Twitter.",
+      "about": "X, formerly Twitter, is a social network built around short public posts, replies, and reposts. It is widely used for real-time news, commentary, and conversation among individuals, brands, journalists, and public figures.\n\nOriginally launched as Twitter in 2006, the platform was acquired by Elon Musk in 2022 and rebranded to X in 2023 as part of a broader push to become an 'everything app'.",
       "founded": "2006",
-      "headquarters": "San Francisco, California"
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/x",
+        "linkedin": "https://www.linkedin.com/company/x-corp"
+      }
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com",
+      "category": "Social",
+      "description": "Professional networking platform for careers, recruiting, and business content.",
+      "about": "LinkedIn is a business and employment-focused social network used for professional networking, job searching, recruiting, and publishing career-oriented content. It hosts profiles for hundreds of millions of professionals and companies worldwide.\n\nFounded in 2002 and launched in 2003, LinkedIn was acquired by Microsoft in 2016 and operates as a wholly owned subsidiary.",
+      "founded": "2002",
+      "headquarters": "Sunnyvale, California",
+      "socials": {
+        "twitter": "https://twitter.com/linkedin",
+        "github": "https://github.com/linkedin",
+        "facebook": "https://www.facebook.com/LinkedIn",
+        "instagram": "https://www.instagram.com/linkedin",
+        "youtube": "https://www.youtube.com/linkedin"
+      }
+    },
+    {
+      "id": "tiktok",
+      "name": "TikTok",
+      "url": "https://www.tiktok.com",
+      "category": "Social",
+      "description": "Short-form video sharing app driven by an algorithmic For You feed.",
+      "about": "TikTok is a short-form video platform where users create, share, and discover vertical videos ranging from a few seconds to several minutes. Its recommendation algorithm powers the For You feed that has defined a generation of internet culture.\n\nLaunched internationally in 2017 by Chinese company ByteDance, TikTok has grown to more than a billion monthly active users and reshaped how short video and music are consumed online.",
+      "founded": "2016",
+      "headquarters": "Los Angeles, California",
+      "socials": {
+        "twitter": "https://twitter.com/tiktok",
+        "linkedin": "https://www.linkedin.com/company/tiktok",
+        "instagram": "https://www.instagram.com/tiktok",
+        "youtube": "https://www.youtube.com/tiktok"
+      }
+    },
+    {
+      "id": "snapchat",
+      "name": "Snapchat",
+      "url": "https://www.snapchat.com",
+      "category": "Social",
+      "description": "Messaging and social app centered on ephemeral photo and video Snaps.",
+      "about": "Snapchat is a multimedia messaging app where users share Snaps, Stories, and Spotlight videos. It is known for ephemeral content, camera-first design, augmented reality lenses, and features like Snap Map.\n\nCreated by Evan Spiegel, Bobby Murphy, and Reggie Brown at Stanford University and released in 2011, Snapchat is operated by parent company Snap Inc.",
+      "founded": "2011",
+      "headquarters": "Santa Monica, California",
+      "socials": {
+        "twitter": "https://twitter.com/snapchat",
+        "linkedin": "https://www.linkedin.com/company/snap-inc-",
+        "instagram": "https://www.instagram.com/snapchat",
+        "youtube": "https://www.youtube.com/snapchat"
+      }
+    },
+    {
+      "id": "pinterest",
+      "name": "Pinterest",
+      "url": "https://www.pinterest.com",
+      "category": "Social",
+      "description": "Visual discovery platform for saving and organizing ideas as pinned images.",
+      "about": "Pinterest is a visual bookmarking and discovery service where users save images and videos, called Pins, to themed boards. It is widely used for planning weddings, home improvement, recipes, fashion, and other visual projects.\n\nFounded in 2010 by Ben Silbermann, Paul Sciarra, and Evan Sharp, Pinterest went public in 2019 and reaches hundreds of millions of monthly users.",
+      "founded": "2010",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/pinterest",
+        "linkedin": "https://www.linkedin.com/company/pinterest",
+        "github": "https://github.com/pinterest",
+        "facebook": "https://www.facebook.com/Pinterest",
+        "instagram": "https://www.instagram.com/pinterest",
+        "youtube": "https://www.youtube.com/pinterest"
+      }
+    },
+    {
+      "id": "reddit",
+      "name": "Reddit",
+      "url": "https://www.reddit.com",
+      "category": "Social",
+      "description": "Network of community-driven forums known as subreddits with voted posts and comments.",
+      "about": "Reddit is a social news aggregation and discussion website organized into thousands of user-created communities called subreddits. Users submit links, text posts, and images, then vote and comment to surface the most relevant content.\n\nFounded in 2005 by Steve Huffman and Alexis Ohanian, Reddit is one of the most-visited websites in the world and is known for its influential online communities.",
+      "founded": "2005",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/reddit",
+        "linkedin": "https://www.linkedin.com/company/reddit-com",
+        "github": "https://github.com/reddit-archive",
+        "instagram": "https://www.instagram.com/reddit",
+        "youtube": "https://www.youtube.com/reddit"
+      }
+    },
+    {
+      "id": "threads",
+      "name": "Threads",
+      "url": "https://www.threads.net",
+      "category": "Social",
+      "description": "Text-based conversation app from Meta, integrated with Instagram accounts.",
+      "about": "Threads is a text-based social network from Meta that lets users post short messages, images, and video and follow conversations. Accounts are linked to Instagram, making onboarding simple for existing users.\n\nLaunched in July 2023, Threads reached one hundred million sign-ups within its first week, becoming one of the fastest-growing consumer apps ever released.",
+      "founded": "2023",
+      "headquarters": "Menlo Park, California",
+      "socials": {
+        "instagram": "https://www.instagram.com/threadsapp"
+      }
+    },
+    {
+      "id": "bluesky",
+      "name": "Bluesky",
+      "url": "https://bsky.app",
+      "category": "Social",
+      "description": "Decentralized social network built on the AT Protocol with a Twitter-like feed.",
+      "about": "Bluesky is a microblogging social network built on the open AT Protocol, designed to allow user-controlled algorithms, portable identities, and interoperability between servers. Its interface is similar to early Twitter.\n\nIncubated inside Twitter starting in 2019 and spun out as an independent company, Bluesky opened public sign-ups in 2024 and has grown to tens of millions of accounts.",
+      "founded": "2021",
+      "headquarters": "Seattle, Washington",
+      "socials": {
+        "twitter": "https://twitter.com/bluesky",
+        "github": "https://github.com/bluesky-social"
+      }
+    },
+    {
+      "id": "mastodon",
+      "name": "Mastodon",
+      "url": "https://joinmastodon.org",
+      "category": "Social",
+      "description": "Open-source, federated microblogging network built on the ActivityPub protocol.",
+      "about": "Mastodon is free and open-source software for running self-hosted social networking services. It powers a federated network of independent servers, collectively known as the Fediverse, that interoperate using the ActivityPub protocol.\n\nCreated by Eugen Rochko in 2016, Mastodon has become the most prominent decentralized alternative to centralized social networks such as X.",
+      "founded": "2016",
+      "headquarters": "Berlin, Germany",
+      "socials": {
+        "github": "https://github.com/mastodon"
+      }
+    },
+    {
+      "id": "discord",
+      "name": "Discord",
+      "url": "https://discord.com",
+      "category": "Social",
+      "description": "Voice, video, and text chat platform organized around community servers.",
+      "about": "Discord is a communications platform designed around persistent servers that host text channels, voice rooms, and video calls. Originally popular with gamers, it is now used by communities of all kinds, from study groups to open-source projects.\n\nFounded in 2015 by Jason Citron and Stanislav Vishnevskiy, Discord has grown to hundreds of millions of registered users worldwide.",
+      "founded": "2015",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/discord",
+        "linkedin": "https://www.linkedin.com/company/discord",
+        "github": "https://github.com/discord",
+        "instagram": "https://www.instagram.com/discord",
+        "youtube": "https://www.youtube.com/discord"
+      }
+    },
+    {
+      "id": "whatsapp",
+      "name": "WhatsApp",
+      "url": "https://www.whatsapp.com",
+      "category": "Communication",
+      "description": "End-to-end encrypted messaging and calling app used by billions worldwide.",
+      "about": "WhatsApp is a cross-platform messaging service offering text, voice notes, calls, group chats, and file sharing, protected by end-to-end encryption by default. It has become the primary messaging app in many parts of the world.\n\nFounded in 2009 by Jan Koum and Brian Acton and acquired by Facebook (now Meta) in 2014, WhatsApp has more than two billion users across more than 180 countries.",
+      "founded": "2009",
+      "headquarters": "Menlo Park, California",
+      "socials": {
+        "twitter": "https://twitter.com/whatsapp",
+        "linkedin": "https://www.linkedin.com/company/whatsapp",
+        "facebook": "https://www.facebook.com/WhatsApp",
+        "instagram": "https://www.instagram.com/whatsapp",
+        "youtube": "https://www.youtube.com/whatsapp"
+      }
+    },
+    {
+      "id": "telegram",
+      "name": "Telegram",
+      "url": "https://telegram.org",
+      "category": "Communication",
+      "description": "Cloud-based messaging app known for large group chats, channels, and bots.",
+      "about": "Telegram is a cloud-based messenger offering fast messaging, large group chats, public channels, and a rich bot platform. Messages can optionally be sent via end-to-end encrypted 'secret chats'.\n\nFounded by Pavel and Nikolai Durov in 2013, Telegram has grown to more than 900 million monthly active users and is a major channel for news, communities, and crypto projects.",
+      "founded": "2013",
+      "headquarters": "Dubai, United Arab Emirates",
+      "socials": {
+        "twitter": "https://twitter.com/telegram",
+        "github": "https://github.com/telegramdesktop",
+        "facebook": "https://www.facebook.com/TelegramMessenger",
+        "instagram": "https://www.instagram.com/telegram"
+      }
+    },
+    {
+      "id": "signal",
+      "name": "Signal",
+      "url": "https://signal.org",
+      "category": "Communication",
+      "description": "Privacy-first messaging app using end-to-end encryption for all communications.",
+      "about": "Signal is a free, open-source messaging app that provides end-to-end encrypted text, voice, and video communication. It is developed by the nonprofit Signal Foundation and is widely recommended by security professionals.\n\nBuilt on the Signal Protocol created by Moxie Marlinspike, Signal launched in its current form in 2014 and has become synonymous with private, secure messaging.",
+      "founded": "2014",
+      "headquarters": "Mountain View, California",
+      "socials": {
+        "twitter": "https://twitter.com/signalapp",
+        "github": "https://github.com/signalapp",
+        "instagram": "https://www.instagram.com/signal_app"
+      }
+    },
+    {
+      "id": "zoom",
+      "name": "Zoom",
+      "url": "https://zoom.us",
+      "category": "Communication",
+      "description": "Cloud-based video conferencing platform for meetings, webinars, and phone.",
+      "about": "Zoom is a video communications company whose flagship product provides scalable video meetings, webinars, cloud phone, and team chat. It is widely used for remote work, education, telehealth, and social gatherings.\n\nFounded by Eric Yuan in 2011, Zoom became a defining tool of the remote-work era during the COVID-19 pandemic and now serves organizations around the world.",
+      "founded": "2011",
+      "headquarters": "San Jose, California",
+      "socials": {
+        "twitter": "https://twitter.com/zoom",
+        "linkedin": "https://www.linkedin.com/company/zoom-video-communications",
+        "github": "https://github.com/zoom",
+        "facebook": "https://www.facebook.com/zoom",
+        "instagram": "https://www.instagram.com/zoom",
+        "youtube": "https://www.youtube.com/zoom"
+      }
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "url": "https://slack.com",
+      "category": "Communication",
+      "description": "Team messaging and collaboration platform organized around channels.",
+      "about": "Slack is a business communication platform offering persistent channels for teams, direct messaging, voice and video huddles, file sharing, and deep integrations with third-party apps. It is a core productivity tool for many modern workplaces.\n\nLaunched by Stewart Butterfield in 2013 and acquired by Salesforce in 2021, Slack has millions of daily active users across companies of every size.",
+      "founded": "2013",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/slackhq",
+        "linkedin": "https://www.linkedin.com/company/slack-technologies",
+        "github": "https://github.com/slackhq",
+        "facebook": "https://www.facebook.com/slackhq",
+        "instagram": "https://www.instagram.com/slackhq",
+        "youtube": "https://www.youtube.com/slackhq"
+      }
+    },
+    {
+      "id": "microsoft-teams",
+      "name": "Microsoft Teams",
+      "url": "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software",
+      "category": "Communication",
+      "description": "Microsoft's team collaboration app with chat, video meetings, and Office integration.",
+      "about": "Microsoft Teams is a collaboration platform that combines persistent chat, video meetings, calling, file storage, and application integrations with Microsoft 365 apps such as Word, Excel, and SharePoint.\n\nLaunched in 2017 as part of Microsoft 365, Teams has become one of the most widely deployed enterprise collaboration tools globally, with hundreds of millions of monthly users.",
+      "founded": "2017",
+      "headquarters": "Redmond, Washington",
+      "socials": {
+        "twitter": "https://twitter.com/microsoftteams",
+        "linkedin": "https://www.linkedin.com/showcase/microsoft-teams",
+        "youtube": "https://www.youtube.com/microsoftteams"
+      }
     },
     {
       "id": "github",
       "name": "GitHub",
-      "url": "https://www.github.com",
+      "url": "https://github.com",
       "category": "Development",
-      "description": "GitHub is the world's largest code hosting platform for version control and collaboration, used by millions of developers to build and share software projects.",
+      "description": "Cloud platform for hosting Git repositories, code collaboration, and CI/CD.",
+      "about": "GitHub is a developer platform built around Git version control. It hosts open source and private repositories, and provides code review, issue tracking, GitHub Actions CI/CD, package hosting, and Copilot AI-assisted coding.\n\nFounded in 2008 by Tom Preston-Werner, Chris Wanstrath, PJ Hyett, and Scott Chacon, GitHub was acquired by Microsoft in 2018 and hosts over 100 million developers.",
       "founded": "2008",
-      "headquarters": "San Francisco, California"
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/github",
+        "linkedin": "https://www.linkedin.com/company/github",
+        "github": "https://github.com/github",
+        "instagram": "https://www.instagram.com/github",
+        "youtube": "https://www.youtube.com/github"
+      }
+    },
+    {
+      "id": "gitlab",
+      "name": "GitLab",
+      "url": "https://about.gitlab.com",
+      "category": "Development",
+      "description": "End-to-end DevOps platform with Git hosting, CI/CD, and security tooling.",
+      "about": "GitLab is a web-based DevOps lifecycle tool that provides Git repository management, issue tracking, CI/CD pipelines, security scanning, and deployment tooling in a single application. It offers cloud SaaS and self-hosted deployment options.\n\nFounded in 2011 by Dmytro Zaporozhets and Sytse Sijbrandij, GitLab is a fully remote company and went public on the Nasdaq in 2021.",
+      "founded": "2011",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/gitlab",
+        "linkedin": "https://www.linkedin.com/company/gitlab-com",
+        "github": "https://github.com/gitlabhq",
+        "youtube": "https://www.youtube.com/gitlab"
+      }
     },
     {
       "id": "stackoverflow",
       "name": "Stack Overflow",
       "url": "https://stackoverflow.com",
       "category": "Development",
-      "description": "Stack Overflow is the largest online community for programmers to learn, share knowledge, and build their careers through Q&A discussions.",
+      "description": "Question-and-answer site where developers get help with programming problems.",
+      "about": "Stack Overflow is a public Q&A website for programmers, offering answers to millions of coding questions across languages, frameworks, and tools. Reputation and voting drive the community-moderated content.\n\nFounded in 2008 by Jeff Atwood and Joel Spolsky, Stack Overflow is the flagship site of the Stack Exchange network and one of the most-referenced programming resources online.",
       "founded": "2008",
-      "headquarters": "New York City, New York"
+      "headquarters": "New York, New York",
+      "socials": {
+        "twitter": "https://twitter.com/stackoverflow",
+        "linkedin": "https://www.linkedin.com/company/stack-overflow",
+        "github": "https://github.com/StackExchange",
+        "facebook": "https://www.facebook.com/officialstackoverflow",
+        "instagram": "https://www.instagram.com/thestackoverflow"
+      }
+    },
+    {
+      "id": "npm",
+      "name": "npm",
+      "url": "https://www.npmjs.com",
+      "category": "Development",
+      "description": "Package registry and dependency manager for JavaScript and Node.js.",
+      "about": "npm is the default package registry for the Node.js JavaScript runtime and the world's largest software registry, hosting millions of open-source packages used by web and backend developers.\n\nCreated by Isaac Z. Schlueter in 2010, npm Inc. was acquired by GitHub, part of Microsoft, in 2020 and continues to power the JavaScript ecosystem.",
+      "founded": "2010",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/npmjs",
+        "github": "https://github.com/npm"
+      }
+    },
+    {
+      "id": "pypi",
+      "name": "PyPI",
+      "url": "https://pypi.org",
+      "category": "Development",
+      "description": "The official third-party software repository for the Python programming language.",
+      "about": "The Python Package Index (PyPI) is the official repository of third-party Python software packages. It is used by Python developers worldwide with tools like pip to install and distribute libraries and applications.\n\nMaintained by the Python Software Foundation, PyPI hosts hundreds of thousands of projects and underpins the Python open-source ecosystem.",
+      "founded": "2003",
+      "headquarters": "Beaverton, Oregon",
+      "socials": {
+        "twitter": "https://twitter.com/ThePSF",
+        "github": "https://github.com/pypi"
+      }
+    },
+    {
+      "id": "docker-hub",
+      "name": "Docker Hub",
+      "url": "https://hub.docker.com",
+      "category": "Development",
+      "description": "Container image registry for pushing, pulling, and sharing Docker images.",
+      "about": "Docker Hub is the world's largest library and community for container images. Developers use it to store and share Docker images and to pull official images for popular open-source projects and operating systems.\n\nOperated by Docker Inc., which introduced containers to a mass developer audience in 2013, Docker Hub is a core piece of modern cloud-native tooling.",
+      "founded": "2014",
+      "headquarters": "Palo Alto, California",
+      "socials": {
+        "twitter": "https://twitter.com/docker",
+        "linkedin": "https://www.linkedin.com/company/docker",
+        "github": "https://github.com/docker",
+        "youtube": "https://www.youtube.com/docker"
+      }
+    },
+    {
+      "id": "mdn",
+      "name": "MDN Web Docs",
+      "url": "https://developer.mozilla.org",
+      "category": "Development",
+      "description": "Mozilla's reference documentation for web standards: HTML, CSS, and JavaScript.",
+      "about": "MDN Web Docs is a comprehensive open documentation site for web technologies including HTML, CSS, JavaScript, and Web APIs. It is a primary reference for web developers worldwide.\n\nRun by Mozilla with contributions from browser vendors and the community, MDN evolved from the Mozilla Developer Network launched in 2005.",
+      "founded": "2005",
+      "headquarters": "Mountain View, California",
+      "socials": {
+        "twitter": "https://twitter.com/MozDevNet",
+        "github": "https://github.com/mdn",
+        "youtube": "https://www.youtube.com/mozhacks"
+      }
+    },
+    {
+      "id": "codepen",
+      "name": "CodePen",
+      "url": "https://codepen.io",
+      "category": "Development",
+      "description": "Social development environment for front-end HTML, CSS, and JavaScript demos.",
+      "about": "CodePen is an online front-end code editor and community where developers build, share, and discover HTML, CSS, and JavaScript 'pens'. It is popular for prototyping UI, teaching, and showcasing creative code.\n\nFounded in 2012 by Chris Coyier, Alex Vazquez, and Tim Sabat, CodePen has become a widely used social coding platform for web designers and developers.",
+      "founded": "2012",
+      "headquarters": "Bend, Oregon",
+      "socials": {
+        "twitter": "https://twitter.com/codepen",
+        "github": "https://github.com/CodePen",
+        "youtube": "https://www.youtube.com/codepen"
+      }
     },
     {
       "id": "youtube",
       "name": "YouTube",
       "url": "https://www.youtube.com",
       "category": "Video",
-      "description": "YouTube is the world's largest video sharing platform owned by Google, where users can upload, watch, and share video content on virtually any topic.",
+      "description": "The world's largest video sharing platform, hosting user and professional content.",
+      "about": "YouTube is a video sharing and streaming platform where users upload, watch, comment on, and share videos across every imaginable topic. It also offers YouTube Music, Shorts, Kids, and TV subscription services.\n\nFounded in 2005 by Steve Chen, Chad Hurley, and Jawed Karim and acquired by Google in 2006, YouTube reaches billions of monthly viewers globally.",
       "founded": "2005",
-      "headquarters": "San Bruno, California"
+      "headquarters": "San Bruno, California",
+      "socials": {
+        "twitter": "https://twitter.com/youtube",
+        "linkedin": "https://www.linkedin.com/company/youtube",
+        "github": "https://github.com/youtube",
+        "facebook": "https://www.facebook.com/youtube",
+        "instagram": "https://www.instagram.com/youtube"
+      }
+    },
+    {
+      "id": "vimeo",
+      "name": "Vimeo",
+      "url": "https://vimeo.com",
+      "category": "Video",
+      "description": "Ad-free video hosting platform popular with filmmakers, creators, and businesses.",
+      "about": "Vimeo is a video hosting, sharing, and services platform focused on high-quality video for creators, businesses, and enterprises. It emphasizes ad-free viewing, privacy controls, and professional tooling for video creation and distribution.\n\nFounded in 2004 by filmmakers, Vimeo went public in 2021 and continues to be popular for portfolios, marketing videos, and independent film.",
+      "founded": "2004",
+      "headquarters": "New York, New York",
+      "socials": {
+        "twitter": "https://twitter.com/vimeo",
+        "linkedin": "https://www.linkedin.com/company/vimeo",
+        "github": "https://github.com/vimeo",
+        "facebook": "https://www.facebook.com/vimeo",
+        "instagram": "https://www.instagram.com/vimeo",
+        "youtube": "https://www.youtube.com/vimeo"
+      }
+    },
+    {
+      "id": "twitch",
+      "name": "Twitch",
+      "url": "https://www.twitch.tv",
+      "category": "Video",
+      "description": "Live video streaming service focused on gaming, esports, music, and creative content.",
+      "about": "Twitch is a live streaming platform where creators broadcast video games, art, music, and IRL content to interactive chat-driven audiences. Subscriptions, bits, and ads support creators.\n\nLaunched in 2011 as a spin-off of Justin.tv and acquired by Amazon in 2014, Twitch is the largest live streaming service for gaming worldwide.",
+      "founded": "2011",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/twitch",
+        "linkedin": "https://www.linkedin.com/company/twitch-tv",
+        "github": "https://github.com/twitchdev",
+        "facebook": "https://www.facebook.com/Twitch",
+        "instagram": "https://www.instagram.com/twitch",
+        "youtube": "https://www.youtube.com/twitch"
+      }
     },
     {
       "id": "netflix",
       "name": "Netflix",
       "url": "https://www.netflix.com",
       "category": "Streaming",
-      "description": "Netflix is a leading streaming entertainment service offering TV series, documentaries, and feature films across a wide variety of genres and languages.",
+      "description": "Global subscription video-on-demand streaming service with original films and series.",
+      "about": "Netflix is a subscription-based streaming service that offers a vast catalog of films, series, documentaries, and its own award-winning Netflix Originals across many languages and countries.\n\nFounded in 1997 by Reed Hastings and Marc Randolph as a DVD-by-mail service, Netflix pivoted to streaming in 2007 and now has more than 250 million paid subscribers globally.",
       "founded": "1997",
-      "headquarters": "Los Gatos, California"
+      "headquarters": "Los Gatos, California",
+      "socials": {
+        "twitter": "https://twitter.com/netflix",
+        "linkedin": "https://www.linkedin.com/company/netflix",
+        "github": "https://github.com/Netflix",
+        "facebook": "https://www.facebook.com/netflix",
+        "instagram": "https://www.instagram.com/netflix",
+        "youtube": "https://www.youtube.com/netflix"
+      }
+    },
+    {
+      "id": "disney-plus",
+      "name": "Disney+",
+      "url": "https://www.disneyplus.com",
+      "category": "Streaming",
+      "description": "Subscription streaming service featuring Disney, Pixar, Marvel, Star Wars, and Nat Geo.",
+      "about": "Disney+ is a subscription video-on-demand streaming service owned by The Walt Disney Company. It offers films and series from Disney, Pixar, Marvel, Star Wars, National Geographic, and 20th Century Studios.\n\nLaunched in November 2019, Disney+ quickly reached more than 100 million subscribers and is a central pillar of Disney's direct-to-consumer strategy.",
+      "founded": "2019",
+      "headquarters": "Burbank, California",
+      "socials": {
+        "twitter": "https://twitter.com/disneyplus",
+        "facebook": "https://www.facebook.com/DisneyPlus",
+        "instagram": "https://www.instagram.com/disneyplus",
+        "youtube": "https://www.youtube.com/disneyplus"
+      }
+    },
+    {
+      "id": "max",
+      "name": "Max",
+      "url": "https://www.max.com",
+      "category": "Streaming",
+      "description": "Warner Bros. Discovery's streaming service featuring HBO, Warner Bros., and Discovery content.",
+      "about": "Max, formerly HBO Max, is a subscription video-on-demand service from Warner Bros. Discovery. It offers HBO originals, films from Warner Bros., DC and Discovery brands, plus a large library of licensed series and movies.\n\nOriginally launched as HBO Max in 2020 and rebranded to Max in 2023, the service consolidated HBO Max and Discovery+ content into one platform.",
+      "founded": "2020",
+      "headquarters": "New York, New York",
+      "socials": {
+        "twitter": "https://twitter.com/streamonmax",
+        "facebook": "https://www.facebook.com/StreamOnMax",
+        "instagram": "https://www.instagram.com/streamonmax",
+        "youtube": "https://www.youtube.com/streamonmax"
+      }
+    },
+    {
+      "id": "prime-video",
+      "name": "Prime Video",
+      "url": "https://www.primevideo.com",
+      "category": "Streaming",
+      "description": "Amazon's global streaming service with movies, series, and Amazon Originals.",
+      "about": "Amazon Prime Video is a subscription video streaming service that offers a wide catalog of films and series, including Amazon Originals such as The Boys, The Marvelous Mrs. Maisel, and The Lord of the Rings: The Rings of Power. It is included with an Amazon Prime membership in many countries.\n\nLaunched in 2006 as Amazon Unbox and rebranded several times, Prime Video is one of the largest subscription streaming services worldwide.",
+      "founded": "2006",
+      "headquarters": "Seattle, Washington",
+      "socials": {
+        "twitter": "https://twitter.com/primevideo",
+        "facebook": "https://www.facebook.com/PrimeVideo",
+        "instagram": "https://www.instagram.com/amazonprimevideo",
+        "youtube": "https://www.youtube.com/amazonprimevideo"
+      }
+    },
+    {
+      "id": "paramount-plus",
+      "name": "Paramount+",
+      "url": "https://www.paramountplus.com",
+      "category": "Streaming",
+      "description": "Paramount's streaming service with CBS, Nickelodeon, MTV, and Paramount Pictures content.",
+      "about": "Paramount+ is a subscription streaming service operated by Paramount Global. It offers films from Paramount Pictures, CBS series, Nickelodeon shows, MTV content, live sports, and originals such as Star Trek series.\n\nRelaunched from CBS All Access in 2021, Paramount+ has expanded internationally to become one of the major global streaming platforms.",
+      "founded": "2021",
+      "headquarters": "New York, New York",
+      "socials": {
+        "twitter": "https://twitter.com/paramountplus",
+        "facebook": "https://www.facebook.com/ParamountPlus",
+        "instagram": "https://www.instagram.com/paramountplus",
+        "youtube": "https://www.youtube.com/paramountplus"
+      }
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "url": "https://www.spotify.com",
+      "category": "Music",
+      "description": "Global audio streaming service for music, podcasts, and audiobooks.",
+      "about": "Spotify is the world's most popular audio streaming subscription service, offering access to tens of millions of tracks, podcasts, and audiobooks in both free ad-supported and premium tiers.\n\nFounded in 2006 by Daniel Ek and Martin Lorentzon and launched in 2008, Spotify has more than 600 million monthly active users worldwide.",
+      "founded": "2006",
+      "headquarters": "Stockholm, Sweden",
+      "socials": {
+        "twitter": "https://twitter.com/spotify",
+        "linkedin": "https://www.linkedin.com/company/spotify",
+        "github": "https://github.com/spotify",
+        "facebook": "https://www.facebook.com/Spotify",
+        "instagram": "https://www.instagram.com/spotify",
+        "youtube": "https://www.youtube.com/spotify"
+      }
+    },
+    {
+      "id": "apple-music",
+      "name": "Apple Music",
+      "url": "https://www.apple.com/apple-music/",
+      "category": "Music",
+      "description": "Apple's subscription music streaming service with lossless audio and radio stations.",
+      "about": "Apple Music is a subscription-based music and video streaming service developed by Apple. It offers a catalog of tens of millions of songs, curated playlists, live radio stations including Apple Music 1, and support for lossless and spatial audio.\n\nLaunched in 2015, Apple Music replaced Beats Music and is available on Apple devices as well as Android, Windows, and web.",
+      "founded": "2015",
+      "headquarters": "Cupertino, California",
+      "socials": {
+        "twitter": "https://twitter.com/applemusic",
+        "facebook": "https://www.facebook.com/AppleMusic",
+        "instagram": "https://www.instagram.com/applemusic",
+        "youtube": "https://www.youtube.com/applemusic"
+      }
+    },
+    {
+      "id": "youtube-music",
+      "name": "YouTube Music",
+      "url": "https://music.youtube.com",
+      "category": "Music",
+      "description": "Google's music streaming service tightly integrated with YouTube's video catalog.",
+      "about": "YouTube Music is a music streaming service developed by YouTube. It offers streaming of officially released songs and albums as well as remixes, covers, and live performances from YouTube's video catalog.\n\nLaunched in 2015 and expanded in 2018 as a successor to Google Play Music, YouTube Music is included with YouTube Premium subscriptions.",
+      "founded": "2015",
+      "headquarters": "San Bruno, California",
+      "socials": {
+        "twitter": "https://twitter.com/youtubemusic",
+        "instagram": "https://www.instagram.com/youtubemusic",
+        "youtube": "https://www.youtube.com/youtubemusic"
+      }
+    },
+    {
+      "id": "soundcloud",
+      "name": "SoundCloud",
+      "url": "https://soundcloud.com",
+      "category": "Music",
+      "description": "Audio distribution platform popular with independent artists, DJs, and podcasters.",
+      "about": "SoundCloud is an online audio distribution platform that enables users to upload, promote, and share audio. It is widely used by independent musicians, DJs, producers, and podcasters and has been a key platform for genres like SoundCloud rap.\n\nFounded in 2007 by Alexander Ljung and Eric Wahlforss in Stockholm and later headquartered in Berlin, SoundCloud hosts hundreds of millions of tracks.",
+      "founded": "2007",
+      "headquarters": "Berlin, Germany",
+      "socials": {
+        "twitter": "https://twitter.com/soundcloud",
+        "linkedin": "https://www.linkedin.com/company/soundcloud",
+        "github": "https://github.com/soundcloud",
+        "facebook": "https://www.facebook.com/SoundCloud",
+        "instagram": "https://www.instagram.com/soundcloud",
+        "youtube": "https://www.youtube.com/soundcloud"
+      }
+    },
+    {
+      "id": "tidal",
+      "name": "Tidal",
+      "url": "https://tidal.com",
+      "category": "Music",
+      "description": "Music streaming service focused on high-fidelity audio and artist-friendly payouts.",
+      "about": "Tidal is a subscription-based music, podcast, and video streaming service that emphasizes lossless audio quality, high-definition music videos, and higher payouts to artists. It offers tens of millions of tracks and exclusive artist content.\n\nLaunched in 2014 in Norway and later acquired by Block (formerly Square) in 2021, Tidal targets audiophiles and music enthusiasts.",
+      "founded": "2014",
+      "headquarters": "New York, New York",
+      "socials": {
+        "twitter": "https://twitter.com/tidal",
+        "facebook": "https://www.facebook.com/TIDAL",
+        "instagram": "https://www.instagram.com/tidal",
+        "youtube": "https://www.youtube.com/tidal"
+      }
+    },
+    {
+      "id": "aws",
+      "name": "Amazon Web Services",
+      "url": "https://aws.amazon.com",
+      "category": "Cloud",
+      "description": "The largest public cloud platform, offering compute, storage, and hundreds of services.",
+      "about": "Amazon Web Services (AWS) is the world's most comprehensive and broadly adopted cloud platform, offering more than 200 services including compute (EC2), storage (S3), databases, AI/ML, networking, and analytics from data centers worldwide.\n\nLaunched in 2006 as a subsidiary of Amazon, AWS pioneered modern public cloud computing and is used by startups, enterprises, and governments globally.",
+      "founded": "2006",
+      "headquarters": "Seattle, Washington",
+      "socials": {
+        "twitter": "https://twitter.com/awscloud",
+        "linkedin": "https://www.linkedin.com/company/amazon-web-services",
+        "github": "https://github.com/aws",
+        "facebook": "https://www.facebook.com/amazonwebservices",
+        "instagram": "https://www.instagram.com/amazonwebservices",
+        "youtube": "https://www.youtube.com/amazonwebservices"
+      }
+    },
+    {
+      "id": "google-cloud",
+      "name": "Google Cloud",
+      "url": "https://cloud.google.com",
+      "category": "Cloud",
+      "description": "Google's public cloud platform with compute, data analytics, and AI services.",
+      "about": "Google Cloud is Google's suite of cloud computing services, including Compute Engine, BigQuery, Kubernetes Engine, Vertex AI, and Firebase. It runs on the same infrastructure that Google uses internally for its products.\n\nOfficially launched in 2008 with App Engine and expanded steadily since, Google Cloud is one of the three largest public cloud providers alongside AWS and Azure.",
+      "founded": "2008",
+      "headquarters": "Mountain View, California",
+      "socials": {
+        "twitter": "https://twitter.com/googlecloud",
+        "linkedin": "https://www.linkedin.com/showcase/google-cloud",
+        "github": "https://github.com/GoogleCloudPlatform",
+        "youtube": "https://www.youtube.com/googlecloud"
+      }
+    },
+    {
+      "id": "azure",
+      "name": "Microsoft Azure",
+      "url": "https://azure.microsoft.com",
+      "category": "Cloud",
+      "description": "Microsoft's public cloud platform for compute, AI, data, and enterprise services.",
+      "about": "Microsoft Azure is a cloud computing platform offering compute, storage, networking, databases, analytics, AI, and developer services. It is deeply integrated with the Microsoft ecosystem, including Windows Server, Active Directory, and Microsoft 365.\n\nLaunched in 2010, Azure has become one of the world's largest cloud providers and a critical piece of Microsoft's commercial business.",
+      "founded": "2010",
+      "headquarters": "Redmond, Washington",
+      "socials": {
+        "twitter": "https://twitter.com/azure",
+        "linkedin": "https://www.linkedin.com/showcase/microsoft-azure",
+        "github": "https://github.com/Azure",
+        "youtube": "https://www.youtube.com/microsoftazure"
+      }
+    },
+    {
+      "id": "digitalocean",
+      "name": "DigitalOcean",
+      "url": "https://www.digitalocean.com",
+      "category": "Cloud",
+      "description": "Developer-focused cloud provider offering simple virtual machines and managed services.",
+      "about": "DigitalOcean is a cloud infrastructure provider that focuses on developers and small businesses. It is best known for its Droplets virtual machines, managed databases, Kubernetes, and App Platform product.\n\nFounded in 2011, DigitalOcean went public in 2021 and has built a large community through its extensive tutorials and documentation.",
+      "founded": "2011",
+      "headquarters": "New York, New York",
+      "socials": {
+        "twitter": "https://twitter.com/digitalocean",
+        "linkedin": "https://www.linkedin.com/company/digitalocean",
+        "github": "https://github.com/digitalocean",
+        "facebook": "https://www.facebook.com/DigitalOceanCloudHosting",
+        "instagram": "https://www.instagram.com/thedigitalocean",
+        "youtube": "https://www.youtube.com/digitalocean"
+      }
+    },
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare",
+      "url": "https://www.cloudflare.com",
+      "category": "Cloud",
+      "description": "Global network for CDN, DNS, DDoS protection, and edge compute services.",
+      "about": "Cloudflare operates one of the largest global networks, providing content delivery, DDoS mitigation, DNS, zero trust security, and edge compute via Cloudflare Workers. Its services sit in front of millions of websites and applications.\n\nFounded in 2009 by Matthew Prince, Lee Holloway, and Michelle Zatlyn, Cloudflare went public in 2019 and is a foundational piece of internet infrastructure.",
+      "founded": "2009",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/cloudflare",
+        "linkedin": "https://www.linkedin.com/company/cloudflare",
+        "github": "https://github.com/cloudflare",
+        "facebook": "https://www.facebook.com/Cloudflare",
+        "youtube": "https://www.youtube.com/cloudflare"
+      }
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "url": "https://vercel.com",
+      "category": "Cloud",
+      "description": "Frontend cloud platform for building and deploying modern web applications.",
+      "about": "Vercel is a cloud platform for frontend developers, offering global edge deployment, serverless functions, image optimization, and preview URLs. It is the company behind the Next.js React framework.\n\nFounded in 2015 by Guillermo Rauch as ZEIT and rebranded to Vercel in 2020, the platform hosts many high-profile web applications and design systems.",
+      "founded": "2015",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/vercel",
+        "linkedin": "https://www.linkedin.com/company/vercel",
+        "github": "https://github.com/vercel",
+        "youtube": "https://www.youtube.com/vercelhq"
+      }
+    },
+    {
+      "id": "netlify",
+      "name": "Netlify",
+      "url": "https://www.netlify.com",
+      "category": "Cloud",
+      "description": "Web development platform for Jamstack sites, edge functions, and continuous deployment.",
+      "about": "Netlify is a cloud hosting and automation platform for modern web projects. It provides global CDN, Git-based continuous deployment, serverless functions, forms, identity, and edge compute for static and dynamic frontends.\n\nFounded in 2014 by Mathias Biilmann and Christian Bach, Netlify helped popularize the Jamstack approach to building websites.",
+      "founded": "2014",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/netlify",
+        "linkedin": "https://www.linkedin.com/company/netlify",
+        "github": "https://github.com/netlify",
+        "youtube": "https://www.youtube.com/netlify"
+      }
+    },
+    {
+      "id": "heroku",
+      "name": "Heroku",
+      "url": "https://www.heroku.com",
+      "category": "Cloud",
+      "description": "Cloud platform-as-a-service for deploying and running apps in multiple languages.",
+      "about": "Heroku is a platform-as-a-service that lets developers build, run, and operate applications entirely in the cloud. It supports many languages including Ruby, Node.js, Python, Java, PHP, and Go.\n\nFounded in 2007 and acquired by Salesforce in 2010, Heroku popularized the modern PaaS model with its 'git push heroku' deployment workflow.",
+      "founded": "2007",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/heroku",
+        "linkedin": "https://www.linkedin.com/company/heroku",
+        "github": "https://github.com/heroku",
+        "facebook": "https://www.facebook.com/heroku",
+        "youtube": "https://www.youtube.com/heroku"
+      }
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "url": "https://www.notion.so",
+      "category": "Productivity",
+      "description": "All-in-one workspace combining notes, docs, wikis, databases, and project management.",
+      "about": "Notion is a productivity and note-taking application that combines documents, wikis, databases, and project management into a single connected workspace. Users build custom pages from flexible blocks.\n\nFounded in 2013 by Ivan Zhao and Simon Last, Notion has grown to more than 100 million users and is popular with startups, teams, and individuals.",
+      "founded": "2013",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/notionhq",
+        "linkedin": "https://www.linkedin.com/company/notionhq",
+        "github": "https://github.com/makenotion",
+        "instagram": "https://www.instagram.com/notionhq",
+        "youtube": "https://www.youtube.com/notion"
+      }
+    },
+    {
+      "id": "google-workspace",
+      "name": "Google Workspace",
+      "url": "https://workspace.google.com",
+      "category": "Productivity",
+      "description": "Google's suite of cloud productivity apps including Gmail, Docs, Drive, and Meet.",
+      "about": "Google Workspace is Google's cloud-based productivity and collaboration suite, including Gmail, Calendar, Drive, Docs, Sheets, Slides, Meet, and Chat, along with admin tools for businesses and schools.\n\nOriginally launched as Google Apps in 2006 and rebranded to G Suite in 2016 and Google Workspace in 2020, it is used by billions of individuals and millions of organizations.",
+      "founded": "2006",
+      "headquarters": "Mountain View, California",
+      "socials": {
+        "twitter": "https://twitter.com/googleworkspace",
+        "linkedin": "https://www.linkedin.com/showcase/google-workspace",
+        "youtube": "https://www.youtube.com/googleworkspace"
+      }
+    },
+    {
+      "id": "microsoft-365",
+      "name": "Microsoft 365",
+      "url": "https://www.microsoft.com/en-us/microsoft-365",
+      "category": "Productivity",
+      "description": "Microsoft's productivity suite with Word, Excel, PowerPoint, Outlook, and Teams.",
+      "about": "Microsoft 365 is a subscription service that includes classic Office desktop apps (Word, Excel, PowerPoint, Outlook), cloud storage via OneDrive, collaboration through Teams and SharePoint, and enterprise security tools.\n\nRebranded from Office 365 in 2020, Microsoft 365 is used by hundreds of millions of consumers and businesses around the world.",
+      "founded": "2011",
+      "headquarters": "Redmond, Washington",
+      "socials": {
+        "twitter": "https://twitter.com/microsoft365",
+        "facebook": "https://www.facebook.com/Microsoft365",
+        "youtube": "https://www.youtube.com/microsoft365"
+      }
+    },
+    {
+      "id": "trello",
+      "name": "Trello",
+      "url": "https://trello.com",
+      "category": "Productivity",
+      "description": "Visual project management tool based on boards, lists, and cards.",
+      "about": "Trello is a web-based visual collaboration tool that organizes projects into boards, lists, and cards. It is popular for kanban-style task tracking for personal, team, and enterprise use.\n\nFounded in 2011 as a Fog Creek Software product and later spun out, Trello was acquired by Atlassian in 2017 and continues to be widely used across industries.",
+      "founded": "2011",
+      "headquarters": "New York, New York",
+      "socials": {
+        "twitter": "https://twitter.com/trello",
+        "linkedin": "https://www.linkedin.com/company/trello",
+        "facebook": "https://www.facebook.com/trello",
+        "instagram": "https://www.instagram.com/trello",
+        "youtube": "https://www.youtube.com/trello"
+      }
+    },
+    {
+      "id": "asana",
+      "name": "Asana",
+      "url": "https://asana.com",
+      "category": "Productivity",
+      "description": "Work management platform for teams to plan, track, and coordinate projects.",
+      "about": "Asana is a work management platform that helps teams organize, track, and manage their work through tasks, projects, timelines, and portfolios. It supports multiple views including list, board, timeline, and calendar.\n\nFounded in 2008 by Facebook co-founder Dustin Moskovitz and Justin Rosenstein, Asana went public in 2020 and serves customers around the world.",
+      "founded": "2008",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/asana",
+        "linkedin": "https://www.linkedin.com/company/asana",
+        "github": "https://github.com/Asana",
+        "facebook": "https://www.facebook.com/asana",
+        "instagram": "https://www.instagram.com/asana",
+        "youtube": "https://www.youtube.com/asana"
+      }
+    },
+    {
+      "id": "airtable",
+      "name": "Airtable",
+      "url": "https://www.airtable.com",
+      "category": "Productivity",
+      "description": "Cloud collaboration tool that combines spreadsheet and database functionality.",
+      "about": "Airtable is a cloud-based platform that combines the familiarity of a spreadsheet with the structure of a relational database. Teams use it to build custom apps for project tracking, content pipelines, CRM, and more.\n\nFounded in 2012 by Howie Liu, Andrew Ofstad, and Emmett Nicholas, Airtable has become a widely used no-code and low-code tool for teams.",
+      "founded": "2012",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/airtable",
+        "linkedin": "https://www.linkedin.com/company/airtable",
+        "github": "https://github.com/Airtable",
+        "youtube": "https://www.youtube.com/airtable"
+      }
+    },
+    {
+      "id": "monday",
+      "name": "monday.com",
+      "url": "https://monday.com",
+      "category": "Productivity",
+      "description": "Work OS for building custom workflows, projects, and CRM processes.",
+      "about": "monday.com is a cloud-based Work OS that teams use to run projects and workflows with confidence. It offers customizable boards for project management, sales CRM, product development, marketing, and more.\n\nFounded in 2012 in Tel Aviv, monday.com went public on the Nasdaq in 2021 and serves customers in more than 200 industries.",
+      "founded": "2012",
+      "headquarters": "Tel Aviv, Israel",
+      "socials": {
+        "twitter": "https://twitter.com/mondaydotcom",
+        "linkedin": "https://www.linkedin.com/company/monday-com",
+        "facebook": "https://www.facebook.com/mondaydotcom",
+        "instagram": "https://www.instagram.com/mondaydotcom",
+        "youtube": "https://www.youtube.com/mondaycom"
+      }
+    },
+    {
+      "id": "clickup",
+      "name": "ClickUp",
+      "url": "https://clickup.com",
+      "category": "Productivity",
+      "description": "All-in-one productivity platform for tasks, docs, goals, chat, and more.",
+      "about": "ClickUp is a productivity platform aiming to replace multiple tools with one app for tasks, docs, goals, chat, whiteboards, and time tracking. It offers extensive customization for teams of all sizes.\n\nFounded in 2017 by Zeb Evans and Alex Yurkowski, ClickUp has grown quickly to serve millions of users across many industries.",
+      "founded": "2017",
+      "headquarters": "San Diego, California",
+      "socials": {
+        "twitter": "https://twitter.com/clickup",
+        "linkedin": "https://www.linkedin.com/company/clickup-app",
+        "facebook": "https://www.facebook.com/clickupprojectmanagement",
+        "instagram": "https://www.instagram.com/clickup",
+        "youtube": "https://www.youtube.com/clickup"
+      }
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "url": "https://www.figma.com",
+      "category": "Design",
+      "description": "Browser-based collaborative interface design and prototyping tool.",
+      "about": "Figma is a collaborative interface design tool that runs in the browser, enabling multiple designers and stakeholders to work on the same file in real time. It also includes FigJam for whiteboarding and Dev Mode for engineers.\n\nFounded in 2012 by Dylan Field and Evan Wallace, Figma became the standard for modern product design and is used by teams at companies of all sizes.",
+      "founded": "2012",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/figma",
+        "linkedin": "https://www.linkedin.com/company/figma",
+        "github": "https://github.com/figma",
+        "instagram": "https://www.instagram.com/figma",
+        "youtube": "https://www.youtube.com/figmadesign"
+      }
+    },
+    {
+      "id": "canva",
+      "name": "Canva",
+      "url": "https://www.canva.com",
+      "category": "Design",
+      "description": "Online design platform for graphics, presentations, videos, and marketing collateral.",
+      "about": "Canva is an online graphic design platform that makes it easy for non-designers to create social media posts, presentations, posters, documents, and videos through templates and drag-and-drop tools.\n\nFounded in 2013 by Melanie Perkins, Cliff Obrecht, and Cameron Adams in Sydney, Canva has grown to more than 170 million monthly active users worldwide.",
+      "founded": "2013",
+      "headquarters": "Sydney, Australia",
+      "socials": {
+        "twitter": "https://twitter.com/canva",
+        "linkedin": "https://www.linkedin.com/company/canva",
+        "facebook": "https://www.facebook.com/canva",
+        "instagram": "https://www.instagram.com/canva",
+        "youtube": "https://www.youtube.com/canva"
+      }
+    },
+    {
+      "id": "adobe-creative-cloud",
+      "name": "Adobe Creative Cloud",
+      "url": "https://www.adobe.com/creativecloud.html",
+      "category": "Design",
+      "description": "Adobe's subscription suite for design, photo, video, and web creativity.",
+      "about": "Adobe Creative Cloud is a subscription bundle of creative software and services from Adobe, including Photoshop, Illustrator, Premiere Pro, After Effects, InDesign, XD, Lightroom, and more, plus cloud storage and fonts.\n\nLaunched in 2011 as a replacement for the Creative Suite retail packages, Creative Cloud is the industry standard for design, photography, video, and publishing.",
+      "founded": "2011",
+      "headquarters": "San Jose, California",
+      "socials": {
+        "twitter": "https://twitter.com/creativecloud",
+        "linkedin": "https://www.linkedin.com/company/adobe",
+        "facebook": "https://www.facebook.com/adobecreativecloud",
+        "instagram": "https://www.instagram.com/adobe",
+        "youtube": "https://www.youtube.com/adobecreativecloud"
+      }
+    },
+    {
+      "id": "dribbble",
+      "name": "Dribbble",
+      "url": "https://dribbble.com",
+      "category": "Design",
+      "description": "Community platform for designers to share work, discover talent, and find jobs.",
+      "about": "Dribbble is a self-promotion and social networking platform for digital designers and creatives. Members post shots of their work, receive feedback, and use the platform to find freelance and full-time opportunities.\n\nFounded in 2009 by Dan Cederholm and Rich Thornett, Dribbble has become a leading portfolio and hiring destination for designers.",
+      "founded": "2009",
+      "headquarters": "Vancouver, Canada",
+      "socials": {
+        "twitter": "https://twitter.com/dribbble",
+        "linkedin": "https://www.linkedin.com/company/dribbble",
+        "facebook": "https://www.facebook.com/dribbble",
+        "instagram": "https://www.instagram.com/dribbble",
+        "youtube": "https://www.youtube.com/dribbble"
+      }
+    },
+    {
+      "id": "amazon",
+      "name": "Amazon",
+      "url": "https://www.amazon.com",
+      "category": "Commerce",
+      "description": "One of the world's largest online marketplaces and e-commerce companies.",
+      "about": "Amazon.com is a massive online retailer selling nearly every category of consumer goods, from books and electronics to groceries and fashion. It also offers Prime membership benefits, third-party marketplaces, and digital media.\n\nFounded in 1994 by Jeff Bezos as an online bookstore, Amazon has grown into one of the largest companies in the world across e-commerce, cloud computing, and media.",
+      "founded": "1994",
+      "headquarters": "Seattle, Washington",
+      "socials": {
+        "twitter": "https://twitter.com/amazon",
+        "linkedin": "https://www.linkedin.com/company/amazon",
+        "facebook": "https://www.facebook.com/Amazon",
+        "instagram": "https://www.instagram.com/amazon",
+        "youtube": "https://www.youtube.com/amazon"
+      }
+    },
+    {
+      "id": "ebay",
+      "name": "eBay",
+      "url": "https://www.ebay.com",
+      "category": "Commerce",
+      "description": "Global online marketplace for consumer-to-consumer and business-to-consumer sales.",
+      "about": "eBay is a multinational e-commerce corporation that operates one of the world's largest online marketplaces, connecting buyers and sellers through auctions and fixed-price listings for both new and used goods.\n\nFounded in 1995 by Pierre Omidyar, eBay has facilitated hundreds of billions of dollars in gross merchandise volume and remains one of the pioneering internet companies.",
+      "founded": "1995",
+      "headquarters": "San Jose, California",
+      "socials": {
+        "twitter": "https://twitter.com/ebay",
+        "linkedin": "https://www.linkedin.com/company/ebay",
+        "facebook": "https://www.facebook.com/eBay",
+        "instagram": "https://www.instagram.com/ebay",
+        "youtube": "https://www.youtube.com/ebay"
+      }
+    },
+    {
+      "id": "etsy",
+      "name": "Etsy",
+      "url": "https://www.etsy.com",
+      "category": "Commerce",
+      "description": "Global marketplace for handmade, vintage, and craft supply items.",
+      "about": "Etsy is an online marketplace focused on handmade, vintage, and unique goods, plus craft supplies. It supports millions of independent sellers around the world, particularly small businesses and creative entrepreneurs.\n\nFounded in 2005 in Brooklyn, Etsy went public in 2015 and has expanded through acquisitions of Depop and Reverb.",
+      "founded": "2005",
+      "headquarters": "Brooklyn, New York",
+      "socials": {
+        "twitter": "https://twitter.com/etsy",
+        "linkedin": "https://www.linkedin.com/company/etsy",
+        "github": "https://github.com/etsy",
+        "facebook": "https://www.facebook.com/Etsy",
+        "instagram": "https://www.instagram.com/etsy",
+        "youtube": "https://www.youtube.com/etsy"
+      }
+    },
+    {
+      "id": "shopify",
+      "name": "Shopify",
+      "url": "https://www.shopify.com",
+      "category": "Commerce",
+      "description": "E-commerce platform for merchants to build and run their own online stores.",
+      "about": "Shopify is a commerce platform that enables merchants of all sizes to set up online stores, sell across marketplaces and social channels, manage payments, and handle fulfillment. It powers millions of businesses worldwide.\n\nFounded in 2006 in Ottawa by Tobias Lutke, Daniel Weinand, and Scott Lake, Shopify is one of the largest e-commerce platforms in the world.",
+      "founded": "2006",
+      "headquarters": "Ottawa, Canada",
+      "socials": {
+        "twitter": "https://twitter.com/shopify",
+        "linkedin": "https://www.linkedin.com/company/shopify",
+        "github": "https://github.com/Shopify",
+        "facebook": "https://www.facebook.com/shopify",
+        "instagram": "https://www.instagram.com/shopify",
+        "youtube": "https://www.youtube.com/shopify"
+      }
+    },
+    {
+      "id": "walmart",
+      "name": "Walmart",
+      "url": "https://www.walmart.com",
+      "category": "Commerce",
+      "description": "US retail giant's e-commerce site for groceries, electronics, home, and more.",
+      "about": "Walmart.com is the online retail site of Walmart Inc., the world's largest retailer by revenue. It offers a broad range of merchandise including groceries, electronics, apparel, home goods, and services like pharmacy and financial products.\n\nFounded as a physical retailer in 1962 by Sam Walton in Arkansas, Walmart has grown into one of the largest e-commerce sites in the United States.",
+      "founded": "1962",
+      "headquarters": "Bentonville, Arkansas",
+      "socials": {
+        "twitter": "https://twitter.com/walmart",
+        "linkedin": "https://www.linkedin.com/company/walmart",
+        "facebook": "https://www.facebook.com/walmart",
+        "instagram": "https://www.instagram.com/walmart",
+        "youtube": "https://www.youtube.com/walmart"
+      }
+    },
+    {
+      "id": "alibaba",
+      "name": "Alibaba",
+      "url": "https://www.alibaba.com",
+      "category": "Commerce",
+      "description": "Global business-to-business marketplace connecting buyers with suppliers, mostly in China.",
+      "about": "Alibaba.com is a global business-to-business e-commerce marketplace that connects buyers around the world with suppliers, primarily manufacturers in China, across virtually every industrial category.\n\nFounded in 1999 by Jack Ma and colleagues in Hangzhou, Alibaba Group has grown into one of the largest e-commerce and technology companies in the world.",
+      "founded": "1999",
+      "headquarters": "Hangzhou, China",
+      "socials": {
+        "twitter": "https://twitter.com/alibaba_com",
+        "linkedin": "https://www.linkedin.com/company/alibaba-com",
+        "facebook": "https://www.facebook.com/alibabacom",
+        "youtube": "https://www.youtube.com/alibaba"
+      }
+    },
+    {
+      "id": "target",
+      "name": "Target",
+      "url": "https://www.target.com",
+      "category": "Commerce",
+      "description": "US retail chain's e-commerce site for apparel, home goods, groceries, and more.",
+      "about": "Target.com is the online store of Target Corporation, a major US retailer offering apparel, home goods, electronics, groceries, and exclusive private-label brands, along with services like same-day delivery and drive-up pickup.\n\nFounded in 1902 as Dayton's and rebranded to Target in 1962, the company operates nearly 2,000 stores across the United States.",
+      "founded": "1902",
+      "headquarters": "Minneapolis, Minnesota",
+      "socials": {
+        "twitter": "https://twitter.com/target",
+        "linkedin": "https://www.linkedin.com/company/target",
+        "facebook": "https://www.facebook.com/target",
+        "instagram": "https://www.instagram.com/target",
+        "youtube": "https://www.youtube.com/target"
+      }
+    },
+    {
+      "id": "best-buy",
+      "name": "Best Buy",
+      "url": "https://www.bestbuy.com",
+      "category": "Commerce",
+      "description": "US consumer electronics retailer's e-commerce site for tech, appliances, and services.",
+      "about": "BestBuy.com is the online store of Best Buy Co., Inc., a major American retailer of consumer electronics, computers, appliances, and related services such as Geek Squad support and installation.\n\nFounded in 1966 as Sound of Music and renamed Best Buy in 1983, the company operates hundreds of stores across the US and Canada.",
+      "founded": "1966",
+      "headquarters": "Richfield, Minnesota",
+      "socials": {
+        "twitter": "https://twitter.com/bestbuy",
+        "linkedin": "https://www.linkedin.com/company/best-buy",
+        "facebook": "https://www.facebook.com/bestbuy",
+        "instagram": "https://www.instagram.com/bestbuy",
+        "youtube": "https://www.youtube.com/bestbuy"
+      }
+    },
+    {
+      "id": "paypal",
+      "name": "PayPal",
+      "url": "https://www.paypal.com",
+      "category": "Finance",
+      "description": "Online payments and money transfer platform used by consumers and businesses worldwide.",
+      "about": "PayPal is a digital payments company that enables consumers and merchants to send, receive, and hold money in a range of currencies. It powers checkout for millions of online stores and person-to-person transfers.\n\nFounded in 1998 as Confinity and merged with X.com, PayPal was later spun off from eBay and is now an independent publicly traded company.",
+      "founded": "1998",
+      "headquarters": "San Jose, California",
+      "socials": {
+        "twitter": "https://twitter.com/paypal",
+        "linkedin": "https://www.linkedin.com/company/paypal",
+        "github": "https://github.com/paypal",
+        "facebook": "https://www.facebook.com/PayPal",
+        "instagram": "https://www.instagram.com/paypal",
+        "youtube": "https://www.youtube.com/paypal"
+      }
+    },
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "url": "https://stripe.com",
+      "category": "Finance",
+      "description": "Payments infrastructure for internet businesses, from startups to Fortune 500 companies.",
+      "about": "Stripe is a technology company that builds economic infrastructure for the internet. Businesses use Stripe's software and APIs to accept payments, send payouts, and manage financial operations online.\n\nFounded in 2010 by Irish brothers Patrick and John Collison, Stripe processes hundreds of billions of dollars per year for millions of businesses around the world.",
+      "founded": "2010",
+      "headquarters": "South San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/stripe",
+        "linkedin": "https://www.linkedin.com/company/stripe",
+        "github": "https://github.com/stripe",
+        "youtube": "https://www.youtube.com/stripe"
+      }
+    },
+    {
+      "id": "coinbase",
+      "name": "Coinbase",
+      "url": "https://www.coinbase.com",
+      "category": "Finance",
+      "description": "Cryptocurrency exchange for buying, selling, and storing digital assets.",
+      "about": "Coinbase is a cryptocurrency exchange that allows users to buy, sell, transfer, and store a wide range of digital assets. It offers products for retail investors, institutions, and developers, including a self-custody wallet.\n\nFounded in 2012 by Brian Armstrong and Fred Ehrsam, Coinbase went public on the Nasdaq in 2021 and is one of the largest publicly traded crypto companies in the US.",
+      "founded": "2012",
+      "headquarters": "Remote-first, United States",
+      "socials": {
+        "twitter": "https://twitter.com/coinbase",
+        "linkedin": "https://www.linkedin.com/company/coinbase",
+        "github": "https://github.com/coinbase",
+        "facebook": "https://www.facebook.com/Coinbase",
+        "instagram": "https://www.instagram.com/coinbase",
+        "youtube": "https://www.youtube.com/coinbase"
+      }
+    },
+    {
+      "id": "robinhood",
+      "name": "Robinhood",
+      "url": "https://robinhood.com",
+      "category": "Finance",
+      "description": "Commission-free stock, options, and crypto trading app for retail investors.",
+      "about": "Robinhood is a financial services company offering commission-free trades of stocks, ETFs, options, and cryptocurrencies through a mobile-first app. It also offers cash management, retirement accounts, and margin.\n\nFounded in 2013 by Vladimir Tenev and Baiju Bhatt, Robinhood popularized commission-free trading in the US and went public in 2021.",
+      "founded": "2013",
+      "headquarters": "Menlo Park, California",
+      "socials": {
+        "twitter": "https://twitter.com/robinhoodapp",
+        "linkedin": "https://www.linkedin.com/company/robinhood",
+        "github": "https://github.com/robinhood",
+        "facebook": "https://www.facebook.com/RobinhoodApp",
+        "instagram": "https://www.instagram.com/robinhoodapp",
+        "youtube": "https://www.youtube.com/robinhoodsnacks"
+      }
+    },
+    {
+      "id": "venmo",
+      "name": "Venmo",
+      "url": "https://venmo.com",
+      "category": "Finance",
+      "description": "US mobile payment service for peer-to-peer money transfers and small businesses.",
+      "about": "Venmo is a US-based mobile payments service owned by PayPal, allowing users to send and receive money with friends, split bills, and pay at select merchants. It is well known for its social feed of shared payment activity.\n\nFounded in 2009 and acquired by Braintree in 2012, Venmo became part of PayPal in 2013 and is one of the most popular peer-to-peer payment apps in the United States.",
+      "founded": "2009",
+      "headquarters": "New York, New York",
+      "socials": {
+        "twitter": "https://twitter.com/venmo",
+        "linkedin": "https://www.linkedin.com/company/venmo",
+        "facebook": "https://www.facebook.com/venmo",
+        "instagram": "https://www.instagram.com/venmo",
+        "youtube": "https://www.youtube.com/venmo"
+      }
+    },
+    {
+      "id": "nytimes",
+      "name": "The New York Times",
+      "url": "https://www.nytimes.com",
+      "category": "News",
+      "description": "American daily newspaper and one of the world's most influential news publications.",
+      "about": "The New York Times is a daily newspaper based in New York City with a worldwide readership. It covers politics, business, culture, science, and opinion, and offers a range of digital subscription products including Cooking, Games, Wirecutter, and The Athletic.\n\nFounded in 1851, The New York Times has won more Pulitzer Prizes than any other newspaper and is considered a paper of record in the United States.",
+      "founded": "1851",
+      "headquarters": "New York, New York",
+      "socials": {
+        "twitter": "https://twitter.com/nytimes",
+        "linkedin": "https://www.linkedin.com/company/the-new-york-times",
+        "github": "https://github.com/nytimes",
+        "facebook": "https://www.facebook.com/nytimes",
+        "instagram": "https://www.instagram.com/nytimes",
+        "youtube": "https://www.youtube.com/nytimes"
+      }
+    },
+    {
+      "id": "bbc",
+      "name": "BBC",
+      "url": "https://www.bbc.com",
+      "category": "News",
+      "description": "The British Broadcasting Corporation's global news, sport, culture, and video website.",
+      "about": "BBC.com is the global website of the British Broadcasting Corporation, the UK's public service broadcaster. It offers news, sport, weather, culture, and video coverage in dozens of languages.\n\nFounded in 1922, the BBC is one of the oldest and largest broadcasters in the world, funded primarily by a license fee in the United Kingdom.",
+      "founded": "1922",
+      "headquarters": "London, United Kingdom",
+      "socials": {
+        "twitter": "https://twitter.com/bbc",
+        "linkedin": "https://www.linkedin.com/company/bbc",
+        "facebook": "https://www.facebook.com/bbc",
+        "instagram": "https://www.instagram.com/bbc",
+        "youtube": "https://www.youtube.com/bbc"
+      }
+    },
+    {
+      "id": "cnn",
+      "name": "CNN",
+      "url": "https://www.cnn.com",
+      "category": "News",
+      "description": "Cable News Network's website for breaking news, video, and analysis worldwide.",
+      "about": "CNN.com is the website of the Cable News Network, a multinational news channel owned by Warner Bros. Discovery. It covers breaking news, US and world politics, business, health, entertainment, and video.\n\nFounded in 1980 by Ted Turner as the first 24-hour cable news channel, CNN transformed television news and now operates a leading global news website.",
+      "founded": "1980",
+      "headquarters": "Atlanta, Georgia",
+      "socials": {
+        "twitter": "https://twitter.com/cnn",
+        "linkedin": "https://www.linkedin.com/company/cnn",
+        "facebook": "https://www.facebook.com/cnn",
+        "instagram": "https://www.instagram.com/cnn",
+        "youtube": "https://www.youtube.com/cnn"
+      }
+    },
+    {
+      "id": "guardian",
+      "name": "The Guardian",
+      "url": "https://www.theguardian.com",
+      "category": "News",
+      "description": "British daily newspaper website with global news, opinion, sport, and culture.",
+      "about": "The Guardian is a British daily newspaper and website owned by the Guardian Media Group. It provides international coverage of news, politics, sport, culture, lifestyle, and opinion, and is funded largely by reader contributions.\n\nFounded in Manchester in 1821 as The Manchester Guardian, the paper is now known for its investigative journalism and open access model on the web.",
+      "founded": "1821",
+      "headquarters": "London, United Kingdom",
+      "socials": {
+        "twitter": "https://twitter.com/guardian",
+        "linkedin": "https://www.linkedin.com/company/theguardian",
+        "github": "https://github.com/guardian",
+        "facebook": "https://www.facebook.com/theguardian",
+        "instagram": "https://www.instagram.com/guardian",
+        "youtube": "https://www.youtube.com/theguardian"
+      }
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "url": "https://openai.com",
+      "category": "AI",
+      "description": "AI research company behind ChatGPT, GPT models, DALL-E, and the OpenAI API.",
+      "about": "OpenAI is an AI research and deployment company. It develops the GPT family of large language models, the ChatGPT assistant, DALL-E image generation, and an API used by many other products and businesses.\n\nFounded in 2015 by Sam Altman, Elon Musk, and others, OpenAI has become one of the most influential organizations in artificial intelligence.",
+      "founded": "2015",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/openai",
+        "linkedin": "https://www.linkedin.com/company/openai",
+        "github": "https://github.com/openai",
+        "youtube": "https://www.youtube.com/openai"
+      }
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "url": "https://www.anthropic.com",
+      "category": "AI",
+      "description": "AI safety company and the makers of the Claude family of AI assistants.",
+      "about": "Anthropic is an AI safety company that researches and develops reliable, interpretable, and steerable AI systems. It is best known for Claude, a family of large language models available via chat, API, and platform integrations.\n\nFounded in 2021 by former members of OpenAI including Dario and Daniela Amodei, Anthropic is one of the leading frontier AI labs.",
+      "founded": "2021",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/anthropicai",
+        "linkedin": "https://www.linkedin.com/company/anthropicresearch",
+        "github": "https://github.com/anthropics",
+        "youtube": "https://www.youtube.com/anthropic"
+      }
+    },
+    {
+      "id": "gemini",
+      "name": "Google Gemini",
+      "url": "https://gemini.google.com",
+      "category": "AI",
+      "description": "Google's AI assistant powered by the Gemini family of multimodal models.",
+      "about": "Google Gemini is Google's conversational AI assistant, powered by the Gemini family of multimodal large language models. It handles text, image, and code understanding and integrates with Google Workspace and other Google services.\n\nOriginally launched as Bard in 2023 and rebranded to Gemini in 2024, it is Google's primary consumer-facing AI product.",
+      "founded": "2023",
+      "headquarters": "Mountain View, California",
+      "socials": {
+        "twitter": "https://twitter.com/googledeepmind",
+        "youtube": "https://www.youtube.com/googledeepmind"
+      }
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "url": "https://www.perplexity.ai",
+      "category": "AI",
+      "description": "AI-powered answer engine that cites sources for every response.",
+      "about": "Perplexity is an AI-powered answer engine that combines large language models with real-time web search to answer questions with cited sources. It offers free and Pro tiers with access to more advanced models and features like Spaces.\n\nFounded in 2022 by Aravind Srinivas and colleagues, Perplexity has grown rapidly and become a widely used alternative to traditional search.",
+      "founded": "2022",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/perplexity_ai",
+        "linkedin": "https://www.linkedin.com/company/perplexity-ai",
+        "youtube": "https://www.youtube.com/perplexityai"
+      }
+    },
+    {
+      "id": "huggingface",
+      "name": "Hugging Face",
+      "url": "https://huggingface.co",
+      "category": "AI",
+      "description": "Open platform and community for machine learning models, datasets, and Spaces.",
+      "about": "Hugging Face is a community and platform for machine learning, hosting hundreds of thousands of models, datasets, and demo applications called Spaces. It also maintains the widely used Transformers open-source library.\n\nFounded in 2016 by Clement Delangue, Julien Chaumond, and Thomas Wolf, Hugging Face has become the de facto hub for open-source AI.",
+      "founded": "2016",
+      "headquarters": "New York, New York",
+      "socials": {
+        "twitter": "https://twitter.com/huggingface",
+        "linkedin": "https://www.linkedin.com/company/huggingface",
+        "github": "https://github.com/huggingface"
+      }
+    },
+    {
+      "id": "midjourney",
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com",
+      "category": "AI",
+      "description": "Generative AI service that creates images from natural language prompts.",
+      "about": "Midjourney is an independent research lab and generative AI service that produces images from text prompts. It is best known for its distinctive artistic style and originally ran primarily through Discord bots before launching a web interface.\n\nFounded in 2021 by David Holz, Midjourney has become one of the most popular AI image generation services in the world.",
+      "founded": "2021",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/midjourney"
+      }
+    },
+    {
+      "id": "dropbox",
+      "name": "Dropbox",
+      "url": "https://www.dropbox.com",
+      "category": "Storage",
+      "description": "Cloud file storage, sync, and collaboration service for individuals and teams.",
+      "about": "Dropbox is a file hosting service offering cloud storage, file synchronization across devices, sharing, and collaboration tools such as Dropbox Paper and Dropbox Sign for e-signatures.\n\nFounded in 2007 by Drew Houston and Arash Ferdowsi, Dropbox went public in 2018 and serves hundreds of millions of registered users.",
+      "founded": "2007",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/dropbox",
+        "linkedin": "https://www.linkedin.com/company/dropbox",
+        "github": "https://github.com/dropbox",
+        "facebook": "https://www.facebook.com/dropbox",
+        "instagram": "https://www.instagram.com/dropbox",
+        "youtube": "https://www.youtube.com/dropbox"
+      }
+    },
+    {
+      "id": "google-drive",
+      "name": "Google Drive",
+      "url": "https://drive.google.com",
+      "category": "Storage",
+      "description": "Google's cloud storage and file sharing service tightly integrated with Workspace.",
+      "about": "Google Drive is a file storage and synchronization service developed by Google. Users store, share, and collaborate on files, and it integrates natively with Google Docs, Sheets, Slides, and other Workspace apps.\n\nLaunched in 2012, Google Drive has billions of active users and is one of the most widely used cloud storage services.",
+      "founded": "2012",
+      "headquarters": "Mountain View, California",
+      "socials": {
+        "twitter": "https://twitter.com/googledrive",
+        "facebook": "https://www.facebook.com/GoogleDrive",
+        "youtube": "https://www.youtube.com/googleworkspace"
+      }
+    },
+    {
+      "id": "icloud",
+      "name": "iCloud",
+      "url": "https://www.icloud.com",
+      "category": "Storage",
+      "description": "Apple's cloud service for storage, backup, photos, and sync across devices.",
+      "about": "iCloud is Apple's cloud storage and cloud computing service. It stores photos, files, backups, notes, and app data and keeps data synchronized across Apple devices and the web.\n\nLaunched in 2011 as the successor to MobileMe, iCloud is deeply integrated into iOS, iPadOS, macOS, and watchOS.",
+      "founded": "2011",
+      "headquarters": "Cupertino, California",
+      "socials": {
+        "twitter": "https://twitter.com/apple",
+        "youtube": "https://www.youtube.com/apple"
+      }
+    },
+    {
+      "id": "airbnb",
+      "name": "Airbnb",
+      "url": "https://www.airbnb.com",
+      "category": "Travel",
+      "description": "Online marketplace for short-term homestays, vacation rentals, and experiences.",
+      "about": "Airbnb is an online marketplace that connects travelers with hosts offering short-term lodging and travel experiences around the world. Listings range from private rooms to entire homes, boats, cabins, and unique stays.\n\nFounded in 2008 by Brian Chesky, Joe Gebbia, and Nathan Blecharczyk, Airbnb went public in 2020 and operates in more than 200 countries and regions.",
+      "founded": "2008",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/airbnb",
+        "linkedin": "https://www.linkedin.com/company/airbnb",
+        "github": "https://github.com/airbnb",
+        "facebook": "https://www.facebook.com/airbnb",
+        "instagram": "https://www.instagram.com/airbnb",
+        "youtube": "https://www.youtube.com/airbnb"
+      }
+    },
+    {
+      "id": "booking",
+      "name": "Booking.com",
+      "url": "https://www.booking.com",
+      "category": "Travel",
+      "description": "Global online travel agency for hotel bookings, flights, and rental cars.",
+      "about": "Booking.com is one of the world's largest online travel agencies, offering reservations for hotels, apartments, resorts, flights, car rentals, and attractions across more than 220 countries and territories.\n\nFounded in 1996 in Amsterdam and now part of Booking Holdings, Booking.com processes hundreds of millions of stays each year.",
+      "founded": "1996",
+      "headquarters": "Amsterdam, Netherlands",
+      "socials": {
+        "twitter": "https://twitter.com/bookingcom",
+        "linkedin": "https://www.linkedin.com/company/booking-com",
+        "facebook": "https://www.facebook.com/bookingcom",
+        "instagram": "https://www.instagram.com/bookingcom",
+        "youtube": "https://www.youtube.com/bookingcom"
+      }
+    },
+    {
+      "id": "uber",
+      "name": "Uber",
+      "url": "https://www.uber.com",
+      "category": "Travel",
+      "description": "Global ride-hailing, delivery, and mobility platform.",
+      "about": "Uber is a technology company that operates ride-hailing, food delivery via Uber Eats, freight brokerage, and other mobility services in cities around the world. It connects riders and drivers through a mobile app.\n\nFounded in 2009 by Travis Kalanick and Garrett Camp, Uber went public in 2019 and operates in thousands of cities in more than 70 countries.",
+      "founded": "2009",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/uber",
+        "linkedin": "https://www.linkedin.com/company/uber-com",
+        "github": "https://github.com/uber",
+        "facebook": "https://www.facebook.com/uber",
+        "instagram": "https://www.instagram.com/uber",
+        "youtube": "https://www.youtube.com/uber"
+      }
+    },
+    {
+      "id": "doordash",
+      "name": "DoorDash",
+      "url": "https://www.doordash.com",
+      "category": "Travel",
+      "description": "US-based on-demand delivery platform for food, groceries, and retail goods.",
+      "about": "DoorDash is a technology company that operates an on-demand delivery marketplace for food, groceries, alcohol, flowers, and retail goods, primarily in the United States, Canada, and Australia.\n\nFounded in 2013 at Stanford by Tony Xu, Andy Fang, Stanley Tang, and Evan Moore, DoorDash went public in 2020 and is the largest food-delivery platform in the US.",
+      "founded": "2013",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/doordash",
+        "linkedin": "https://www.linkedin.com/company/doordash",
+        "github": "https://github.com/doordash",
+        "facebook": "https://www.facebook.com/doordash",
+        "instagram": "https://www.instagram.com/doordash",
+        "youtube": "https://www.youtube.com/doordash"
+      }
+    },
+    {
+      "id": "wikipedia",
+      "name": "Wikipedia",
+      "url": "https://www.wikipedia.org",
+      "category": "Reference",
+      "description": "Free, multilingual online encyclopedia written and maintained by volunteers.",
+      "about": "Wikipedia is a free online encyclopedia written collaboratively by volunteers around the world. It hosts millions of articles across more than 300 languages and is one of the most-visited websites in the world.\n\nFounded in 2001 by Jimmy Wales and Larry Sanger, Wikipedia is operated by the nonprofit Wikimedia Foundation and is a cornerstone of open knowledge on the web.",
+      "founded": "2001",
+      "headquarters": "San Francisco, California",
+      "socials": {
+        "twitter": "https://twitter.com/wikipedia",
+        "linkedin": "https://www.linkedin.com/company/wikimedia-foundation",
+        "github": "https://github.com/wikimedia",
+        "facebook": "https://www.facebook.com/wikipedia",
+        "instagram": "https://www.instagram.com/wikipedia",
+        "youtube": "https://www.youtube.com/wikimediafoundation"
+      }
+    },
+    {
+      "id": "quora",
+      "name": "Quora",
+      "url": "https://www.quora.com",
+      "category": "Reference",
+      "description": "Question-and-answer platform where users share knowledge on a wide range of topics.",
+      "about": "Quora is a social question-and-answer website and mobile app where users ask questions, write answers, and follow topics of interest. It also offers Quora+ subscriptions and the Poe AI chat platform.\n\nFounded in 2009 by former Facebook employees Adam D'Angelo and Charlie Cheever, Quora has grown to hundreds of millions of monthly visitors.",
+      "founded": "2009",
+      "headquarters": "Mountain View, California",
+      "socials": {
+        "twitter": "https://twitter.com/quora",
+        "linkedin": "https://www.linkedin.com/company/quora",
+        "facebook": "https://www.facebook.com/quora",
+        "instagram": "https://www.instagram.com/quora",
+        "youtube": "https://www.youtube.com/quora"
+      }
+    },
+    {
+      "id": "duolingo",
+      "name": "Duolingo",
+      "url": "https://www.duolingo.com",
+      "category": "Reference",
+      "description": "Gamified language learning app with lessons in dozens of languages.",
+      "about": "Duolingo is a language learning platform that offers gamified lessons in more than 40 languages, along with Duolingo Math and Duolingo Music. It is available on the web and as a mobile app.\n\nFounded in 2011 by Luis von Ahn and Severin Hacker at Carnegie Mellon University, Duolingo has grown to become the most-downloaded education app in the world.",
+      "founded": "2011",
+      "headquarters": "Pittsburgh, Pennsylvania",
+      "socials": {
+        "twitter": "https://twitter.com/duolingo",
+        "linkedin": "https://www.linkedin.com/company/duolingo",
+        "github": "https://github.com/duolingo",
+        "facebook": "https://www.facebook.com/duolingo",
+        "instagram": "https://www.instagram.com/duolingo",
+        "youtube": "https://www.youtube.com/duolingo"
+      }
+    },
+    {
+      "id": "steam",
+      "name": "Steam",
+      "url": "https://store.steampowered.com",
+      "category": "Gaming",
+      "description": "Digital PC game store and social platform operated by Valve.",
+      "about": "Steam is a digital distribution service and storefront for PC games, developed by Valve. It offers game downloads, automatic updates, cloud saves, community features, workshop content, and multiplayer matchmaking.\n\nLaunched in 2003, Steam is the largest PC gaming platform in the world, with tens of thousands of games and hundreds of millions of active accounts.",
+      "founded": "2003",
+      "headquarters": "Bellevue, Washington",
+      "socials": {
+        "twitter": "https://twitter.com/steam",
+        "facebook": "https://www.facebook.com/steam",
+        "youtube": "https://www.youtube.com/steam"
+      }
+    },
+    {
+      "id": "roblox",
+      "name": "Roblox",
+      "url": "https://www.roblox.com",
+      "category": "Gaming",
+      "description": "Online platform where users create and play millions of user-generated games.",
+      "about": "Roblox is an online gaming platform and game creation system where users can play and build games created by other users. It has become one of the most popular platforms for younger gamers worldwide.\n\nFounded in 2004 by David Baszucki and Erik Cassel and released in 2006, Roblox went public in 2021 and has tens of millions of daily active users.",
+      "founded": "2004",
+      "headquarters": "San Mateo, California",
+      "socials": {
+        "twitter": "https://twitter.com/roblox",
+        "linkedin": "https://www.linkedin.com/company/roblox",
+        "facebook": "https://www.facebook.com/roblox",
+        "instagram": "https://www.instagram.com/roblox",
+        "youtube": "https://www.youtube.com/roblox"
+      }
+    },
+    {
+      "id": "epic-games",
+      "name": "Epic Games",
+      "url": "https://www.epicgames.com",
+      "category": "Gaming",
+      "description": "Video game and software developer known for Fortnite, Unreal Engine, and its store.",
+      "about": "Epic Games is a video game and software developer and publisher, best known for the Fortnite battle royale, the Unreal Engine used across gaming and film, and the Epic Games Store PC storefront.\n\nFounded in 1991 by Tim Sweeney, Epic is a major force in the gaming industry and has partial ownership by Tencent and Sony.",
+      "founded": "1991",
+      "headquarters": "Cary, North Carolina",
+      "socials": {
+        "twitter": "https://twitter.com/epicgames",
+        "linkedin": "https://www.linkedin.com/company/epic-games",
+        "github": "https://github.com/EpicGames",
+        "facebook": "https://www.facebook.com/epicgames",
+        "instagram": "https://www.instagram.com/epicgames",
+        "youtube": "https://www.youtube.com/epicgames"
+      }
+    },
+    {
+      "id": "playstation-network",
+      "name": "PlayStation Network",
+      "url": "https://www.playstation.com",
+      "category": "Gaming",
+      "description": "Sony's online gaming service for PlayStation consoles, store, and PlayStation Plus.",
+      "about": "PlayStation Network (PSN) is Sony Interactive Entertainment's digital media entertainment service for PlayStation consoles. It provides online multiplayer, the PlayStation Store, cloud saves, and PlayStation Plus subscription benefits.\n\nLaunched in 2006 with the PlayStation 3, PSN has more than 100 million monthly active users and is central to the modern PlayStation experience.",
+      "founded": "2006",
+      "headquarters": "San Mateo, California",
+      "socials": {
+        "twitter": "https://twitter.com/playstation",
+        "linkedin": "https://www.linkedin.com/company/playstation",
+        "facebook": "https://www.facebook.com/playstation",
+        "instagram": "https://www.instagram.com/playstation",
+        "youtube": "https://www.youtube.com/playstation"
+      }
+    },
+    {
+      "id": "1password",
+      "name": "1Password",
+      "url": "https://1password.com",
+      "category": "Security",
+      "description": "Password manager and secrets platform for individuals, families, and businesses.",
+      "about": "1Password is a password manager and secrets management platform. It allows users to securely store passwords, passkeys, credit cards, and other sensitive information, and share credentials across teams and families.\n\nDeveloped by AgileBits, 1Password launched in 2006 and has grown into one of the most trusted password management solutions for both consumers and enterprises.",
+      "founded": "2005",
+      "headquarters": "Toronto, Canada",
+      "socials": {
+        "twitter": "https://twitter.com/1password",
+        "linkedin": "https://www.linkedin.com/company/1password",
+        "github": "https://github.com/1Password",
+        "facebook": "https://www.facebook.com/1Password",
+        "youtube": "https://www.youtube.com/1PasswordVideos"
+      }
     }
   ]
 }

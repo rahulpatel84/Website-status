@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Incident #4213 — Instagram login outage — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-nav></div>
+
+<main class="container">
+  <div class="section" style="padding:20px 0 0">
+    <p class="tiny muted"><a href="home.html">Home</a> / <a href="company.html">Instagram</a> / <span>Incident #4213</span></p>
+  </div>
+
+  <section class="section" style="padding:16px 0 24px">
+    <div class="row">
+      <div>
+        <span class="pill pill-down"><span class="dot-sm dot-down"></span> Major · Down</span>
+        <h1 style="margin:8px 0 4px;font-size:26px;letter-spacing:-.02em">Instagram — login and feed unavailable</h1>
+        <p class="muted" style="margin:0">Started 2026-09-05 14:20 UTC · Duration 1h 12m · 4,320 user reports</p>
+      </div>
+      <div class="spacer"></div>
+      <a href="#" class="btn">Subscribe</a>
+      <a href="#" class="btn">Share</a>
+    </div>
+  </section>
+
+  <!-- State machine -->
+  <section class="section" style="padding:0 0 24px">
+    <div class="card">
+      <div class="row" style="gap:0">
+        <div style="flex:1;text-align:center;padding:12px;border-right:1px solid var(--border);background:color-mix(in oklab,var(--down) 15%,var(--surface))">
+          <div class="tiny muted">Step 1</div><div style="font-weight:600">Investigating</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:12px;border-right:1px solid var(--border);background:color-mix(in oklab,var(--degraded) 20%,var(--surface))">
+          <div class="tiny muted">Step 2</div><div style="font-weight:600">Identified</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:12px;border-right:1px solid var(--border)">
+          <div class="tiny muted">Step 3</div><div class="muted" style="font-weight:600">Monitoring</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:12px">
+          <div class="tiny muted">Step 4</div><div class="muted" style="font-weight:600">Resolved</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid" style="grid-template-columns:1fr 320px;gap:20px">
+    <div class="stack">
+      <div class="card">
+        <h3 style="margin:0 0 4px;font-size:16px">Timeline</h3>
+        <p class="tiny muted" style="margin:0 0 14px">Reverse chronological · times in UTC</p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-time">15:32 UTC — 3 min ago</div>
+            <div class="timeline-title"><span class="pill pill-degraded">Identified</span> Root cause identified</div>
+            <div class="timeline-body">Instagram engineering identified a bad configuration push affecting the login gateway. Rolling back now.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">15:12 UTC — 23 min ago</div>
+            <div class="timeline-title"><span class="pill pill-down">Investigating</span> Elevated login errors</div>
+            <div class="timeline-body">User reports have spiked 340% above baseline. Feed loading also affected in EU and NA. We're monitoring the vendor's status page and X account.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">14:20 UTC — 1h 15m ago</div>
+            <div class="timeline-title"><span class="pill pill-down">Detected</span> Incident opened</div>
+            <div class="timeline-body">Automatic detection triggered — 200+ reports per minute exceeded threshold.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 8px;font-size:16px">Report volume</h3>
+        <div class="chart-bars">
+          <span style="height:8%"></span><span style="height:10%"></span><span style="height:14%"></span><span style="height:18%"></span><span style="height:26%"></span><span style="height:38%"></span><span style="height:50%"></span><span style="height:65%"></span><span style="height:78%"></span><span style="height:92%"></span><span style="height:100%;background:var(--down)"></span><span style="height:96%;background:var(--down)"></span><span style="height:88%;background:var(--degraded)"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 8px;font-size:16px">Affected components</h3>
+        <div class="stack" style="gap:8px">
+          <div class="row"><span class="dot-sm dot-down"></span><span class="small">Login (US, EU)</span><div class="spacer"></div><span class="pill pill-down">Down</span></div>
+          <div class="row"><span class="dot-sm dot-degraded"></span><span class="small">Feed</span><div class="spacer"></div><span class="pill pill-degraded">Degraded</span></div>
+          <div class="row"><span class="dot-sm dot-degraded"></span><span class="small">Direct messages</span><div class="spacer"></div><span class="pill pill-degraded">Degraded</span></div>
+          <div class="row"><span class="dot-sm dot-up"></span><span class="small">Stories</span><div class="spacer"></div><span class="pill pill-up">Normal</span></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="stack">
+      <div class="card">
+        <h3 style="margin:0 0 8px;font-size:15px">Impact</h3>
+        <div class="row" style="gap:8px;flex-wrap:wrap">
+          <span class="pill pill-down">Major</span>
+          <span class="pill">Users: ~4.2M</span>
+          <span class="pill">Regions: NA, EU</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px;font-size:15px">Subscribe</h3>
+        <p class="small muted" style="margin:0 0 10px">Get notified on each update.</p>
+        <div class="stack" style="gap:8px">
+          <input class="btn" placeholder="you@example.com" />
+          <button class="btn btn-primary">Email me updates</button>
+          <a class="tiny" href="#">RSS</a>
+          <a class="tiny" href="#">Webhook</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px;font-size:15px">Related</h3>
+        <div class="stack" style="gap:6px">
+          <a class="tiny" href="#">Previous incident · 2026-08-24</a>
+          <a class="tiny" href="#">Instagram — 90-day history</a>
+          <a class="tiny" href="company.html">Instagram status page →</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div data-footer></div>
+<script src="partials.js"></script>
+</body>
+</html>

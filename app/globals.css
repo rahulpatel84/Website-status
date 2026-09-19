@@ -3,76 +3,105 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Light-only palette. Neutral base + orange brand + semantic green/yellow/red. */
 :root {
-  /* Updated design tokens to match incident.io style */
-  --background: oklch(1 0 0); /* Clean white background */
-  --foreground: oklch(0.205 0 0); /* Dark gray for text */
-  --card: oklch(0.985 0 0); /* Light gray for cards */
-  --card-foreground: oklch(0.205 0 0);
+  --background: oklch(0.99 0 0);          /* near-white */
+  --foreground: oklch(0.18 0 0);          /* near-black text */
+  --card: oklch(1 0 0);                    /* pure white surface */
+  --card-foreground: oklch(0.18 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.205 0 0);
-  --primary: oklch(0.205 0 0); /* Dark gray for primary actions */
+  --popover-foreground: oklch(0.18 0 0);
+
+  /* Primary CTA = brand orange */
+  --primary: oklch(0.68 0.19 46);          /* #F97316 orange-500 vibe */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.646 0.222 41.116); /* Purple accent */
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.956 0 0); /* Light gray for muted elements */
-  --muted-foreground: oklch(0.556 0 0); /* Medium gray for muted text */
-  --accent: oklch(0.646 0.222 41.116); /* Purple for highlights */
+
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.18 0 0);
+
+  --muted: oklch(0.965 0 0);
+  --muted-foreground: oklch(0.5 0 0);
+
+  --accent: oklch(0.68 0.19 46);           /* orange accent */
   --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.577 0.245 27.325); /* Red for errors/down status */
+
+  --destructive: oklch(0.6 0.22 27);       /* red-600 */
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.922 0 0); /* Light border */
+
+  --border: oklch(0.92 0 0);
   --input: oklch(1 0 0);
-  --ring: oklch(0.646 0.222 41.116); /* Purple focus ring */
-  --chart-1: oklch(0.646 0.222 142.495); /* Green for up status */
-  --chart-2: oklch(0.6 0.118 184.704); /* Blue for neutral */
-  --chart-3: oklch(0.577 0.245 27.325); /* Red for down status */
-  --chart-4: oklch(0.828 0.189 84.429); /* Yellow for warning */
-  --chart-5: oklch(0.646 0.222 41.116); /* Purple */
+  --ring: oklch(0.68 0.19 46);
+
+  /* Chart / semantic tokens */
+  --chart-1: oklch(0.62 0.17 145);         /* green */
+  --chart-2: oklch(0.68 0.19 46);          /* orange */
+  --chart-3: oklch(0.6 0.22 27);           /* red */
+  --chart-4: oklch(0.78 0.16 85);          /* yellow */
+  --chart-5: oklch(0.5 0 0);               /* neutral */
+
   --radius: 0.5rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.205 0 0);
-  --sidebar-primary: oklch(1 0 0);
-  --sidebar-primary-foreground: oklch(0.205 0 0);
-  --sidebar-accent: oklch(0.646 0.222 41.116);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.646 0.222 41.116);
+
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.18 0 0);
+  --sidebar-primary: oklch(0.68 0.19 46);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.965 0 0);
+  --sidebar-accent-foreground: oklch(0.18 0 0);
+  --sidebar-border: oklch(0.92 0 0);
+  --sidebar-ring: oklch(0.68 0.19 46);
+
+  /* Named brand shades (hex for direct use) */
+  --brand-50:  #FFF7ED;
+  --brand-100: #FFEDD5;
+  --brand-200: #FED7AA;
+  --brand-500: #F97316;
+  --brand-600: #EA580C;
+  --brand-700: #C2410C;
+  --status-up:       #16A34A;
+  --status-degraded: #CA8A04;
+  --status-down:     #DC2626;
 }
 
+/* Dark palette — neutral zinc base + same brand orange */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.646 0.222 41.116);
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.646 0.222 41.116);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.646 0.222 41.116);
-  --chart-1: oklch(0.646 0.222 142.495);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.577 0.245 27.325);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.646 0.222 41.116);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.269 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.646 0.222 41.116);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.646 0.222 41.116);
+  --background: oklch(0.16 0.005 260);       /* near-black */
+  --foreground: oklch(0.96 0 0);             /* near-white text */
+  --card: oklch(0.21 0.006 260);             /* elevated surface */
+  --card-foreground: oklch(0.96 0 0);
+  --popover: oklch(0.21 0.006 260);
+  --popover-foreground: oklch(0.96 0 0);
+  --primary: oklch(0.72 0.19 46);            /* orange stays vivid */
+  --primary-foreground: oklch(0.12 0 0);
+  --secondary: oklch(0.24 0.006 260);
+  --secondary-foreground: oklch(0.96 0 0);
+  --muted: oklch(0.24 0.006 260);
+  --muted-foreground: oklch(0.68 0 0);
+  --accent: oklch(0.72 0.19 46);
+  --accent-foreground: oklch(0.12 0 0);
+  --destructive: oklch(0.66 0.22 27);
+  --destructive-foreground: oklch(0.96 0 0);
+  --border: oklch(0.28 0.006 260);
+  --input: oklch(0.24 0.006 260);
+  --ring: oklch(0.72 0.19 46);
+  --chart-1: oklch(0.7 0.17 145);
+  --chart-2: oklch(0.72 0.19 46);
+  --chart-3: oklch(0.7 0.22 27);
+  --chart-4: oklch(0.82 0.16 85);
+  --chart-5: oklch(0.7 0 0);
+  --sidebar: oklch(0.18 0.005 260);
+  --sidebar-foreground: oklch(0.96 0 0);
+  --sidebar-border: oklch(0.28 0.006 260);
+
+  /* Rebalanced brand shades so orange pills read on dark. */
+  --brand-50:  #2A1810;   /* dim tinted surface */
+  --brand-100: #4A2915;
+  --brand-200: #7A3E1F;
+  --brand-500: #F97316;   /* same accent — pops on dark */
+  --brand-600: #FB923C;   /* slightly lighter for hover */
+  --brand-700: #FDBA74;   /* text on tinted bg (light) */
+  --status-up:       #22C55E;
+  --status-degraded: #EAB308;
+  --status-down:     #F87171;
 }
 
 @theme inline {
@@ -123,4 +152,12 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Small utilities used across pages */
+@layer utilities {
+  .status-dot { display:inline-block; width:8px; height:8px; border-radius:9999px; }
+  .status-up { background: var(--status-up); }
+  .status-degraded { background: var(--status-degraded); }
+  .status-down { background: var(--status-down); }
 }

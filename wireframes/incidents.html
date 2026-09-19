@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Incidents — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-app-top></div>
+<div class="app-shell">
+  <aside data-app-sidebar data-active="incidents"></aside>
+
+  <main class="app-main">
+    <div class="page-head">
+      <div>
+        <h1>Incidents</h1>
+        <p class="tiny muted" style="margin:2px 0 0">Every incident across your workspace. Filter, acknowledge, and post-mortem.</p>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn">Export CSV</button>
+      <button class="btn btn-accent">+ Create manual incident</button>
+    </div>
+
+    <div class="grid grid-4" style="margin-bottom:20px">
+      <div class="stat"><div class="k">Active</div><div class="v" style="color:var(--down)">2</div></div>
+      <div class="stat"><div class="k">Last 24h</div><div class="v">5</div></div>
+      <div class="stat"><div class="k">MTTR · 30d</div><div class="v">6m 42s</div></div>
+      <div class="stat"><div class="k">Downtime · 30d</div><div class="v">18m 12s</div></div>
+    </div>
+
+    <div class="row" style="margin-bottom:12px">
+      <input class="btn" style="flex:1" placeholder="Search by monitor, cause, or diagnosis…" />
+      <select class="btn"><option>All monitors</option><option>api.acme.io</option><option>Checkout form</option></select>
+      <select class="btn"><option>All severities</option><option>Critical</option><option>Major</option><option>Minor</option></select>
+      <select class="btn"><option>All statuses</option><option>Active</option><option>Resolved</option><option>Acknowledged</option></select>
+    </div>
+
+    <div class="card" style="padding:0">
+      <table style="width:100%;border-collapse:collapse;font-size:14px">
+        <thead style="text-align:left;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;background:color-mix(in oklab,var(--muted) 8%,var(--surface))">
+          <tr><th style="padding:12px 16px">Monitor</th><th>Started</th><th>Duration</th><th>Diagnosis</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr style="border-top:1px solid var(--border)">
+            <td style="padding:14px 16px"><div style="font-weight:600">Checkout form</div><div class="tiny muted">shop.acme.io/checkout</div></td>
+            <td class="tiny muted">3 min ago</td>
+            <td class="tiny">ongoing</td>
+            <td><span class="pill">Layer: <b>Response body</b></span> <div class="tiny muted" style="margin-top:4px">Selector <code class="mono tiny">#btn-pay</code> missing</div></td>
+            <td><span class="pill pill-down"><span class="dot-sm dot-down"></span> Down</span></td>
+            <td><a class="tiny" href="monitor-detail.html">Open →</a></td>
+          </tr>
+          <tr style="border-top:1px solid var(--border)">
+            <td style="padding:14px 16px"><div style="font-weight:600">Nightly backup cron</div><div class="tiny muted">heartbeat expected daily</div></td>
+            <td class="tiny muted">2h ago</td>
+            <td class="tiny">ongoing</td>
+            <td><span class="pill">Layer: <b>Local runtime</b></span> <div class="tiny muted" style="margin-top:4px">Missed heartbeat window</div></td>
+            <td><span class="pill pill-degraded"><span class="dot-sm dot-degraded"></span> Late</span></td>
+            <td><a class="tiny" href="monitor-detail.html">Open →</a></td>
+          </tr>
+          <tr style="border-top:1px solid var(--border)">
+            <td style="padding:14px 16px"><div style="font-weight:600">api.acme.io</div><div class="tiny muted">HTTP · /health</div></td>
+            <td class="tiny muted">Yesterday 03:14</td>
+            <td class="tiny">4m 12s</td>
+            <td><span class="pill">Layer: <b>Upstream API</b></span> <div class="tiny muted" style="margin-top:4px">Origin returned 503 for 8 checks</div></td>
+            <td><span class="pill pill-up"><span class="dot-sm dot-up"></span> Resolved</span></td>
+            <td><a class="tiny" href="#">Post-mortem →</a></td>
+          </tr>
+          <tr style="border-top:1px solid var(--border)">
+            <td style="padding:14px 16px"><div style="font-weight:600">api.acme.io</div><div class="tiny muted">HTTP · /health</div></td>
+            <td class="tiny muted">3 days ago</td>
+            <td class="tiny">8m 12s</td>
+            <td><span class="pill">Layer: <b>DNS</b></span> <div class="tiny muted" style="margin-top:4px">Resolver returned NXDOMAIN</div></td>
+            <td><span class="pill pill-up"><span class="dot-sm dot-up"></span> Resolved</span></td>
+            <td><a class="tiny" href="#">Post-mortem →</a></td>
+          </tr>
+          <tr style="border-top:1px solid var(--border)">
+            <td style="padding:14px 16px"><div style="font-weight:600">Postgres · db.acme.io:5432</div><div class="tiny muted">Port TCP</div></td>
+            <td class="tiny muted">6 days ago</td>
+            <td class="tiny">1m 04s</td>
+            <td><span class="pill">Layer: <b>TCP</b></span> <div class="tiny muted" style="margin-top:4px">Connection refused</div></td>
+            <td><span class="pill pill-up"><span class="dot-sm dot-up"></span> Resolved</span></td>
+            <td><a class="tiny" href="#">Open →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row" style="justify-content:center;margin-top:14px">
+      <button class="btn">Load more</button>
+    </div>
+  </main>
+</div>
+<script src="app-partials.js"></script>
+</body>
+</html>

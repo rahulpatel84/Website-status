@@ -10,6 +10,8 @@ export function getDatabase() {
 
     // Enable WAL mode for better concurrent access
     db.pragma("journal_mode = WAL")
+    // Enforce declared FOREIGN KEY constraints (SQLite ships with them OFF).
+    db.pragma("foreign_keys = ON")
 
     // Initialize tables
     initializeTables()
@@ -65,6 +67,454 @@ function initializeTables() {
   db.exec(`
     CREATE INDEX IF NOT EXISTS idx_stats_company_hour ON outage_stats(company_slug, hour_timestamp);
   `)
+
+  // Scheduled availability history for the public service directory. We keep
+  // three rollup levels instead of one raw row per probe: five-minute buckets
+  // for the live chart, hourly buckets for 7/30-day views, and daily buckets
+  // for the six-month view. Exact outage start/end times live in the incident
+  // table below.
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS public_service_status (
+      service_slug TEXT PRIMARY KEY,
+      current_status TEXT NOT NULL,
+      response_ms INTEGER,
+      http_status INTEGER,
+      checked_at DATETIME NOT NULL,
+      error TEXT
+    );
+
+    CREATE TABLE IF NOT EXISTS public_service_status_buckets (
+      service_slug TEXT NOT NULL,
+      bucket_start DATETIME NOT NULL,
+      bucket_minutes INTEGER NOT NULL,
+      checks INTEGER NOT NULL DEFAULT 0,
+      up_checks INTEGER NOT NULL DEFAULT 0,
+      down_checks INTEGER NOT NULL DEFAULT 0,
+      response_samples INTEGER NOT NULL DEFAULT 0,
+      response_ms_total INTEGER NOT NULL DEFAULT 0,
+      response_ms_max INTEGER NOT NULL DEFAULT 0,
+      latest_status TEXT NOT NULL,
+      last_http_status INTEGER,
+      last_checked_at DATETIME NOT NULL,
+      PRIMARY KEY (service_slug, bucket_minutes, bucket_start)
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_public_status_bucket_history
+      ON public_service_status_buckets(service_slug, bucket_minutes, bucket_start DESC);
+
+    CREATE TABLE IF NOT EXISTS public_service_incidents (
+      id TEXT PRIMARY KEY,
+      service_slug TEXT NOT NULL,
+      started_at DATETIME NOT NULL,
+      resolved_at DATETIME,
+      cause TEXT,
+      http_status INTEGER
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_public_incidents_service_time
+      ON public_service_incidents(service_slug, started_at DESC);
+  `)
+
+  // Anonymous comments for outage discussions
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS comments (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      company_slug TEXT NOT NULL,
+      issue_type TEXT,
+      nickname TEXT,
+      location TEXT,
+      body TEXT NOT NULL,
+      parent_id INTEGER,
+      ip_hash TEXT NOT NULL,
+      upvotes INTEGER NOT NULL DEFAULT 0,
+      status TEXT NOT NULL DEFAULT 'visible',
+      flag_count INTEGER NOT NULL DEFAULT 0,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (parent_id) REFERENCES comments(id) ON DELETE CASCADE
+    )
+  `)
+
+  db.exec(`
+    CREATE INDEX IF NOT EXISTS idx_comments_company ON comments(company_slug, created_at DESC);
+    CREATE INDEX IF NOT EXISTS idx_comments_parent ON comments(parent_id);
+  `)
+
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS comment_votes (
+      comment_id INTEGER NOT NULL,
+      ip_hash TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      PRIMARY KEY (comment_id, ip_hash),
+      FOREIGN KEY (comment_id) REFERENCES comments(id) ON DELETE CASCADE
+    )
+  `)
+
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS comment_flags (
+      comment_id INTEGER NOT NULL,
+      ip_hash TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      PRIMARY KEY (comment_id, ip_hash),
+      FOREIGN KEY (comment_id) REFERENCES comments(id) ON DELETE CASCADE
+    )
+  `)
+
+  // ============================================================
+  // SaaS tables — multi-tenant monitoring platform
+  // ============================================================
+
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS app_users (
+      id TEXT PRIMARY KEY,
+      email TEXT NOT NULL UNIQUE,
+      name TEXT,
+      image_url TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS workspaces (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      slug TEXT NOT NULL UNIQUE,
+      plan TEXT NOT NULL DEFAULT 'hobby',
+      owner_id TEXT NOT NULL REFERENCES app_users(id) ON DELETE CASCADE,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS workspace_members (
+      workspace_id TEXT NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+      user_id TEXT NOT NULL REFERENCES app_users(id) ON DELETE CASCADE,
+      role TEXT NOT NULL DEFAULT 'member',
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      PRIMARY KEY (workspace_id, user_id)
+    );
+
+    CREATE TABLE IF NOT EXISTS monitors (
+      id TEXT PRIMARY KEY,
+      workspace_id TEXT NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      type TEXT NOT NULL,
+      target TEXT NOT NULL,
+      method TEXT NOT NULL DEFAULT 'GET',
+      interval_s INTEGER NOT NULL DEFAULT 60,
+      regions TEXT NOT NULL DEFAULT '["us-east"]',
+      config TEXT NOT NULL DEFAULT '{}',
+      is_paused INTEGER NOT NULL DEFAULT 0,
+      current_status TEXT NOT NULL DEFAULT 'pending',
+      last_check_at DATETIME,
+      last_response_ms INTEGER,
+      created_by TEXT REFERENCES app_users(id) ON DELETE SET NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_monitors_workspace ON monitors(workspace_id);
+    CREATE INDEX IF NOT EXISTS idx_monitors_type ON monitors(type);
+
+    CREATE TABLE IF NOT EXISTS assertions (
+      id TEXT PRIMARY KEY,
+      monitor_id TEXT NOT NULL REFERENCES monitors(id) ON DELETE CASCADE,
+      kind TEXT NOT NULL,
+      op TEXT NOT NULL,
+      value TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_assertions_monitor ON assertions(monitor_id);
+
+    CREATE TABLE IF NOT EXISTS probes (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      monitor_id TEXT NOT NULL REFERENCES monitors(id) ON DELETE CASCADE,
+      region TEXT NOT NULL DEFAULT 'us-east',
+      status TEXT NOT NULL,
+      response_ms INTEGER,
+      http_status INTEGER,
+      layer_failed TEXT,
+      error TEXT,
+      details TEXT,
+      ran_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_probes_monitor_time ON probes(monitor_id, ran_at DESC);
+
+    CREATE TABLE IF NOT EXISTS incidents (
+      id TEXT PRIMARY KEY,
+      monitor_id TEXT NOT NULL REFERENCES monitors(id) ON DELETE CASCADE,
+      workspace_id TEXT NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+      started_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      resolved_at DATETIME,
+      severity TEXT NOT NULL DEFAULT 'major',
+      layer_isolated TEXT,
+      cause TEXT,
+      acknowledged_by TEXT REFERENCES app_users(id) ON DELETE SET NULL,
+      acknowledged_at DATETIME,
+      last_notified_at DATETIME
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_incidents_workspace_time ON incidents(workspace_id, started_at DESC);
+    CREATE INDEX IF NOT EXISTS idx_incidents_monitor ON incidents(monitor_id);
+
+    CREATE TABLE IF NOT EXISTS notification_channels (
+      id TEXT PRIMARY KEY,
+      workspace_id TEXT NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+      kind TEXT NOT NULL,
+      label TEXT NOT NULL,
+      config TEXT NOT NULL DEFAULT '{}',
+      is_verified INTEGER NOT NULL DEFAULT 0,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS monitor_channels (
+      monitor_id TEXT NOT NULL REFERENCES monitors(id) ON DELETE CASCADE,
+      channel_id TEXT NOT NULL REFERENCES notification_channels(id) ON DELETE CASCADE,
+      PRIMARY KEY (monitor_id, channel_id)
+    );
+
+    CREATE TABLE IF NOT EXISTS status_pages (
+      id TEXT PRIMARY KEY,
+      workspace_id TEXT NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+      slug TEXT NOT NULL UNIQUE,
+      name TEXT NOT NULL,
+      accent_color TEXT NOT NULL DEFAULT '#F97316',
+      logo_url TEXT,
+      visibility TEXT NOT NULL DEFAULT 'public',
+      custom_domain TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS status_page_components (
+      id TEXT PRIMARY KEY,
+      page_id TEXT NOT NULL REFERENCES status_pages(id) ON DELETE CASCADE,
+      monitor_id TEXT NOT NULL REFERENCES monitors(id) ON DELETE CASCADE,
+      group_name TEXT NOT NULL DEFAULT 'Services',
+      display_name TEXT,
+      sort_order INTEGER NOT NULL DEFAULT 0
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_spc_page ON status_page_components(page_id, sort_order);
+
+    CREATE TABLE IF NOT EXISTS api_keys (
+      id TEXT PRIMARY KEY,
+      workspace_id TEXT NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+      label TEXT NOT NULL,
+      prefix TEXT NOT NULL,
+      hashed_token TEXT NOT NULL,
+      last_used_at DATETIME,
+      created_by TEXT REFERENCES app_users(id) ON DELETE SET NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_apikeys_workspace ON api_keys(workspace_id);
+
+    CREATE TABLE IF NOT EXISTS heartbeat_checkins (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      monitor_id TEXT NOT NULL REFERENCES monitors(id) ON DELETE CASCADE,
+      received_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      source_ip TEXT
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_hb_monitor_time ON heartbeat_checkins(monitor_id, received_at DESC);
+
+    CREATE TABLE IF NOT EXISTS telegram_pairings (
+      code TEXT PRIMARY KEY,
+      workspace_id TEXT NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+      user_id TEXT NOT NULL REFERENCES app_users(id) ON DELETE CASCADE,
+      expires_at DATETIME NOT NULL,
+      used_at DATETIME,
+      chat_id TEXT
+    );
+
+    -- ============================================================
+    -- Enterprise readiness — on-call + incident enrichment
+    -- ============================================================
+
+    CREATE TABLE IF NOT EXISTS on_call_schedules (
+      id TEXT PRIMARY KEY,
+      workspace_id TEXT NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      timezone TEXT NOT NULL DEFAULT 'UTC',
+      created_by TEXT REFERENCES app_users(id) ON DELETE SET NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS on_call_layers (
+      id TEXT PRIMARY KEY,
+      schedule_id TEXT NOT NULL REFERENCES on_call_schedules(id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      rotation_kind TEXT NOT NULL DEFAULT 'weekly',
+      rotation_days INTEGER NOT NULL DEFAULT 7,
+      handoff_time TEXT NOT NULL DEFAULT '09:00',
+      members TEXT NOT NULL DEFAULT '[]',
+      layer_order INTEGER NOT NULL DEFAULT 0,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_layers_schedule ON on_call_layers(schedule_id, layer_order);
+
+    CREATE TABLE IF NOT EXISTS on_call_overrides (
+      id TEXT PRIMARY KEY,
+      schedule_id TEXT NOT NULL REFERENCES on_call_schedules(id) ON DELETE CASCADE,
+      user_id TEXT NOT NULL REFERENCES app_users(id) ON DELETE CASCADE,
+      start_at DATETIME NOT NULL,
+      end_at DATETIME NOT NULL,
+      note TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_overrides_schedule ON on_call_overrides(schedule_id, start_at);
+
+    CREATE TABLE IF NOT EXISTS escalation_policies (
+      id TEXT PRIMARY KEY,
+      workspace_id TEXT NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      steps TEXT NOT NULL DEFAULT '[]',
+      repeat_count INTEGER NOT NULL DEFAULT 0,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    -- Incident enrichment: roles, timeline events, updates, follow-ups
+    CREATE TABLE IF NOT EXISTS incident_roles (
+      id TEXT PRIMARY KEY,
+      incident_id TEXT NOT NULL REFERENCES incidents(id) ON DELETE CASCADE,
+      role TEXT NOT NULL,
+      user_id TEXT REFERENCES app_users(id) ON DELETE SET NULL,
+      assigned_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_incroles_inc ON incident_roles(incident_id);
+
+    CREATE TABLE IF NOT EXISTS incident_events (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      incident_id TEXT NOT NULL REFERENCES incidents(id) ON DELETE CASCADE,
+      kind TEXT NOT NULL,
+      actor_id TEXT REFERENCES app_users(id) ON DELETE SET NULL,
+      payload TEXT,
+      ts DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_incevents_inc_ts ON incident_events(incident_id, ts DESC);
+
+    CREATE TABLE IF NOT EXISTS incident_updates (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      incident_id TEXT NOT NULL REFERENCES incidents(id) ON DELETE CASCADE,
+      author_id TEXT REFERENCES app_users(id) ON DELETE SET NULL,
+      body_md TEXT NOT NULL,
+      is_public INTEGER NOT NULL DEFAULT 1,
+      published_to TEXT DEFAULT '[]',
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_incupdates_inc ON incident_updates(incident_id, created_at DESC);
+
+    CREATE TABLE IF NOT EXISTS incident_followups (
+      id TEXT PRIMARY KEY,
+      incident_id TEXT NOT NULL REFERENCES incidents(id) ON DELETE CASCADE,
+      title TEXT NOT NULL,
+      owner_id TEXT REFERENCES app_users(id) ON DELETE SET NULL,
+      due_at DATETIME,
+      status TEXT NOT NULL DEFAULT 'open',
+      external_ticket TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_incfollowups_inc ON incident_followups(incident_id);
+
+    -- Screenshot retention: one row per captured browser probe, expiring in 7 days.
+    CREATE TABLE IF NOT EXISTS probe_screenshots (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      monitor_id TEXT NOT NULL REFERENCES monitors(id) ON DELETE CASCADE,
+      workspace_id TEXT NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+      probe_id INTEGER,
+      path TEXT NOT NULL,
+      size_bytes INTEGER NOT NULL DEFAULT 0,
+      taken_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      expires_at DATETIME NOT NULL
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_shots_monitor_time ON probe_screenshots(monitor_id, taken_at DESC);
+    CREATE INDEX IF NOT EXISTS idx_shots_expires ON probe_screenshots(expires_at);
+
+    CREATE TABLE IF NOT EXISTS event_logs (
+      id TEXT PRIMARY KEY,
+      workspace_id TEXT,
+      actor_id TEXT,
+      actor_label TEXT,
+      level TEXT NOT NULL DEFAULT 'info',
+      source TEXT NOT NULL,
+      event TEXT NOT NULL,
+      message TEXT NOT NULL,
+      target_type TEXT,
+      target_id TEXT,
+      metadata TEXT,
+      request_id TEXT,
+      ip_hash TEXT,
+      duration_ms INTEGER,
+      created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_logs_ws_time ON event_logs(workspace_id, created_at DESC);
+    CREATE INDEX IF NOT EXISTS idx_logs_source_time ON event_logs(source, created_at DESC);
+    CREATE INDEX IF NOT EXISTS idx_logs_level_time ON event_logs(level, created_at DESC);
+    CREATE INDEX IF NOT EXISTS idx_logs_target ON event_logs(target_type, target_id);
+    CREATE INDEX IF NOT EXISTS idx_logs_event ON event_logs(event);
+  `)
+
+  // Structured activity log (see lib/activity-log.ts)
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS activity_logs (
+      id TEXT PRIMARY KEY,
+      workspace_id TEXT,
+      actor_id TEXT,
+      actor_type TEXT NOT NULL DEFAULT 'system',
+      actor_label TEXT,
+      level TEXT NOT NULL DEFAULT 'info',
+      event TEXT NOT NULL,
+      category TEXT NOT NULL DEFAULT 'system',
+      target_type TEXT,
+      target_id TEXT,
+      message TEXT NOT NULL,
+      metadata TEXT,
+      request_id TEXT,
+      ip_hash TEXT,
+      duration_ms INTEGER,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_activity_ws_created ON activity_logs(workspace_id, created_at DESC);
+    CREATE INDEX IF NOT EXISTS idx_activity_event ON activity_logs(event);
+    CREATE INDEX IF NOT EXISTS idx_activity_level ON activity_logs(level);
+    CREATE INDEX IF NOT EXISTS idx_activity_category ON activity_logs(category, created_at DESC);
+    CREATE INDEX IF NOT EXISTS idx_activity_target ON activity_logs(target_type, target_id);
+    CREATE INDEX IF NOT EXISTS idx_activity_created ON activity_logs(created_at DESC);
+  `)
+
+  // Lightweight column additions for existing DBs. `CREATE TABLE IF NOT EXISTS`
+  // above won't add columns to a table that already exists, so we check and
+  // ALTER individually. Wrap each in try/catch so a re-run on a migrated DB
+  // is a no-op.
+  addColumnIfMissing("incidents", "last_notified_at", "DATETIME")
+
+  // Per-channel notification timing. Lets each notification channel have its
+  // own renotify cadence (e.g. email every 4h, telegram every 30m) without
+  // stepping on the incident-wide clock.
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS incident_channel_notifications (
+      incident_id TEXT NOT NULL REFERENCES incidents(id) ON DELETE CASCADE,
+      channel_id TEXT NOT NULL REFERENCES notification_channels(id) ON DELETE CASCADE,
+      last_notified_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      notify_count INTEGER NOT NULL DEFAULT 1,
+      PRIMARY KEY (incident_id, channel_id)
+    );
+    CREATE INDEX IF NOT EXISTS idx_incident_channel_notif_last
+      ON incident_channel_notifications(incident_id, last_notified_at);
+  `)
+}
+
+function addColumnIfMissing(table: string, column: string, decl: string) {
+  if (!db) return
+  const cols = db.prepare(`PRAGMA table_info(${table})`).all() as { name: string }[]
+  if (cols.some((c) => c.name === column)) return
+  db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${decl}`)
 }
 
 export interface OutageReport {
@@ -263,6 +713,136 @@ export function getTopAffectedRegions(companySlug: string, hours = 24, limit = 1
   `)
 
   return stmt.all(companySlug, limit) as TopAffectedRegions[]
+}
+
+// ---------- Comments ----------
+
+export interface CommentRow {
+  id: number
+  company_slug: string
+  issue_type: string | null
+  nickname: string | null
+  location: string | null
+  body: string
+  parent_id: number | null
+  ip_hash: string
+  upvotes: number
+  status: "visible" | "hidden" | "flagged"
+  flag_count: number
+  created_at: string
+}
+
+export interface CommentWithReplies extends CommentRow {
+  replies: CommentRow[]
+}
+
+export interface InsertCommentInput {
+  company_slug: string
+  issue_type?: string | null
+  nickname?: string | null
+  location?: string | null
+  body: string
+  parent_id?: number | null
+  ip_hash: string
+  status?: "visible" | "hidden" | "flagged"
+}
+
+export function insertComment(input: InsertCommentInput): CommentRow {
+  const db = getDatabase()
+  const stmt = db.prepare(`
+    INSERT INTO comments (
+      company_slug, issue_type, nickname, location, body, parent_id, ip_hash, status
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  `)
+
+  const result = stmt.run(
+    input.company_slug,
+    input.issue_type ?? null,
+    input.nickname ?? null,
+    input.location ?? null,
+    input.body,
+    input.parent_id ?? null,
+    input.ip_hash,
+    input.status ?? "visible",
+  )
+
+  const selectStmt = db.prepare(`SELECT * FROM comments WHERE id = ?`)
+  return selectStmt.get(result.lastInsertRowid) as CommentRow
+}
+
+export function getCommentsForCompany(company_slug: string, limit = 100): CommentWithReplies[] {
+  const db = getDatabase()
+
+  // One parent query
+  const parentStmt = db.prepare(`
+    SELECT * FROM comments
+    WHERE company_slug = ?
+      AND parent_id IS NULL
+      AND status = 'visible'
+    ORDER BY created_at DESC
+    LIMIT ?
+  `)
+  const parents = parentStmt.all(company_slug, limit) as CommentRow[]
+
+  if (parents.length === 0) return []
+
+  // One reply query for all parents
+  const placeholders = parents.map(() => "?").join(",")
+  const replyStmt = db.prepare(`
+    SELECT * FROM comments
+    WHERE parent_id IN (${placeholders})
+      AND status = 'visible'
+    ORDER BY created_at ASC
+  `)
+  const replies = replyStmt.all(...parents.map((p) => p.id)) as CommentRow[]
+
+  const byParent = new Map<number, CommentRow[]>()
+  for (const r of replies) {
+    if (r.parent_id == null) continue
+    const arr = byParent.get(r.parent_id) ?? []
+    arr.push(r)
+    byParent.set(r.parent_id, arr)
+  }
+
+  return parents.map((p) => ({ ...p, replies: byParent.get(p.id) ?? [] }))
+}
+
+export function voteOnComment(comment_id: number, ip_hash: string): number {
+  const db = getDatabase()
+
+  const tx = db.transaction((cid: number, hash: string) => {
+    const insertVote = db.prepare(`
+      INSERT OR IGNORE INTO comment_votes (comment_id, ip_hash) VALUES (?, ?)
+    `)
+    insertVote.run(cid, hash)
+
+    // Recount to keep the upvotes column consistent
+    const countRow = db.prepare(`SELECT COUNT(*) as c FROM comment_votes WHERE comment_id = ?`).get(cid) as { c: number }
+    db.prepare(`UPDATE comments SET upvotes = ? WHERE id = ?`).run(countRow.c, cid)
+    return countRow.c
+  })
+
+  return tx(comment_id, ip_hash) as number
+}
+
+export function flagComment(comment_id: number, ip_hash: string): { flag_count: number; hidden: boolean } {
+  const db = getDatabase()
+
+  const tx = db.transaction((cid: number, hash: string) => {
+    const insertFlag = db.prepare(`
+      INSERT OR IGNORE INTO comment_flags (comment_id, ip_hash) VALUES (?, ?)
+    `)
+    insertFlag.run(cid, hash)
+
+    const countRow = db.prepare(`SELECT COUNT(*) as c FROM comment_flags WHERE comment_id = ?`).get(cid) as { c: number }
+    const hidden = countRow.c >= 5
+    db.prepare(
+      `UPDATE comments SET flag_count = ?, status = CASE WHEN ? THEN 'hidden' ELSE status END WHERE id = ?`,
+    ).run(countRow.c, hidden ? 1 : 0, cid)
+    return { flag_count: countRow.c, hidden }
+  })
+
+  return tx(comment_id, ip_hash) as { flag_count: number; hidden: boolean }
 }
 
 export function clearAllOutageData(companySlug?: string) {

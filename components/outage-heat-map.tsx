@@ -122,14 +122,14 @@ export function OutageHeatMap({ companySlug, companyName }: OutageHeatMapProps) 
   }
 
   const getColor = (count: number, maxCount: number) => {
-    if (maxCount === 0) return "rgba(239,68,68,0.15)" // red-500 @ 15%
+    if (maxCount === 0) return "rgba(249,115,22,0.15)" // red-500 @ 15%
     const ratio = count / maxCount
-    if (ratio > 0.8) return "rgba(239,68,68,0.85)" // red-500
-    if (ratio > 0.6) return "rgba(239,68,68,0.65)"
-    if (ratio > 0.4) return "rgba(239,68,68,0.45)"
-    if (ratio > 0.2) return "rgba(239,68,68,0.30)"
-    if (ratio > 0) return "rgba(239,68,68,0.18)"
-    return "rgba(239,68,68,0.10)"
+    if (ratio > 0.8) return "rgba(249,115,22,0.85)" // red-500
+    if (ratio > 0.6) return "rgba(249,115,22,0.65)"
+    if (ratio > 0.4) return "rgba(249,115,22,0.45)"
+    if (ratio > 0.2) return "rgba(249,115,22,0.30)"
+    if (ratio > 0) return "rgba(249,115,22,0.18)"
+    return "rgba(249,115,22,0.10)"
   }
 
   const formatTime = (timestamp: string) => {
@@ -179,7 +179,7 @@ export function OutageHeatMap({ companySlug, companyName }: OutageHeatMapProps) 
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <MapPin className="w-5 h-5 text-blue-500" />
+            <MapPin className="w-5 h-5 text-[color:var(--brand-500)]" />
             Outage Heat Map - Geographic Distribution
           </CardTitle>
         </CardHeader>
@@ -228,7 +228,7 @@ export function OutageHeatMap({ companySlug, companyName }: OutageHeatMapProps) 
                 <p className="text-sm text-muted-foreground">Affected Locations</p>
                 <p className="text-2xl font-bold">{totalLocations}</p>
               </div>
-              <MapPin className="w-8 h-8 text-blue-500" />
+              <MapPin className="w-8 h-8 text-[color:var(--brand-500)]" />
             </div>
           </CardContent>
         </Card>
@@ -256,7 +256,7 @@ export function OutageHeatMap({ companySlug, companyName }: OutageHeatMapProps) 
                     : "None"}
                 </p>
               </div>
-              <AlertCircle className="w-8 h-8 text-red-500" />
+              <AlertCircle className="w-8 h-8 text-[color:var(--brand-500)]" />
             </div>
           </CardContent>
         </Card>
@@ -266,9 +266,9 @@ export function OutageHeatMap({ companySlug, companyName }: OutageHeatMapProps) 
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground">Peak Reports</p>
-                <p className="text-2xl font-bold text-red-600">{maxReports}</p>
+                <p className="text-2xl font-bold text-[color:var(--brand-600)]">{maxReports}</p>
               </div>
-              <Users className="w-8 h-8 text-orange-500" />
+              <Users className="w-8 h-8 text-[color:var(--brand-500)]" />
             </div>
           </CardContent>
         </Card>
@@ -278,7 +278,7 @@ export function OutageHeatMap({ companySlug, companyName }: OutageHeatMapProps) 
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <MapPin className="w-5 h-5 text-blue-500" />
+            <MapPin className="w-5 h-5 text-[color:var(--brand-500)]" />
             Outage Heat Map - Geographic Distribution
           </CardTitle>
           <p className="text-sm text-muted-foreground">Showing outage reports by location in the last 24 hours</p>
@@ -298,15 +298,15 @@ export function OutageHeatMap({ companySlug, companyName }: OutageHeatMapProps) 
               <div className="flex items-center gap-4 text-sm">
                 <span className="text-muted-foreground">Intensity:</span>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-red-200 rounded"></div>
+                  <div className="w-4 h-4 rounded" style={{ background: "rgba(249,115,22,0.30)" }}></div>
                   <span>Low</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-red-400 rounded"></div>
+                  <div className="w-4 h-4 rounded" style={{ background: "rgba(249,115,22,0.55)" }}></div>
                   <span>Medium</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-red-600 rounded"></div>
+                  <div className="w-4 h-4 rounded" style={{ background: "rgba(249,115,22,0.85)" }}></div>
                   <span>High</span>
                 </div>
               </div>

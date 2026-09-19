@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Notification channels — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-app-top></div>
+<div class="app-shell">
+  <aside data-app-sidebar data-active="notifications"></aside>
+
+  <main class="app-main">
+    <div class="page-head">
+      <div>
+        <h1>Notification channels</h1>
+        <p class="tiny muted" style="margin:2px 0 0">Where alerts get sent. You can assign channels per monitor or per team.</p>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn btn-accent">+ Add channel</button>
+    </div>
+
+    <div class="stack">
+      <div class="card">
+        <div class="row">
+          <div style="width:40px;height:40px;border-radius:8px;background:var(--accent-50);color:var(--accent-700);display:grid;place-items:center;font-weight:700">✉</div>
+          <div>
+            <div style="font-weight:600">Email</div>
+            <div class="tiny muted">Delivered via Resend · signed SPF/DKIM · 99.9% deliverability</div>
+          </div>
+          <div class="spacer"></div>
+          <span class="pill pill-up"><span class="dot-sm dot-up"></span> Connected</span>
+        </div>
+        <div style="border-top:1px solid var(--border);margin:14px 0"></div>
+        <div class="grid grid-2">
+          <div>
+            <label class="tiny muted">Send alerts to</label>
+            <input class="btn" style="width:100%" value="rahulpatel.e29@gmail.com" />
+          </div>
+          <div>
+            <label class="tiny muted">Subject template</label>
+            <input class="btn" style="width:100%" value="[status.watch] {{monitor}} is {{status}}" />
+          </div>
+          <div>
+            <label class="tiny muted">Digest mode</label>
+            <select class="btn" style="width:100%"><option>Immediate</option><option>Bundle within 60s</option><option>Bundle within 5 min</option></select>
+          </div>
+          <div>
+            <label class="tiny muted">Quiet hours</label>
+            <input class="btn" style="width:100%" value="22:00 – 07:00 (Europe/Rome)" />
+          </div>
+        </div>
+        <div class="row" style="margin-top:12px">
+          <button class="btn">Send test email</button>
+          <div class="spacer"></div>
+          <button class="btn btn-accent">Save changes</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div style="width:40px;height:40px;border-radius:8px;background:#E7F5FA;color:#0088CC;display:grid;place-items:center;font-weight:700">✈</div>
+          <div>
+            <div style="font-weight:600">Telegram</div>
+            <div class="tiny muted">Alerts delivered by our <b>@statuswatch_bot</b>. Personal or group chats supported.</div>
+          </div>
+          <div class="spacer"></div>
+          <span class="pill pill-up"><span class="dot-sm dot-up"></span> @rahul_alerts</span>
+        </div>
+        <div style="border-top:1px solid var(--border);margin:14px 0"></div>
+        <div class="grid grid-2">
+          <div>
+            <label class="tiny muted">Chat</label>
+            <input class="btn" style="width:100%" value="@rahul_alerts (personal)" />
+          </div>
+          <div>
+            <label class="tiny muted">Message format</label>
+            <select class="btn" style="width:100%"><option>Rich card (with buttons)</option><option>Plain text</option></select>
+          </div>
+        </div>
+        <div class="row" style="margin-top:12px">
+          <a href="telegram-connect.html" class="btn">Reconnect / add another chat</a>
+          <button class="btn">Send test message</button>
+          <div class="spacer"></div>
+          <button class="btn btn-danger">Disconnect</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div style="width:40px;height:40px;border-radius:8px;background:#F5E9F7;color:#611F69;display:grid;place-items:center;font-weight:700">#</div>
+          <div>
+            <div style="font-weight:600">Slack</div>
+            <div class="tiny muted">Per-channel routing. Uses Slack's incoming webhook.</div>
+          </div>
+          <div class="spacer"></div>
+          <span class="pill"><span class="dot-sm" style="background:var(--muted)"></span> Not connected</span>
+        </div>
+        <div style="border-top:1px solid var(--border);margin:14px 0"></div>
+        <button class="btn btn-accent">Connect Slack workspace →</button>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div style="width:40px;height:40px;border-radius:8px;background:#EEE;color:var(--text);display:grid;place-items:center;font-weight:700">⛃</div>
+          <div>
+            <div style="font-weight:600">Webhook</div>
+            <div class="tiny muted">Signed POST to your endpoint. Retries with backoff.</div>
+          </div>
+          <div class="spacer"></div>
+          <span class="pill"><span class="dot-sm" style="background:var(--muted)"></span> Not connected</span>
+        </div>
+        <div style="border-top:1px solid var(--border);margin:14px 0"></div>
+        <div class="grid grid-2">
+          <div><label class="tiny muted">Endpoint URL</label><input class="btn" style="width:100%" placeholder="https://hooks.your-app.com/incoming" /></div>
+          <div><label class="tiny muted">Secret (HMAC)</label><input class="btn" style="width:100%" placeholder="whsec_...." /></div>
+        </div>
+        <div class="row" style="margin-top:12px">
+          <a class="tiny" href="api-docs.html">See payload spec →</a>
+          <div class="spacer"></div>
+          <button class="btn btn-accent">Add webhook</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;background:var(--accent-50);border-color:var(--accent-100)">
+      <div class="row">
+        <div>
+          <h3 style="margin:0;font-size:16px">Alert routing rules</h3>
+          <p class="small muted" style="margin:4px 0 0">e.g. route "production" tag to Slack, everything else to email. Coming after MVP.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn" disabled>Configure routing (soon)</button>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="app-partials.js"></script>
+</body>
+</html>

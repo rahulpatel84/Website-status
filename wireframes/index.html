@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Wireframes — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-nav></div>
+
+<main class="container">
+  <section class="section">
+    <h1 style="font-size:34px;letter-spacing:-.02em;margin:0 0 4px">Wireframes</h1>
+    <p class="sub">Two flows. Public-facing outage tracker (already implemented in React) and the new SaaS platform (Phase 2, awaiting your approval).</p>
+
+    <h2 style="margin-top:32px">SaaS platform — user journey (Phase 2)</h2>
+    <p class="sub">User signs up → sets up custom monitors → configures Telegram + email alerts → publishes a status page → installs the SDK in their project.</p>
+    <div class="grid grid-3 index-grid">
+      <a href="landing.html"><b>Landing (SaaS)</b><small>New hero pitching monitoring product</small></a>
+      <a href="pricing.html"><b>Pricing</b><small>Hobby / Pro / Team tiers</small></a>
+      <a href="auth.html"><b>Sign up / Sign in</b><small>Email + Google (Clerk)</small></a>
+      <a href="dashboard.html"><b>Dashboard</b><small>Sidebar app · KPIs + monitor list</small></a>
+      <a href="monitor-new.html"><b>New monitor</b><small>3-step: type → config → notify</small></a>
+      <a href="monitor-detail.html"><b>Monitor detail</b><small>Uptime · response · diagnostic waterfall</small></a>
+      <a href="notifications.html"><b>Notification channels</b><small>Email · Telegram · Slack · Webhook</small></a>
+      <a href="telegram-connect.html"><b>Telegram bot pairing</b><small>Pairing code + sample alert</small></a>
+      <a href="status-page-config.html"><b>Status page builder</b><small>Custom-branded status page setup</small></a>
+      <a href="status-page-public.html"><b>Public status page</b><small>Rendered customer-facing page</small></a>
+      <a href="agent-install.html"><b>SDK / Agent</b><small>Install-in-project + diagnostic waterfall</small></a>
+      <a href="incidents.html"><b>Incidents log</b><small>All incidents · MTTR · post-mortems</small></a>
+      <a href="settings.html"><b>Settings</b><small>Profile · workspace · API keys · billing</small></a>
+    </div>
+
+    <h2 style="margin-top:48px">Public site — outage tracker (Phase 1, shipped)</h2>
+    <p class="sub">These are the mocks the current React app was built from.</p>
+    <div class="grid grid-3 index-grid">
+      <a href="home.html"><b>Home</b><small>Hero + trending + directory</small></a>
+      <a href="services.html"><b>All Services</b><small>A–Z directory + filters</small></a>
+      <a href="company.html"><b>Company page</b><small>Per-service monitor + comments</small></a>
+      <a href="incident.html"><b>Incident detail</b><small>State machine + timeline</small></a>
+      <a href="about.html"><b>About</b><small>Mission, team, data sources</small></a>
+      <a href="how-it-works.html"><b>How it works</b><small>Report → aggregate → alert</small></a>
+      <a href="faq.html"><b>FAQ</b><small>15 common questions</small></a>
+      <a href="contact.html"><b>Contact</b><small>Form + email + social</small></a>
+      <a href="api.html"><b>Public API</b><small>Endpoints documented</small></a>
+      <a href="blog.html"><b>Blog</b><small>Post-mortems + articles</small></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Palette</h2>
+    <div class="grid grid-4">
+      <div class="card"><div class="row"><span class="dot-sm" style="background:#F97316"></span> <span class="mono tiny">brand-500</span></div><div class="muted tiny" style="margin-top:6px">Orange · CTA + accent</div></div>
+      <div class="card"><div class="row"><span class="dot-sm" style="background:#0A0A0A"></span> <span class="mono tiny">neutral-950</span></div><div class="muted tiny" style="margin-top:6px">Text / primary CTA</div></div>
+      <div class="card"><div class="row"><span class="dot-sm dot-up"></span> <span class="mono tiny">green-600</span></div><div class="muted tiny" style="margin-top:6px">Up / OK</div></div>
+      <div class="card"><div class="row"><span class="dot-sm dot-degraded"></span> <span class="mono tiny">yellow-600</span></div><div class="muted tiny" style="margin-top:6px">Degraded</div></div>
+      <div class="card"><div class="row"><span class="dot-sm dot-down"></span> <span class="mono tiny">red-600</span></div><div class="muted tiny" style="margin-top:6px">Down / alert</div></div>
+      <div class="card"><div class="row"><span class="dot-sm" style="background:#737373"></span> <span class="mono tiny">neutral-500</span></div><div class="muted tiny" style="margin-top:6px">Muted text</div></div>
+      <div class="card"><div class="row"><span class="dot-sm" style="background:#E5E5E5"></span> <span class="mono tiny">neutral-200</span></div><div class="muted tiny" style="margin-top:6px">Borders</div></div>
+      <div class="card"><div class="row"><span class="dot-sm" style="background:#FFF7ED;border:1px solid var(--border)"></span> <span class="mono tiny">brand-50</span></div><div class="muted tiny" style="margin-top:6px">Orange tint</div></div>
+    </div>
+  </section>
+</main>
+
+<div data-footer></div>
+<script src="partials.js"></script>
+</body>
+</html>

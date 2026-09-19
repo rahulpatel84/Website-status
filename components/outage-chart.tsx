@@ -202,7 +202,7 @@ export function OutageChart({ companySlug, companyName }: OutageChartProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-red-500" />
+            <AlertTriangle className="w-5 h-5 text-[color:var(--brand-500)]" />
             {companyName} outages reported in the last 24 hours
           </CardTitle>
         </CardHeader>
@@ -224,9 +224,9 @@ export function OutageChart({ companySlug, companyName }: OutageChartProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground">Total Reports</p>
-                <p className="text-2xl font-bold text-red-600">{totalReports}</p>
+                <p className="text-2xl font-bold text-[color:var(--brand-600)]">{totalReports}</p>
               </div>
-              <Users className="w-8 h-8 text-red-500" />
+              <Users className="w-8 h-8 text-[color:var(--brand-500)]" />
             </div>
           </CardContent>
         </Card>
@@ -273,7 +273,7 @@ export function OutageChart({ companySlug, companyName }: OutageChartProps) {
                   })()}
                 </p>
               </div>
-              <AlertTriangle className="w-8 h-8 text-red-500" />
+              <AlertTriangle className="w-8 h-8 text-[color:var(--brand-500)]" />
             </div>
           </CardContent>
         </Card>
@@ -287,7 +287,7 @@ export function OutageChart({ companySlug, companyName }: OutageChartProps) {
                   {totalReports > 10 ? "High Activity" : totalReports > 0 ? "Some Issues" : "Stable"}
                 </Badge>
               </div>
-              <MapPin className="w-8 h-8 text-blue-500" />
+              <MapPin className="w-8 h-8 text-muted-foreground" />
             </div>
           </CardContent>
         </Card>
@@ -297,7 +297,7 @@ export function OutageChart({ companySlug, companyName }: OutageChartProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-red-500" />
+            <AlertTriangle className="w-5 h-5 text-[color:var(--brand-500)]" />
 {companyName} incident reports - 24 hours (4-hour intervals)
           </CardTitle>
         </CardHeader>
@@ -312,8 +312,8 @@ export function OutageChart({ companySlug, companyName }: OutageChartProps) {
                 <AreaChart data={outageData} margin={{ top: 10, right: 30, left: 20, bottom: 80 }}>
                 <defs>
                   <linearGradient id="spikeGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8} />
-                    <stop offset="95%" stopColor="#ef4444" stopOpacity={0.1} />
+                    <stop offset="5%" stopColor="#F97316" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#F97316" stopOpacity={0.1} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
@@ -369,12 +369,12 @@ export function OutageChart({ companySlug, companyName }: OutageChartProps) {
                 <Area
                   type="monotone"
                   dataKey="total_reports"
-                  stroke="#ef4444"
+                  stroke="#F97316"
                   strokeWidth={3}
                   fill="url(#spikeGradient)"
                   name="incident_reports"
                   dot={false}
-                  activeDot={{ r: 6, stroke: '#ef4444', strokeWidth: 2, fill: '#ffffff' }}
+                  activeDot={{ r: 6, stroke: '#F97316', strokeWidth: 2, fill: '#ffffff' }}
                 />
               </AreaChart>
             </ResponsiveContainer>

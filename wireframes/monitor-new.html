@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>New monitor — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-app-top></div>
+<div class="app-shell">
+  <aside data-app-sidebar data-active="monitors"></aside>
+
+  <main class="app-main">
+    <div class="page-head">
+      <div>
+        <p class="tiny muted" style="margin:0"><a href="dashboard.html">Dashboard</a> / New monitor</p>
+        <h1>Create a new monitor</h1>
+      </div>
+    </div>
+
+    <!-- Step 1: choose type -->
+    <section class="card" style="margin-bottom:16px">
+      <div class="row">
+        <span class="pill" style="color:var(--accent-700);border-color:var(--accent-100)">Step 1 of 3</span>
+        <h3 style="margin:0;font-size:16px">What do you want to monitor?</h3>
+      </div>
+      <div class="grid grid-3" style="margin-top:14px">
+        <label class="card" style="cursor:pointer;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-50)">
+          <input type="radio" name="type" checked style="display:none" />
+          <div style="font-size:22px">🌐</div>
+          <div style="font-weight:600;margin-top:6px">Website / URL</div>
+          <div class="tiny muted">HTTP GET · expect 2xx status &amp; optional keyword</div>
+        </label>
+        <label class="card" style="cursor:pointer">
+          <input type="radio" name="type" style="display:none" />
+          <div style="font-size:22px">📄</div>
+          <div style="font-weight:600;margin-top:6px">Form loads correctly</div>
+          <div class="tiny muted">Headless browser · CSS selector must appear</div>
+        </label>
+        <label class="card" style="cursor:pointer">
+          <input type="radio" name="type" style="display:none" />
+          <div style="font-size:22px">🔌</div>
+          <div style="font-weight:600;margin-top:6px">API endpoint</div>
+          <div class="tiny muted">GET/POST · assert status + JSON path/value</div>
+        </label>
+        <label class="card" style="cursor:pointer">
+          <input type="radio" name="type" style="display:none" />
+          <div style="font-size:22px">💓</div>
+          <div style="font-weight:600;margin-top:6px">Cron heartbeat</div>
+          <div class="tiny muted">You POST to a URL — we alert if it stops</div>
+        </label>
+        <label class="card" style="cursor:pointer">
+          <input type="radio" name="type" style="display:none" />
+          <div style="font-size:22px">🛰️</div>
+          <div style="font-weight:600;margin-top:6px">TCP port</div>
+          <div class="tiny muted">DB, SSH, custom protocol</div>
+        </label>
+        <label class="card" style="cursor:pointer">
+          <input type="radio" name="type" style="display:none" />
+          <div style="font-size:22px">🔒</div>
+          <div style="font-weight:600;margin-top:6px">SSL certificate</div>
+          <div class="tiny muted">Alert N days before expiry</div>
+        </label>
+      </div>
+    </section>
+
+    <!-- Step 2: configuration -->
+    <section class="card" style="margin-bottom:16px">
+      <div class="row">
+        <span class="pill" style="color:var(--accent-700);border-color:var(--accent-100)">Step 2 of 3</span>
+        <h3 style="margin:0;font-size:16px">Configure the check</h3>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:14px">
+        <div>
+          <label class="tiny muted">Friendly name</label>
+          <input class="btn" style="width:100%" placeholder="e.g. acme.io landing page" />
+        </div>
+        <div>
+          <label class="tiny muted">URL to check</label>
+          <input class="btn" style="width:100%" placeholder="https://your-site.com/health" />
+        </div>
+        <div>
+          <label class="tiny muted">Check interval</label>
+          <select class="btn" style="width:100%">
+            <option>Every 30 seconds (Pro)</option>
+            <option selected>Every 60 seconds</option>
+            <option>Every 5 minutes</option>
+            <option>Every 30 minutes</option>
+          </select>
+        </div>
+        <div>
+          <label class="tiny muted">Regions (probe from)</label>
+          <select class="btn" style="width:100%" multiple>
+            <option selected>United States (Virginia)</option>
+            <option selected>Europe (Frankfurt)</option>
+            <option>Asia (Tokyo)</option>
+            <option>South America (São Paulo)</option>
+            <option>Oceania (Sydney)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-top:16px">
+        <label class="tiny muted">Assertions</label>
+        <div class="stack" style="gap:8px;margin-top:6px">
+          <div class="row">
+            <select class="btn"><option>HTTP status</option><option>Response body</option><option>Response time</option><option>Header value</option></select>
+            <select class="btn"><option>equals</option><option>&lt;</option><option>&gt;</option><option>contains</option></select>
+            <input class="btn" style="flex:1" value="200" />
+            <button class="btn btn-ghost">✕</button>
+          </div>
+          <div class="row">
+            <select class="btn"><option>Response body</option></select>
+            <select class="btn"><option>contains</option></select>
+            <input class="btn" style="flex:1" placeholder='"Get started"' />
+            <button class="btn btn-ghost">✕</button>
+          </div>
+          <button class="btn" style="align-self:flex-start">+ Add assertion</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3: notifications -->
+    <section class="card" style="margin-bottom:16px">
+      <div class="row">
+        <span class="pill" style="color:var(--accent-700);border-color:var(--accent-100)">Step 3 of 3</span>
+        <h3 style="margin:0;font-size:16px">Who to notify</h3>
+      </div>
+      <div class="stack" style="margin-top:14px;gap:8px">
+        <label class="row" style="padding:10px;border:1px solid var(--border);border-radius:8px"><input type="checkbox" checked /><span class="small"><b>Email</b> · rahulpatel.e29@gmail.com</span><div class="spacer"></div><span class="tiny muted">Default channel</span></label>
+        <label class="row" style="padding:10px;border:1px solid var(--border);border-radius:8px"><input type="checkbox" checked /><span class="small"><b>Telegram</b> · @rahul_alerts</span><div class="spacer"></div><a class="tiny" href="telegram-connect.html">Reconfigure</a></label>
+        <label class="row" style="padding:10px;border:1px solid var(--border);border-radius:8px"><input type="checkbox" /><span class="small"><b>Slack</b> · #incidents</span><div class="spacer"></div><a class="tiny" href="notifications.html">Setup</a></label>
+        <label class="row" style="padding:10px;border:1px solid var(--border);border-radius:8px"><input type="checkbox" /><span class="small"><b>Webhook</b> · https://hooks.acme.io/status</span><div class="spacer"></div><a class="tiny" href="notifications.html">Setup</a></label>
+      </div>
+
+      <div class="row" style="margin-top:14px">
+        <label class="tiny muted" style="width:180px">Alert threshold</label>
+        <select class="btn" style="flex:1"><option>After 2 consecutive fails (recommended)</option><option>Immediately on first fail</option><option>After 5 consecutive fails</option></select>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <label class="tiny muted" style="width:180px">Escalation</label>
+        <select class="btn" style="flex:1"><option>None</option><option>Escalate to phone call after 15 min</option></select>
+      </div>
+    </section>
+
+    <div class="row" style="justify-content:flex-end">
+      <a class="btn" href="dashboard.html">Cancel</a>
+      <button class="btn btn-accent" onclick="location='monitor-detail.html'">Create monitor →</button>
+    </div>
+  </main>
+</div>
+<script src="app-partials.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FAQ — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-nav></div>
+
+<main class="container">
+  <section class="section" style="max-width:760px;margin:0 auto">
+    <h1 style="font-size:36px;margin:0 0 12px;letter-spacing:-.02em">Frequently asked questions</h1>
+    <p class="muted" style="font-size:17px;margin:0 0 24px">Fifteen answers to the questions we hear most.</p>
+
+    <input class="btn" style="width:100%;margin-bottom:16px" placeholder="Search the FAQ…" />
+
+    <div class="stack" style="gap:10px">
+      <details class="card"><summary style="cursor:pointer;font-weight:600">Is status.watch free?</summary><p class="muted" style="margin:10px 0 0">Yes. Every feature on the site is free and there's no signup. Enterprise API tiers may launch later — the public API stays free.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">Do you have an account or login?</summary><p class="muted" style="margin:10px 0 0">No. Reports and comments are anonymous. We hash your IP to prevent abuse, but we never store your identity.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">Where does the report data come from?</summary><p class="muted" style="margin:10px 0 0">User reports, our own uptime probes, vendor status feeds, and public X search — see <a href="how-it-works.html">How it works</a>.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">How accurate is it?</summary><p class="muted" style="margin:10px 0 0">We compare live reports against a rolling 30-day baseline. Small services can have false positives; large ones (Instagram, Google) rarely do.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">Why is my service marked as down when it works for me?</summary><p class="muted" style="margin:10px 0 0">Outages are often regional. Check the heatmap on the service page — the issue may be affecting other countries or cities.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">Can I subscribe to alerts?</summary><p class="muted" style="margin:10px 0 0">Yes — email, RSS, or webhook. Look for the "Subscribe" button on any service page.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">Do you have an API?</summary><p class="muted" style="margin:10px 0 0">Yes, public and free — see the <a href="api.html">API docs</a>. No key required for read endpoints.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">How do you moderate comments?</summary><p class="muted" style="margin:10px 0 0">Automated bad-word filter, rate limits, and community flagging. Comments flagged 5+ times auto-hide pending review.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">Can I request a new service to monitor?</summary><p class="muted" style="margin:10px 0 0">Yes — <a href="contact.html">contact us</a>. Popular requests get added within a week.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">Do you sell or share my data?</summary><p class="muted" style="margin:10px 0 0">No. We don't sell data. Aggregated, anonymized statistics may appear in blog posts.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">Do you use cookies?</summary><p class="muted" style="margin:10px 0 0">One functional cookie for your theme preference. No analytics or ad cookies.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">Are you affiliated with these services?</summary><p class="muted" style="margin:10px 0 0">No. Every trademark belongs to its owner. We're independent.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">Can I embed a status widget on my site?</summary><p class="muted" style="margin:10px 0 0">Coming soon. A small iframe with live status for any service you monitor.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">How do I remove a report I posted?</summary><p class="muted" style="margin:10px 0 0">Flag the comment or contact us with the approximate time and location.</p></details>
+      <details class="card"><summary style="cursor:pointer;font-weight:600">Something looks wrong — how do I report it?</summary><p class="muted" style="margin:10px 0 0">Email <a href="mailto:hello@status.watch">hello@status.watch</a> or ping us on <a href="https://x.com">X</a>.</p></details>
+    </div>
+  </section>
+</main>
+
+<div data-footer></div>
+<script src="partials.js"></script>
+</body>
+</html>

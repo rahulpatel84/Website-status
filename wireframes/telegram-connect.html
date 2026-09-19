@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Connect Telegram — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-app-top></div>
+<div class="app-shell">
+  <aside data-app-sidebar data-active="notifications"></aside>
+
+  <main class="app-main">
+    <div class="page-head">
+      <div>
+        <p class="tiny muted" style="margin:0"><a href="notifications.html">Notifications</a> / Telegram</p>
+        <h1>Connect Telegram</h1>
+        <p class="tiny muted" style="margin:2px 0 0">Receive alerts in a personal chat or group.</p>
+      </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns:1.4fr 1fr;gap:20px">
+      <div class="stack">
+        <div class="card">
+          <div class="row"><span class="pill" style="color:var(--accent-700);border-color:var(--accent-100)">Step 1</span><h3 style="margin:0;font-size:16px">Open the bot in Telegram</h3></div>
+          <p class="small muted" style="margin:12px 0">Tap the button below or search <b>@statuswatch_bot</b> in Telegram. Send <code class="mono tiny">/start</code>.</p>
+          <a class="btn btn-accent" href="https://t.me/statuswatch_bot" target="_blank">Open @statuswatch_bot →</a>
+        </div>
+
+        <div class="card">
+          <div class="row"><span class="pill" style="color:var(--accent-700);border-color:var(--accent-100)">Step 2</span><h3 style="margin:0;font-size:16px">Send this pairing code</h3></div>
+          <p class="small muted" style="margin:12px 0">Paste it in the bot chat within 10 minutes.</p>
+          <div class="row" style="gap:8px">
+            <div class="mono" style="font-size:22px;letter-spacing:.4em;padding:12px 16px;background:var(--bg);border:1px dashed var(--border);border-radius:8px">A9K-72FX</div>
+            <button class="btn" onclick="navigator.clipboard.writeText('A9K-72FX')">Copy</button>
+          </div>
+          <p class="tiny muted" style="margin:12px 0 0">Regenerates every 10 minutes. Never share this code.</p>
+        </div>
+
+        <div class="card">
+          <div class="row"><span class="pill" style="color:var(--accent-700);border-color:var(--accent-100)">Step 3</span><h3 style="margin:0;font-size:16px">Wait for confirmation</h3></div>
+          <div style="margin-top:12px;padding:12px;background:var(--bg);border-radius:8px;display:flex;gap:10px;align-items:center">
+            <div class="avatar" style="background:var(--accent-50);color:var(--accent-700);border-color:var(--accent-100)">SW</div>
+            <div style="flex:1">
+              <div class="tiny muted">Waiting for you to send the code…</div>
+              <div class="small">Once paired, this page will update automatically.</div>
+            </div>
+            <div class="dot-sm dot-degraded"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px;font-size:15px">Want alerts in a group instead?</h3>
+          <ol class="small muted" style="padding-left:18px;margin:0">
+            <li>Add <b>@statuswatch_bot</b> to your group.</li>
+            <li>Make it an admin (needs "send messages" permission).</li>
+            <li>Type <code class="mono tiny">/link A9K-72FX</code> in the group.</li>
+          </ol>
+        </div>
+      </div>
+
+      <aside class="stack">
+        <div class="card">
+          <h3 style="margin:0 0 8px;font-size:15px">Sample alert</h3>
+          <div style="background:#F7F9FC;border:1px solid var(--border);border-radius:12px;padding:12px">
+            <div class="tiny muted">@statuswatch_bot · now</div>
+            <div style="font-weight:600;color:var(--down);margin-top:4px">🔴 api.acme.io is DOWN</div>
+            <p class="small" style="margin:6px 0 8px">HTTP 503 from origin. Layer isolated: <b>upstream API</b>.</p>
+            <div class="row" style="gap:6px">
+              <button class="btn tiny" style="padding:4px 8px">Acknowledge</button>
+              <button class="btn tiny" style="padding:4px 8px">Silence 15m</button>
+              <button class="btn tiny" style="padding:4px 8px">Open →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px;font-size:15px">Why Telegram?</h3>
+          <ul class="small muted" style="padding-left:18px;margin:0">
+            <li>Free, no SMS costs.</li>
+            <li>Works in group chats — great for on-call rotations.</li>
+            <li>Rich messages with action buttons.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+</div>
+<script src="app-partials.js"></script>
+</body>
+</html>

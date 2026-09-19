@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>How it works — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-nav></div>
+
+<main class="container">
+  <section class="section" style="max-width:800px;margin:0 auto">
+    <h1 style="font-size:36px;margin:0 0 12px;letter-spacing:-.02em">How status.watch works</h1>
+    <p class="muted" style="font-size:17px;margin:0 0 32px">Four steps from your click to a live incident.</p>
+
+    <div class="stack" style="gap:16px">
+      <div class="card">
+        <div class="row">
+          <div class="pill pill-up">01 · Detect</div>
+          <div class="spacer"></div>
+          <span class="tiny muted">You + probes</span>
+        </div>
+        <h3 style="margin:10px 0 6px;font-size:18px">Reports come in</h3>
+        <p class="muted" style="margin:0">When you tap "I have a problem," we record the service, issue type (login, feed, payments, etc.), an anonymized IP-hashed identifier for rate limiting, and the coarse city we look up from your IP. Meanwhile, our own HTTP probes ping each service every 60 seconds.</p>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div class="pill pill-degraded">02 · Aggregate</div>
+          <div class="spacer"></div>
+          <span class="tiny muted">Baseline vs. now</span>
+        </div>
+        <h3 style="margin:10px 0 6px;font-size:18px">Compare to a rolling baseline</h3>
+        <p class="muted" style="margin:0">Every service has a rolling 30-day baseline for report volume by hour and day-of-week. When live reports exceed the baseline by more than 3x for 5 consecutive minutes, we flip status to <b>degraded</b>. Above 5x for 10 minutes we flip to <b>down</b> and open an incident.</p>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div class="pill pill-down">03 · Visualize</div>
+          <div class="spacer"></div>
+          <span class="tiny muted">Charts + heatmap</span>
+        </div>
+        <h3 style="margin:10px 0 6px;font-size:18px">Show the picture</h3>
+        <p class="muted" style="margin:0">Every service page shows a 24-hour report chart with baseline overlay, a live geographic heatmap, the top 3 problem categories, and the most-affected cities. Comments stream in via server-sent events.</p>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div class="pill">04 · Notify</div>
+          <div class="spacer"></div>
+          <span class="tiny muted">Email · RSS · webhook</span>
+        </div>
+        <h3 style="margin:10px 0 6px;font-size:18px">Reach the right people</h3>
+        <p class="muted" style="margin:0">Subscribe to any service and get a heads-up the moment reports spike — before the vendor's status page catches up. Subscriptions are anonymous email or programmatic (RSS, webhook).</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 style="font-size:20px;margin:0 0 8px">Data quality safeguards</h2>
+      <ul class="muted" style="padding-left:20px;margin:0">
+        <li>Rate limit: 3 reports/min and 30 reports/day per hashed IP.</li>
+        <li>Comment `bad-words` filter + community flagging (auto-hide at 5 flags).</li>
+        <li>Bot filter on user agents; suspicious traffic weighted at 0.</li>
+        <li>Reports outside the affected region are down-weighted in the baseline algorithm.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<div data-footer></div>
+<script src="partials.js"></script>
+</body>
+</html>

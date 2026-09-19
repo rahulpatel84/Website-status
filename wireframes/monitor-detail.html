@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>api.acme.io — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-app-top></div>
+<div class="app-shell">
+  <aside data-app-sidebar data-active="monitors"></aside>
+
+  <main class="app-main">
+    <div class="page-head">
+      <div>
+        <p class="tiny muted" style="margin:0"><a href="dashboard.html">Dashboard</a> / <a href="dashboard.html">Monitors</a> / api.acme.io</p>
+        <h1 style="margin-top:4px">api.acme.io</h1>
+        <p class="tiny muted" style="margin:2px 0 0">HTTP · https://api.acme.io/health · every 30s · US-East + EU-Central</p>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn">Pause</button>
+      <a class="btn" href="monitor-new.html">Edit</a>
+      <button class="btn btn-danger">Delete</button>
+    </div>
+
+    <!-- Status header -->
+    <div class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;margin-bottom:16px">
+      <div>
+        <span class="pill pill-up"><span class="dot-sm dot-up"></span> Up · Healthy</span>
+        <h2 style="margin:10px 0 4px;font-size:22px">All checks passing</h2>
+        <p class="muted" style="margin:0">Last check: 8s ago · Next: in 22s · Avg response 142ms.</p>
+      </div>
+      <div>
+        <div class="tiny muted">Uptime · 30 days</div>
+        <div style="font-size:34px;font-weight:700;letter-spacing:-.02em;color:var(--up)">99.93 %</div>
+        <div class="tiny muted">2 outages · 12m 24s total downtime</div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="row" style="border-bottom:1px solid var(--border);gap:24px">
+      <a class="tiny" style="padding:12px 0;border-bottom:2px solid var(--text);color:var(--text);font-weight:600">Overview</a>
+      <a class="tiny muted" style="padding:12px 0" href="#">Incidents</a>
+      <a class="tiny muted" style="padding:12px 0" href="#">Response times</a>
+      <a class="tiny muted" style="padding:12px 0" href="#">Diagnostics</a>
+      <a class="tiny muted" style="padding:12px 0" href="#">Notifications</a>
+      <a class="tiny muted" style="padding:12px 0" href="#">Settings</a>
+    </div>
+
+    <div class="grid" style="grid-template-columns:1fr 340px;gap:20px;margin-top:20px">
+      <div class="stack">
+        <!-- Uptime timeline (30d) -->
+        <div class="card">
+          <div class="row">
+            <h3 style="margin:0;font-size:16px">Uptime · 30 days</h3>
+            <div class="spacer"></div>
+            <div class="tiny muted">Each square = 1 hour · red = down · yellow = degraded</div>
+          </div>
+          <div class="uptime-bar" style="height:32px;margin-top:14px;flex-wrap:wrap;gap:2px">
+            <script>
+              document.write(
+                Array.from({length:24*30}).map((_,i)=>{
+                  const r = Math.random();
+                  const cls = r<0.006 ? "down" : (r<0.015 ? "warn" : "");
+                  return `<span class="${cls}" style="min-width:6px;height:24px"></span>`;
+                }).join("")
+              );
+            </script>
+          </div>
+        </div>
+
+        <!-- Response time chart -->
+        <div class="card">
+          <div class="row">
+            <h3 style="margin:0;font-size:16px">Response time · last 24h</h3>
+            <div class="spacer"></div>
+            <span class="tiny muted">avg 142 ms · p95 220 ms</span>
+          </div>
+          <div class="chart-ph" style="margin-top:14px;height:180px"></div>
+        </div>
+
+        <!-- Recent incidents -->
+        <div class="card">
+          <h3 style="margin:0 0 12px;font-size:16px">Recent incidents</h3>
+          <div class="stack" style="gap:0">
+            <div style="padding:10px 0;border-bottom:1px solid var(--border)">
+              <div class="row"><span class="pill pill-up"><span class="dot-sm dot-up"></span> Resolved</span><span class="small"><b>4m 12s</b> · HTTP 503 from upstream</span><div class="spacer"></div><span class="tiny muted">Yesterday, 03:14</span></div>
+              <div class="tiny muted" style="margin-top:6px">Diagnosis: <b>upstream API</b> — origin returned 503 for 8 consecutive checks. TLS + DNS OK, target service degraded.</div>
+            </div>
+            <div style="padding:10px 0">
+              <div class="row"><span class="pill pill-up"><span class="dot-sm dot-up"></span> Resolved</span><span class="small"><b>8m 12s</b> · Timeout</span><div class="spacer"></div><span class="tiny muted">3 days ago</span></div>
+              <div class="tiny muted" style="margin-top:6px">Diagnosis: <b>DNS</b> — resolver returned NXDOMAIN briefly during vendor incident.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR: probes + assertions + diag -->
+      <aside class="stack">
+        <div class="card">
+          <h3 style="margin:0 0 8px;font-size:15px">Live diagnostic</h3>
+          <div class="tiny muted" style="margin-bottom:8px">Latest waterfall — each layer probed on failure.</div>
+          <div class="stack" style="gap:6px">
+            <div class="row"><span class="dot-sm dot-up"></span><span class="small">DNS · 8 ms</span></div>
+            <div class="row"><span class="dot-sm dot-up"></span><span class="small">TCP · 22 ms</span></div>
+            <div class="row"><span class="dot-sm dot-up"></span><span class="small">TLS · 41 ms</span></div>
+            <div class="row"><span class="dot-sm dot-up"></span><span class="small">HTTP HEAD · 84 ms · 200</span></div>
+            <div class="row"><span class="dot-sm dot-up"></span><span class="small">Response body · match</span></div>
+            <div class="row"><span class="dot-sm dot-up"></span><span class="small">Downstream · db.acme.io · 21 ms</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px;font-size:15px">Regions</h3>
+          <div class="stack" style="gap:6px">
+            <div class="row"><span class="dot-sm dot-up"></span><span class="small">🇺🇸 US-East (Virginia)</span><div class="spacer"></div><span class="tiny muted">142ms</span></div>
+            <div class="row"><span class="dot-sm dot-up"></span><span class="small">🇩🇪 EU-Central (Frankfurt)</span><div class="spacer"></div><span class="tiny muted">183ms</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px;font-size:15px">Assertions</h3>
+          <div class="stack" style="gap:6px">
+            <div class="row"><span class="dot-sm dot-up"></span><span class="small mono tiny">status_code == 200</span></div>
+            <div class="row"><span class="dot-sm dot-up"></span><span class="small mono tiny">body ~ "ok"</span></div>
+            <div class="row"><span class="dot-sm dot-up"></span><span class="small mono tiny">response_ms &lt; 500</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px;font-size:15px">Notifications</h3>
+          <div class="stack" style="gap:6px">
+            <div class="row"><span class="tiny">📧 rahulpatel.e29@gmail.com</span></div>
+            <div class="row"><span class="tiny">✈ Telegram @rahul_alerts</span></div>
+            <a class="tiny" href="notifications.html">Manage →</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+</div>
+<script src="app-partials.js"></script>
+</body>
+</html>

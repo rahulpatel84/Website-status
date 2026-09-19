@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Status page builder — status.watch</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-app-top></div>
+<div class="app-shell">
+  <aside data-app-sidebar data-active="status"></aside>
+
+  <main class="app-main">
+    <div class="page-head">
+      <div>
+        <p class="tiny muted" style="margin:0"><a href="dashboard.html">Dashboard</a> / Status pages / Acme</p>
+        <h1>Acme public status page</h1>
+        <p class="tiny muted" style="margin:2px 0 0">Live at <a href="status-page-public.html">status.acme.io</a> · Draft changes</p>
+      </div>
+      <div class="spacer"></div>
+      <a class="btn" href="status-page-public.html" target="_blank">Preview</a>
+      <button class="btn btn-accent">Publish changes</button>
+    </div>
+
+    <div class="grid" style="grid-template-columns:320px 1fr;gap:20px">
+      <!-- Config sidebar -->
+      <aside class="stack">
+        <div class="card">
+          <h3 style="margin:0 0 12px;font-size:15px">Page info</h3>
+          <label class="tiny muted">Page name</label>
+          <input class="btn" style="width:100%" value="Acme" />
+          <div style="height:10px"></div>
+          <label class="tiny muted">Subdomain</label>
+          <div class="row" style="gap:0">
+            <input class="btn" style="flex:1;border-radius:8px 0 0 8px" value="acme" />
+            <span class="btn" style="border-radius:0 8px 8px 0;background:var(--bg);color:var(--muted)">.status.watch</span>
+          </div>
+          <div style="height:10px"></div>
+          <label class="tiny muted">Custom domain (Team plan)</label>
+          <input class="btn" style="width:100%" placeholder="status.acme.io" disabled />
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 12px;font-size:15px">Branding</h3>
+          <label class="tiny muted">Logo</label>
+          <div class="row" style="margin:6px 0 12px"><div class="svc-logo" style="background:var(--accent-50);color:var(--accent-700)">A</div><button class="btn">Upload</button></div>
+          <label class="tiny muted">Accent color</label>
+          <div class="row" style="margin-top:6px">
+            <input type="color" value="#F97316" style="width:40px;height:36px;border:1px solid var(--border);border-radius:6px" />
+            <input class="btn" style="flex:1" value="#F97316" />
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 12px;font-size:15px">Visibility</h3>
+          <label class="row" style="gap:8px"><input type="radio" name="viz" checked /><span class="small">Public — anyone can view</span></label>
+          <label class="row" style="gap:8px;margin-top:6px"><input type="radio" name="viz" /><span class="small">Password protected</span></label>
+          <label class="row" style="gap:8px;margin-top:6px"><input type="radio" name="viz" /><span class="small">Team only (signed-in)</span></label>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 12px;font-size:15px">Subscribers</h3>
+          <label class="row" style="gap:8px"><input type="checkbox" checked /><span class="small">Allow email subscribe</span></label>
+          <label class="row" style="gap:8px;margin-top:6px"><input type="checkbox" checked /><span class="small">Allow RSS feed</span></label>
+          <label class="row" style="gap:8px;margin-top:6px"><input type="checkbox" /><span class="small">Allow Slack subscribe</span></label>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <div class="stack">
+        <div class="card">
+          <div class="row">
+            <h3 style="margin:0;font-size:16px">Components</h3>
+            <p class="sub small" style="margin:0 0 0 12px">Which monitors show up on the public page. Group and reorder.</p>
+            <div class="spacer"></div>
+            <button class="btn">+ Add group</button>
+            <button class="btn btn-accent">+ Add component</button>
+          </div>
+
+          <div style="margin-top:14px;border:1px solid var(--border);border-radius:8px;overflow:hidden">
+            <div style="padding:10px 14px;background:var(--bg);font-weight:600;font-size:13px">🌐 Public API</div>
+            <div style="padding:10px 14px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px">
+              <span class="dot-sm dot-up"></span>
+              <span class="small" style="flex:1"><b>api.acme.io</b> — HTTP · every 30s</span>
+              <span class="tiny muted">99.93%</span>
+              <button class="btn btn-ghost tiny" style="padding:2px 6px">Edit</button>
+            </div>
+            <div style="padding:10px 14px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px">
+              <span class="dot-sm dot-up"></span>
+              <span class="small" style="flex:1"><b>SSL · api.acme.io</b> — Cert</span>
+              <span class="tiny muted">valid until Aug 2027</span>
+              <button class="btn btn-ghost tiny" style="padding:2px 6px">Edit</button>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;border:1px solid var(--border);border-radius:8px;overflow:hidden">
+            <div style="padding:10px 14px;background:var(--bg);font-weight:600;font-size:13px">🛒 Storefront</div>
+            <div style="padding:10px 14px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px">
+              <span class="dot-sm dot-down"></span>
+              <span class="small" style="flex:1"><b>Checkout form loads</b></span>
+              <span class="tiny muted">97.8%</span>
+              <button class="btn btn-ghost tiny" style="padding:2px 6px">Edit</button>
+            </div>
+            <div style="padding:10px 14px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px">
+              <span class="dot-sm dot-up"></span>
+              <span class="small" style="flex:1"><b>acme.io landing</b></span>
+              <span class="tiny muted">99.99%</span>
+              <button class="btn btn-ghost tiny" style="padding:2px 6px">Edit</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px;font-size:16px">Preview</h3>
+          <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden">
+            <iframe src="status-page-public.html" style="width:100%;height:520px;border:0;background:white"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="app-partials.js"></script>
+</body>
+</html>

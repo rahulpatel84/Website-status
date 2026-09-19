@@ -3,8 +3,12 @@ import { outageEvents } from "@/lib/events"
 
 export const runtime = "nodejs"
 
-export async function GET(_request: NextRequest) {
+export async function GET(request: NextRequest) {
   const encoder = new TextEncoder()
+
+  // Optional company filter — when supplied, only forward events for that slug.
+  const url = new URL(request.url)
+  const companyFilter = url.searchParams.get("company")
 
   const readable = new ReadableStream<Uint8Array>({
     start(controller) {
@@ -17,22 +21,41 @@ export async function GET(_request: NextRequest) {
         }
       }
 
+      const matchesCompany = (payload: any) => {
+        if (!companyFilter) return true
+        return payload && payload.companySlug === companyFilter
+      }
+
       // Initial ping to open the stream
       send("ping", { ok: true })
 
-      // Keep references so we can clean up in cancel()
-      // @ts-ignore - capture in outer scope of this underlying source
-      ;(this as any)._onReport = (payload: any) => send("outage-reported", payload)
+      // Outage report events (existing)
+      ;(this as any)._onReport = (payload: any) => {
+        if (matchesCompany(payload)) send("outage-reported", payload)
+      }
       outageEvents.on("outage-reported", (this as any)._onReport)
+
+      // Comment events
+      ;(this as any)._onCommentNew = (payload: any) => {
+        if (matchesCompany(payload)) send("comment.new", payload)
+      }
+      outageEvents.on("comment.new", (this as any)._onCommentNew)
+
+      ;(this as any)._onCommentVote = (payload: any) => {
+        if (matchesCompany(payload)) send("comment.vote", payload)
+      }
+      outageEvents.on("comment.vote", (this as any)._onCommentVote)
 
       // @ts-ignore
       ;(this as any)._keepAlive = setInterval(() => send("ping", { ok: true }), 25000)
     },
     cancel() {
-      // @ts-ignore
       const onReport = (this as any)._onReport
       if (onReport) outageEvents.off("outage-reported", onReport)
-      // @ts-ignore
+      const onCommentNew = (this as any)._onCommentNew
+      if (onCommentNew) outageEvents.off("comment.new", onCommentNew)
+      const onCommentVote = (this as any)._onCommentVote
+      if (onCommentVote) outageEvents.off("comment.vote", onCommentVote)
       const keepAlive: NodeJS.Timeout | undefined = (this as any)._keepAlive
       if (keepAlive) clearInterval(keepAlive)
     },
@@ -47,5 +70,3 @@ export async function GET(_request: NextRequest) {
     },
   })
 }
-
-

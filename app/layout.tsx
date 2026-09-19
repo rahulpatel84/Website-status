@@ -1,34 +1,38 @@
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
+import type { Metadata } from "next"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
+import { Analytics } from "@vercel/analytics/next"
+import { ClerkProvider } from "@clerk/nextjs"
+import { ThemeProvider } from "@/components/theme-provider"
+import "./globals.css"
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: "status.watch — Monitor anything",
+  description:
+    "Real-time uptime monitoring for websites, forms, APIs and cron jobs — with an install-in-your-project SDK that isolates which layer failed.",
+  generator: "status.watch",
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} bg-white text-gray-900`}>
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-1 mx-auto w-full max-w-7xl px-4 md:px-6 py-6">
-        {children}
-          </main>
-          <Footer />
-        </div>
-        <Analytics />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`font-sans ${GeistSans.variable} ${GeistMono.variable} bg-background text-foreground min-h-screen`}
+        >
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+          <Analytics />
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
