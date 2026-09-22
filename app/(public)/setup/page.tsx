@@ -285,7 +285,7 @@ function Section2_Database() {
             <p className="text-muted-foreground leading-relaxed">
               Same schema, in Postgres. Migrations:{" "}
               <code className="text-xs font-mono bg-muted px-1 py-0.5 rounded">
-                supabase/migrations/000{1,2,3}_*.sql
+                {"supabase/migrations/000{1,2,3}_*.sql"}
               </code>
               . Apply once via{" "}
               <code className="text-xs font-mono bg-muted px-1 py-0.5 rounded">supabase db push</code>.
